@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  colors = import ../shared/cols/wave.nix {};
+  colors = import ./cols/wave.nix {};
 in {
   # some general info
   home.username = "focus";
@@ -13,7 +13,7 @@ in {
   home.stateVersion = "22.11";
   programs.home-manager.enable = true;
 
-  home.file.".icons/default".source = "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
+  # home.file.".icons/default".source = "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
 
   # gtk themeing
   gtk = {
@@ -23,18 +23,18 @@ in {
     theme.name = "gruv";
   };
 
-  nixpkgs.overlays = [ ];
-  
+  nixpkgs.overlays = [];
+
   imports = [
     # Importing Configutations
-    (import ./conf/utils/rofi/default.nix {inherit config pkgs colors;})
-    (import ./conf/music/cava/default.nix {inherit colors;})
-    (import ./conf/shell/zsh/default.nix {inherit config pkgs;})
-    (import ./conf/music/mpd/default.nix {inherit config pkgs;})
-    (import ./conf/music/ncmp/default.nix {inherit config pkgs;})
+    (import ./utils/rofi/default.nix {inherit config pkgs colors;})
+    (import ./music/cava/default.nix {inherit colors;})
+    # (import ./shell/fish/default.nix {inherit config pkgs;})
+    (import ./music/mpd/default.nix {inherit config pkgs;})
+    (import ./music/ncmp/default.nix {inherit config pkgs;})
 
     # Bin files
-    (import ../shared/bin/default.nix {inherit config;})
+    (import ./shell/bin/default.nix {inherit config;})
   ];
 
   home = {
@@ -65,7 +65,11 @@ in {
       alejandra
       hyprland
     ];
+    # sessionVariables = {
+    #   EDITOR = "nvim";
+    # };
   };
+
 
   nixpkgs.config = {
     allowUnfree = true;

@@ -57,7 +57,7 @@
     isNormalUser = true;
     shell = pkgs.fish;
     description = "focus";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" "audio" "video" "libvirtd" ];
     packages = with pkgs; []; # see home manager for things
   };
 

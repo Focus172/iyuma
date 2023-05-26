@@ -1,0 +1,5 @@
+{ pkgs, ... }:
+{
+  xdg.desktopEntries = {
+  };
+}

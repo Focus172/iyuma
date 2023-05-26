@@ -47,7 +47,7 @@
         };
         extraSpecialArgs = {inherit inputs outputs self;};
         modules = [
-          ./home/focus/home.nix
+          ./focus/home.nix
           {
             home.username = "focus";
             home.homeDirectory = "/home/focus";
