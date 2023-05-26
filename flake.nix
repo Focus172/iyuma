@@ -23,21 +23,6 @@
     };
     lib = nixpkgs.lib;
   in {
-    # host configurations
-    nixosConfigurations = {
-      steambox =
-        nixpkgs.lib.nixosSystem
-        {
-          specialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [
-            # > Our main nixos configuration file <
-            ./nixos/configuration.nix
-          ];
-        };
-    };
-
     # user configurations
     homeConfigurations = {
       focus = home-manager.lib.homeManagerConfiguration {
@@ -55,7 +40,5 @@
         ];
       };
     };
-
-    steambox = self.nixosConfigurations.nixl.config.system.build.toplevel;
   };
 }

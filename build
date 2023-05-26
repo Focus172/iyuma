@@ -3,7 +3,7 @@
 case $1 in
     "usr") home-manager switch --flake '.#focus'
     ;;
-    "sys") sudo nixos-rebuild switch --flake '.#steambox'
+    "sys") sudo nixos-rebuild switch
     ;;
     *) echo "Enter a target to rebuild: usr or sys" && exit 1
     ;;
