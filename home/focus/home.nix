@@ -39,34 +39,31 @@ in {
 
   home = {
     activation = {
-      # installConfig = ''
-      #   if [ ! -d "${config.home.homeDirectory}/.config/awesome" ]; then
-      #     ${pkgs.git}/bin/git clone --depth 1 --branch the-awesome-config https://github.com/chadcat7/fuyu ${config.home.homeDirectory}/.config/awesome
-      #   fi
-      #   if [ ! -d "${config.home.homeDirectory}/.config/nvim" ]; then
-      #     ${pkgs.git}/bin/git clone --depth 1 https://github.com/chadcat7/kodo ${config.home.homeDirectory}/.config/nvim
-      #   fi
-      # '';
+      # installConfig = ''# shell code in here'';
     };
 
     packages = with pkgs; [
-      bc
       playerctl
-      (pkgs.callPackage ../shared/icons/whitesur.nix {})
-      (pkgs.callPackage ../shared/icons/colloid.nix {})
-      (pkgs.callPackage ../shared/icons/fluent.nix {})
-      (pkgs.callPackage ../shared/icons/elementary.nix {})
+      # (pkgs.callPackage ../shared/icons/whitesur.nix {})
+      # (pkgs.callPackage ../shared/icons/colloid.nix {})
+      # (pkgs.callPackage ../shared/icons/fluent.nix {})
+      # (pkgs.callPackage ../shared/icons/elementary.nix {})
       neofetch
       # notion-app-enhanced
       pfetch
       ffmpeg
       # xdg-desktop-portal
       mpd
+      starship
       imagemagick
       killall
       cava
       feh
       exa
+      gitui
+      bat
+      alejandra
+      hyprland
     ];
   };
 

@@ -14,7 +14,8 @@
     self,
     nixpkgs,
     home-manager,
-  }: let
+  } @inputs: let
+    inherit (self) outputs;
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
@@ -46,7 +47,7 @@
         };
         extraSpecialArgs = {inherit inputs outputs self;};
         modules = [
-          # ./home/focus/home.nix
+          ./home/focus/home.nix
           {
             home.username = "focus";
             home.homeDirectory = "/home/focus";

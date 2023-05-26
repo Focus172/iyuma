@@ -58,7 +58,6 @@ in
     xdg-utils
     gtk3
     jq
-    i3lock-color
     st
     spotdl
     python310Packages.pip
@@ -71,7 +70,6 @@ in
     mpv
     slurp
     xdotool
-    spotify
     simplescreenrecorder
     brightnessctl
     pamixer
@@ -80,7 +78,6 @@ in
     brillo
     wmctrl
     slop
-    ueberzug
     ripgrep
     maim
     xclip

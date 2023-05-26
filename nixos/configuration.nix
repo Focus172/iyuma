@@ -23,6 +23,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+
+  programs.dconf.enable = true;
+
   # Set your time zone.
   time.timeZone = "America/Tijuana";
 
@@ -66,11 +69,10 @@
   environment.systemPackages = with pkgs; [
     neovim
     git
-    wget
-    wayland
     rustup
     zig
     busybox
+    mpd
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -83,6 +85,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.seatd.enable = true;
 
   nix = {
     package = pkgs.nixFlakes;
