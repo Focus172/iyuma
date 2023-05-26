@@ -14,7 +14,7 @@
     self,
     nixpkgs,
     home-manager,
-  } @inputs: let
+  } @ inputs: let
     inherit (self) outputs;
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -24,19 +24,19 @@
     lib = nixpkgs.lib;
   in {
     # host configurations
-
-    # nixosConfigurations = {
-    #   nixl = nixpkgs.lib.nixosSystem
-    #     {
-    #       specialArgs = {
-    #         inherit inputs outputs;
-    #       };
-    #       modules = [
-    #         # > Our main nixos configuration file <
-    #         ./nixos/configuration.nix
-    #       ];
-    #     };
-    # };
+    nixosConfigurations = {
+      steambox =
+        nixpkgs.lib.nixosSystem
+        {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            # > Our main nixos configuration file <
+            ./nixos/configuration.nix
+          ];
+        };
+    };
 
     # user configurations
     homeConfigurations = {
@@ -55,6 +55,7 @@
         ];
       };
     };
-    # nixl = self.nixosConfigurations.nixl.config.system.build.toplevel;
+
+    steambox = self.nixosConfigurations.nixl.config.system.build.toplevel;
   };
 }

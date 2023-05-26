@@ -85,7 +85,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  services.seatd.enable = true;
+  security.polkit.enable = true;
 
   nix = {
     package = pkgs.nixFlakes;
