@@ -28,6 +28,7 @@ in {
   imports = [
     # Importing Configutations
     (import ./utils/rofi/default.nix {inherit config pkgs colors;})
+    (import ./utils/waybar.nix {inherit pkgs;})
 
     (import ./music/cava.nix {inherit colors;})
     (import ./music/mpd.nix {inherit config pkgs;})
