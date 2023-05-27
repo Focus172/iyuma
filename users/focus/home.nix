@@ -41,6 +41,8 @@ in {
     # (import ./gtk-gruv.nix)
   ];
 
+  # nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   home = {
     activation = {
       # installConfig = ''# shell code in here'';
@@ -67,6 +69,9 @@ in {
       gitui
       bat
       alejandra
+      brave
+      mpc-cli
+      pass
 
       # desktop things
       eww-wayland
@@ -75,10 +80,49 @@ in {
       (nerdfonts.override {
         fonts = ["Hack" "Mononoki"];
       })
+
+    # tools
+    jq htop # acpi
+    wl-gammactl wlsunset wl-clipboard hyprpicker
+    pavucontrol brightnessctl playerctl imagemagick
+
+    # fun
+    # fortune jp2a
+    # glow vhs gum
+    # slides charm skate
+
+
+    # needed for sourcing bashing scripts
+    babelfish
+
+    starship
+
+    # file manager
+    # lfsixel
+
+    # langs
+    zig
+    nodejs
+    cargo
+    rustc
+    go
+    # sassc
+    # nodePackages_latest.typescript
     ];
+
     sessionVariables = {
+      QT_XCB_GL_INTEGRATION = "none"; # kde-connect
       EDITOR = "nvim";
+      VISUAL = "nvim";
+      BROWSER = "brave";
+      TERMINAL = "foot";
+      NIXPKGS_ALLOW_UNFREE = "1";
+      SHELL = "fish";
     };
+
+    sessionPath = [
+      # "$HOME/.local/bin"
+    ];
   };
 
   nixpkgs.config = {

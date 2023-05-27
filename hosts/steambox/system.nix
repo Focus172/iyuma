@@ -12,6 +12,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "steambox";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -71,8 +72,6 @@
   environment.systemPackages = with pkgs; [
     neovim
     git
-    rustup
-    zig
     busybox
     mpd
   ];
