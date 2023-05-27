@@ -30,18 +30,22 @@ in {
     (import ./utils/rofi/default.nix {inherit config pkgs colors;})
 
     (import ./music/cava.nix {inherit colors;})
-    (import ./music/mpd/default.nix {inherit config pkgs;})
+    (import ./music/mpd.nix {inherit config pkgs;})
     (import ./music/ncmp.nix {inherit config pkgs;})
 
     (import ./shell/foot.nix {inherit colors;})
     # (import ./shell/fish.nix {inherit config pkgs;})
     (import ./shell/bin/default.nix {inherit config;})
 
+<<<<<<< HEAD:focus/home.nix
     # this is better handled on a system level as it can be reverted
     # also i cant get it too work on user leve
     # (import ./desktop/hyprland.nix {inherit pkgs;})
 
     # (import ./desktop/desktop-entries.nix)
+=======
+    # (import ./xdg.nix)
+>>>>>>> cd5ed1b04839f819757637aa5f16c90b439ce2c3:users/focus/home.nix
 
     # (import ./gtk-gruv.nix)
   ];
@@ -72,6 +76,7 @@ in {
       gitui
       bat
       alejandra
+<<<<<<< HEAD:focus/home.nix
       eww-wayland
       polkit_gnome
       xdg-desktop-portal-hyprland
@@ -89,6 +94,23 @@ in {
     # };
   };
 
+=======
+
+      # desktop things
+      eww-wayland
+      polkit_gnome
+      xdg-desktop-portal-hyprland
+      
+      (nerdfonts.override {
+        fonts = ["Hack" "Mononoki"];
+      })
+    ];
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
+  };
+
+>>>>>>> cd5ed1b04839f819757637aa5f16c90b439ce2c3:users/focus/home.nix
   nixpkgs.config = {
     allowUnfree = true;
     allowBroken = true;
