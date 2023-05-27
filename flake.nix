@@ -26,13 +26,9 @@
     # user configurations
     homeConfigurations = {
       focus = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
         extraSpecialArgs = {inherit inputs outputs self;};
         modules = [
-          ./focus/home.nix
+          ./users/focus/home.nix
           {
             home.username = "focus";
             home.homeDirectory = "/home/focus";
@@ -40,5 +36,14 @@
         ];
       };
     };
+
+    # host configurations
+    nixosConfigurations = {
+      steambox = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs outputs; };
+        modules = [ ./hosts/steambox ];
+      };
+    };
+    steambox = self.nixosConfigurations.steambox.config.system.build.toplevel;
   };
 }

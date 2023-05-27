@@ -1,9 +1,7 @@
-{ config, pkgs }:
-
-{
+{ config, pkgs }: {
   services.mpd = {
     enable = true;
-    musicDirectory = "${config.home.homeDirectory}/Music";
+    musicDirectory = "${config.home.homeDirectory}/aud/music";
     dataDir = "${config.home.homeDirectory}/.config/mpd";
     extraConfig = ''
       auto_update           "yes"
@@ -31,8 +29,13 @@
       }
     '';
     network.startWhenNeeded = true;
-
   };
-  imports = [ (import ./misc.nix { inherit pkgs; }) ];
+
+  # misc other things to make mpd work
+
+  # Allows mpd to work with playerctl.
+  home.packages = [ pkgs.playerctl ];
+  services.mpdris2.enable = true;
+  services.playerctld.enable = true;
 }
 

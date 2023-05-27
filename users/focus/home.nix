@@ -30,7 +30,7 @@ in {
     (import ./utils/rofi/default.nix {inherit config pkgs colors;})
 
     (import ./music/cava.nix {inherit colors;})
-    (import ./music/mpd/default.nix {inherit config pkgs;})
+    (import ./music/mpd.nix {inherit config pkgs;})
     (import ./music/ncmp.nix {inherit config pkgs;})
 
     (import ./shell/foot.nix {inherit colors;})
