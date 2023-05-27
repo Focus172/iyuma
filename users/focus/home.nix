@@ -77,6 +77,8 @@ in {
       eww-wayland
       polkit_gnome
       xdg-desktop-portal-hyprland
+      swww
+      waybar
       (nerdfonts.override {
         fonts = ["Hack" "Mononoki"];
       })
