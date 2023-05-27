@@ -37,8 +37,7 @@ in {
     # (import ./shell/fish.nix {inherit config pkgs;})
     (import ./shell/bin/default.nix {inherit config;})
 
-    (import ./desktop/hyprland.nix {inherit pkgs;})
-    # (import ./desktop/desktop-entries.nix)
+    # (import ./xdg.nix)
 
     # (import ./gtk-gruv.nix)
   ];
@@ -69,12 +68,20 @@ in {
       gitui
       bat
       alejandra
-    ];
-    # sessionVariables = {
-    #   EDITOR = "nvim";
-    # };
-  };
 
+      # desktop things
+      eww-wayland
+      polkit_gnome
+      xdg-desktop-portal-hyprland
+      
+      (nerdfonts.override {
+        fonts = ["Hack" "Mononoki"];
+      })
+    ];
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
+  };
 
   nixpkgs.config = {
     allowUnfree = true;

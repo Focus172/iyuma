@@ -26,6 +26,7 @@
     # user configurations
     homeConfigurations = {
       focus = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
         extraSpecialArgs = {inherit inputs outputs self;};
         modules = [
           ./users/focus/home.nix
