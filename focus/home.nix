@@ -20,7 +20,7 @@ in {
     enable = true;
     gtk3.extraConfig.gtk-decoration-layout = "menu:";
     iconTheme.name = "WhiteSur";
-    theme.name = "gruv";
+    theme.name = "gruvbox-dark-gtk";
   };
 
   nixpkgs.overlays = [];
@@ -28,13 +28,19 @@ in {
   imports = [
     # Importing Configutations
     (import ./utils/rofi/default.nix {inherit config pkgs colors;})
-    (import ./music/cava/default.nix {inherit colors;})
-    # (import ./shell/fish/default.nix {inherit config pkgs;})
-    (import ./music/mpd/default.nix {inherit config pkgs;})
-    (import ./music/ncmp/default.nix {inherit config pkgs;})
 
-    # Bin files
+    (import ./music/cava.nix {inherit colors;})
+    (import ./music/mpd/default.nix {inherit config pkgs;})
+    (import ./music/ncmp.nix {inherit config pkgs;})
+
+    (import ./shell/foot.nix {inherit colors;})
+    # (import ./shell/fish.nix {inherit config pkgs;})
     (import ./shell/bin/default.nix {inherit config;})
+
+    (import ./desktop/hyprland.nix {inherit pkgs;})
+    # (import ./desktop/desktop-entries.nix)
+
+    # (import ./gtk-gruv.nix)
   ];
 
   home = {
@@ -63,7 +69,6 @@ in {
       gitui
       bat
       alejandra
-      hyprland
     ];
     # sessionVariables = {
     #   EDITOR = "nvim";

@@ -27,14 +27,14 @@
         export _JAVA_AWT_WM_NONREPARENTING=1
         # . "/home/demeter/.nix-profile/etc/profile.d/hm-session-vars.sh"
 
-        if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
-          PATH="$HOME/.local/bin:$HOME/bin:$PATH"; fi
+        # if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+          # PATH="$HOME/.local/bin:$HOME/bin:$PATH"; fi
 
-        if ! [[ "$PATH" =~ "$HOME/.nix-profile/bin:" ]]; then
-          PATH="$HOME/.nix-profile/bin:$PATH"; fi
+        # if ! [[ "$PATH" =~ "$HOME/.nix-profile/bin:" ]]; then
+          # PATH="$HOME/.nix-profile/bin:$PATH"; fi
 
-        export PATH
-        exec nixGL ${pkgs.hyprland}/bin/Hyprland
+        # export PATH
+        exec ${pkgs.hyprland}/bin/Hyprland
       '';
     };
   };
