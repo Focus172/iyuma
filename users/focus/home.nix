@@ -10,20 +10,17 @@ in {
   home.username = "focus";
   home.homeDirectory = "/home/focus";
 
-  # home.file.".icons/default".source = "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
-
   imports = [
     (import ../shared {inherit inputs lib config pkgs colors;})
 
-    (import ./utils/rofi/default.nix {inherit config pkgs colors;})
-    (import ./utils/waybar {inherit pkgs;})
   ];
 
   home = {
-    packages = with pkgs; [ ];
+    packages = with pkgs; [ 
+      firefox
+    ];
 
-    sessionVariables = {
-    };
+    sessionVariables = { };
 
     sessionPath = [
       # "$HOME/.local/bin"

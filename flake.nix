@@ -16,9 +16,9 @@
     home-manager,
   } @ inputs: let
     inherit (self) outputs;
-    # system = "x86_64-linux";
+    # system = builtins.currentSystem;
     system = "aarch64-linux";
-    pkgs = import nixpkgs {
+    pkgs = import nixpkgs { 
       inherit system;
       config.allowUnfree = true;
     };
@@ -37,6 +37,17 @@
           }
         ];
       };
+      fears = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {inherit inputs outputs self;};
+        modules = [
+          ./users/fears/home.nix
+          {
+            home.username = "fears";
+            home.homeDirectory = "/home/fears";
+          }
+        ];
+      };
     };
 
     # host configurations
@@ -45,7 +56,13 @@
         specialArgs = { inherit inputs outputs; };
         modules = [ ./hosts/steambox ];
       };
+      steamfunk = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs outputs; };
+        modules = [ ./hosts/steamfunk ];
+      };
     };
+
     steambox = self.nixosConfigurations.steambox.config.system.build.toplevel;
+    steamfunk = self.nixosConfigurations.steamfunk.config.system.build.toplevel;
   };
 }

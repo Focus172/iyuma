@@ -25,7 +25,7 @@
     # Importing Configutations
     (import ./music/cava.nix {inherit colors;})
     # (import ./music/mpd.nix {inherit config pkgs;})
-    (import ./music/ncmp.nix {inherit config pkgs;})
+    # (import ./music/ncmp.nix {inherit config pkgs;})
 
     (import ./shell/foot.nix {inherit colors;})
     (import ./shell/fish {inherit config pkgs;})
@@ -33,6 +33,8 @@
 
     # (import ./xdg.nix)
     # (import ./gtk-gruv.nix)
+    (import ./utils/rofi/default.nix {inherit config pkgs colors;})
+    (import ./utils/waybar {inherit pkgs;})
   ];
 
   home = {
@@ -41,7 +43,7 @@
     };
 
     packages = with pkgs; [
-      # playerctl
+
       # (pkgs.callPackage ../shared/icons/whitesur.nix {})
       # (pkgs.callPackage ../shared/icons/colloid.nix {})
       # (pkgs.callPackage ../shared/icons/fluent.nix {})
@@ -60,7 +62,7 @@
       bat
       alejandra
       # brave
-      mpc-cli
+      # mpc-cli
       pass
 
       # desktop things
