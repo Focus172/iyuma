@@ -6,7 +6,7 @@ with colors;{
     settings = {
 
       main = {
-        font = "Hack Nerd Font:size=12";
+        font = "monospace:size=12";
         dpi-aware = "yes";
         line-height = 16;
         pad = "16x16";

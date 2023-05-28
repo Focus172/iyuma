@@ -3,11 +3,11 @@
 {
   programs.ncmpcpp = {
     enable = true;
-    package = pkgs.ncmpcpp.override {
-      visualizerSupport = true;
-      clockSupport = true;
-      taglibSupport = true;
-    };
+    # package = pkgs.ncmpcpp.override {
+    #   visualizerSupport = true;
+    #   clockSupport = true;
+    #   taglibSupport = true;
+    # };
     mpdMusicDir = "${config.home.homeDirectory}/aud/music";
     settings = {
       # Miscelaneous

@@ -2,8 +2,8 @@
 
 usr() {
     echo "Rebuilding user configuration..."
-    # uname -a | grep NixOS && echo "You are not on NixOs, aliasing home-manager to use flakes" && \
-    #     alias home-manager="home-manager --extra-experimental-features nix-command"
+    uname -a | grep NixOS && echo "You are not on NixOs, aliasing home-manager to use flakes" && \
+        alias home-manager="home-manager --extra-experimental-features nix-command"
 
     home-manager switch --flake '.#focus'
 }
