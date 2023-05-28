@@ -28,7 +28,7 @@ in {
   imports = [
     # Importing Configutations
     (import ./utils/rofi/default.nix {inherit config pkgs colors;})
-    (import ./utils/waybar.nix {inherit pkgs;})
+    (import ./utils/waybar {inherit pkgs;})
 
     (import ./music/cava.nix {inherit colors;})
     (import ./music/mpd.nix {inherit config pkgs;})
@@ -79,7 +79,6 @@ in {
       polkit_gnome
       xdg-desktop-portal-hyprland
       swww
-      waybar
       (nerdfonts.override {
         fonts = ["Hack" "Mononoki"];
       })

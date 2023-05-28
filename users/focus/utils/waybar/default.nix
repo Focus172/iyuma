@@ -5,118 +5,28 @@
       enable = false;
       target = "graphical-session.target";
     };
-    style = ''
-      * {
-      font-family: FiraCode Nerd Font;
-      font-weight: normal;
-      font-size: 13.5px;
-      min-height: 0;
-      transition-property: background-color;
-      transition-duration: 0.5s;
-      }
-      window#waybar {
-        background-color: transparent;
-      }
-      window > box {
-        margin-left: 10px;
-        margin-right: 10px;
-        margin-top: 8px;
-        border: 2px solid #595959;
-        border-radius: 0px;
-        background-color: rgba(31, 31, 31, 0.9);
-      }
-      #workspaces {
-        padding-left: 0px;
-        padding-right: 4px;
-        border-radius: 0px;
-      }
-      #workspaces button {
-        padding-top: 5px;
-        border-radius: 0px;
-        padding-bottom: 5px;
-        padding-left: 8px;
-        padding-right: 8px;
-      }
-      #workspaces button.active {
-        background-color: #595959;
-        color: rgb(23, 23, 23);
-      }
-      #workspaces button.urgent {
-        color: #fff000;
-      }
-      tooltip {
-        background: rgb(48, 45, 65);
-      }
-      tooltip label {
-        color: rgb(217, 224, 238);
-      }
-      #custom-launcher {
-        font-size: 16px;
-        padding-left: 8px;
-        padding-right: 6px;
-        color: #B9B9B9;
-      }
-      #clock,
-      #memory,
-      #temperature,
-      #cpu,
-      #mpd,
-      #custom-wall,
-      #temperature,
-      #backlight,
-      #pulseaudio,
-      #network,
-      #battery,
-      #disk,
-      #idle_inhibitor
-      {
-        padding-left: 8px;
-        padding-right: 8px;
-        padding-top: 0px;
-        padding-bottom: 0px;
-        color: #B9B9B9;
-      }
-      #tray {
-        padding-right: 8px;
-        padding-left: 13px;
-      }
-
-
-    '';
+    style = (import ./style.nix) {};
     settings = [
       {
         "layer" = "top";
         "position" = "top";
         modules-left = [
-          "custom/launcher"
           "wlr/workspaces"
-          "temperature"
-          "idle_inhibitor"
+          "tray"
+          "mpd"
         ];
+        # "custom/launcher"
         modules-center = [
           "clock"
         ];
         modules-right = [
+          "battery"
           "pulseaudio"
           "pulseaudio#microphone"
-          "memory"
-          "cpu"
-          "disk"
+          "backlight"
           "network"
-          "tray"
+          "custom/power"
         ];
-        "custom/launcher" = {
-          "format" = " ";
-          "on-click" = "pkill wofi || wofi";
-          "tooltip" = false;
-        };
-        "idle_inhibitor" = {
-          "format" = "{icon}";
-          "format-icons" = {
-            "activated" = "";
-            "deactivated" = "";
-          };
-        };
         "disk" = {
           "path" = "/home";
           "format" = "󰋊 {percentage_used}%";
@@ -129,8 +39,11 @@
           "tooltip" = false;
         };
         "wlr/workspaces" = {
-          "format" = "{icon}";
+          "all-outputs" = true;
+          "on-scroll-up" = "hyprctl dispatch workspace e+1";
+          "on-scroll-down" = "hyprctl dispatch workspace e-1";
           "on-click" = "activate";
+          "format" = "{name}";
         };
         "pulseaudio" = {
           "scroll-step" = 5;
