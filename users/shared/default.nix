@@ -28,7 +28,7 @@
     (import ./music/ncmp.nix {inherit config pkgs;})
 
     (import ./shell/foot.nix {inherit colors;})
-    # (import ./shell/fish.nix {inherit config pkgs;})
+    (import ./shell/fish {inherit config pkgs;})
     (import ./shell/bin/default.nix {inherit config;})
 
     # (import ./xdg.nix)

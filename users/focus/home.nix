@@ -16,7 +16,7 @@ in {
     (import ../shared {inherit inputs lib config pkgs colors;})
 
     (import ./utils/rofi/default.nix {inherit config pkgs colors;})
-    (import ./utils/waybar.nix {inherit pkgs;})
+    (import ./utils/waybar {inherit pkgs;})
   ];
 
   home = {
