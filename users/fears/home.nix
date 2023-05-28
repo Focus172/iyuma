@@ -5,21 +5,17 @@
   lib,
   ...
 }: let
-  colors = import ./cols/wave.nix {};
+  colors = import ../shared/cols/wave.nix {};
 in {
   # some general info
-  home.username = "fears";
-  home.homeDirectory = "/home/fears";
+  home.username = "focus";
+  home.homeDirectory = "/home/focus";
 
   imports = [
     (import ../shared {inherit inputs lib colors config pkgs;})
   ];
 
   home = {
-    activation = {
-      # installConfig = ''# shell code in here'';
-    };
-
     packages = with pkgs; [
       brave
       nginx

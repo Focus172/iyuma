@@ -17,8 +17,9 @@
   } @ inputs: let
     inherit (self) outputs;
     # system = builtins.currentSystem;
-    system = "aarch64-linux";
-    pkgs = import nixpkgs { 
+    system = "x86_64-linux";
+    # system = "aarch64-linux";
+    pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
     };
@@ -43,8 +44,8 @@
         modules = [
           ./users/fears/home.nix
           {
-            home.username = "fears";
-            home.homeDirectory = "/home/fears";
+            home.username = "focus"; # todo change user name
+            home.homeDirectory = "/home/focus";
           }
         ];
       };
@@ -53,12 +54,12 @@
     # host configurations
     nixosConfigurations = {
       steambox = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs outputs; };
-        modules = [ ./hosts/steambox ];
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/steambox];
       };
       steamfunk = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs outputs; };
-        modules = [ ./hosts/steamfunk ];
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/steamfunk];
       };
     };
 

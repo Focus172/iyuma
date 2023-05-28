@@ -72,7 +72,8 @@
   environment.systemPackages = with pkgs; [
     neovim
     git
-    busybox
+    # busybox
+    coreutils
     mpd
   ];
 
