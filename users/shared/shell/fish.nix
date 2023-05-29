@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
   programs.fish = {
-    # enable = true;
+    enable = true;
 
     shellAliases = {
       ls = "exa";
@@ -9,11 +9,12 @@
       land = "cat ~/.config/george.txt | cowsay -W 70";
     };
 
-    # useBabelfish = true;
+    shellAbbrs = {
+      gu = "gitui";
+    };
+
 
     interactiveShellInit = ''
-      # starship init fish | source &
-      # cat ~/.nix-profile/etc/profile.d/hm-session-vars.sh | babelfish | source
     '';
 
     shellInit = ''

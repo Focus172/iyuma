@@ -10,10 +10,11 @@ in {
   home.username = "focus";
   home.homeDirectory = "/home/focus";
 
-  # this is managed by pacman so we ignore it
-  # however, i still want to use home-manager
-  # to control it
-  programs.fish.enable = false;
+
+  programs.fish.loginShellInit = '' 
+    source ~/.nix-profile/etc/profile.d/nix.fish
+  '';
+
 
   imports = [
     (import ../shared {inherit inputs lib config pkgs colors;})
