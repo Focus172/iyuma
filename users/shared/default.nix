@@ -54,19 +54,17 @@
       # notion-app-enhanced
       starship
       # imagemagick
-      # killall
-      # cava
-      # feh
+      killall
+      cava
+      feh
       exa
       gitui
       bat
       alejandra
-      # brave
       # mpc-cli
       pass
 
       # desktop things
-      # polkit_gnome
       eww-wayland
       xdg-desktop-portal-hyprland
       swww
@@ -75,7 +73,7 @@
       })
 
       # tools
-      # jq htop # acpi
+      jq htop # acpi
       # wl-gammactl wlsunset wl-clipboard hyprpicker
       # pavucontrol brightnessctl playerctl imagemagick
 

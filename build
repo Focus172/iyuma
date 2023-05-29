@@ -11,7 +11,7 @@ usr() {
 sys() {
     echo "Rebuilding system configuration..."
     echo "As this is multi-user, you will be prompted for a password."
-    sudo nixos-rebuild switch --flake ".#$host" "$args"
+    sudo nixos-rebuild switch --flake ".#$host" $args
 }
 
 case $1 in 

@@ -1,19 +1,8 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }: {
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
 
-  # These two cause problem on asahi
-  # boot.loader.efi.canTouchEfiVariables = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
-  # yet again is defined on asahi
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # networking.hostName = "steambox";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -24,7 +13,10 @@
   networking.networkmanager.enable = true;
 
   programs.dconf.enable = true;
-  # programs.hyprland.enable = true;
+
+  # Enable sound.
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Tijuana";

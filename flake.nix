@@ -20,8 +20,8 @@
   } @ inputs: let
     inherit (self) outputs;
     # system = builtins.currentSystem;
-    # system = "x86_64-linux";
-    system = "aarch64-linux";
+    system = "x86_64-linux";
+    # system = "aarch64-linux";
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
@@ -64,11 +64,17 @@
       };
       steamfunk = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/steamfunk ];
+        modules = [./hosts/steamfunk];
       };
+      hazed = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/hazed];
+      };
+
     };
 
     steambox = self.nixosConfigurations.steambox.config.system.build.toplevel;
     steamfunk = self.nixosConfigurations.steamfunk.config.system.build.toplevel;
+    hazed = self.nixosConfigurations.hazed.config.system.build.toplevel;
   };
 }
