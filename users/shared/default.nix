@@ -52,13 +52,13 @@
       pfetch
 
       # notion-app-enhanced
-      # starship
+      starship
       # imagemagick
       # killall
       # cava
       # feh
-      # exa
-      # gitui
+      exa
+      gitui
       bat
       alejandra
       # brave
@@ -66,40 +66,38 @@
       pass
 
       # desktop things
-      eww-wayland
       # polkit_gnome
+      eww-wayland
       xdg-desktop-portal-hyprland
-      # swww
+      swww
       (nerdfonts.override {
         fonts = ["Hack" "Mononoki"];
       })
 
-    # tools
-    # jq htop # acpi
-    # wl-gammactl wlsunset wl-clipboard hyprpicker
-    # pavucontrol brightnessctl playerctl imagemagick
+      # tools
+      # jq htop # acpi
+      # wl-gammactl wlsunset wl-clipboard hyprpicker
+      # pavucontrol brightnessctl playerctl imagemagick
 
-    # fun
-    # fortune jp2a
-    # glow vhs gum
-    # slides charm skate
+      # fun
+      # fortune jp2a
+      # glow vhs gum
+      # slides charm skate
 
+      # needed for sourcing bashing scripts
+      babelfish
 
-    # needed for sourcing bashing scripts
-    babelfish
+      # file manager
+      # lf-sixel
 
-
-    # file manager
-    # lf-sixel
-
-    # langs
-    # zig
-    # nodejs
-    # cargo
-    # rustc
-    # go
-    # sassc
-    # nodePackages_latest.typescript
+      # langs
+      # zig
+      # nodejs
+      # cargo
+      # rustc
+      # go
+      # sassc
+      # nodePackages_latest.typescript
     ];
 
     sessionVariables = {

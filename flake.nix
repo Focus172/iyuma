@@ -8,12 +8,15 @@
 
     # Channel to follow.
     # home-manager.inputs.nixpkgs.follows = "unstable";
+
+    # hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    # hyprland
   } @ inputs: let
     inherit (self) outputs;
     # system = builtins.currentSystem;
@@ -36,6 +39,8 @@
             home.username = "focus";
             home.homeDirectory = "/home/focus";
           }
+          # hyprland.homeManagerModules.default
+          # {wayland.windowManager.hyprland.enable = true;}
         ];
       };
       fears = home-manager.lib.homeManagerConfiguration {
@@ -59,7 +64,7 @@
       };
       steamfunk = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/steamfunk/configuration.nix ];
+        modules = [./hosts/steamfunk ];
       };
     };
 
