@@ -8,11 +8,11 @@
   colors = import ../shared/cols/wave.nix {};
 in {
   # some general info
-  home.username = "focus";
+  home.username = "focus"; # TODO: change this to real user name
   home.homeDirectory = "/home/focus";
 
   # see other user profile for explaintion of this
-  programs.fish.enable = false;
+  programs.fish.enable = true;
 
   imports = [
     (import ../shared {inherit inputs lib colors config pkgs;})
@@ -22,17 +22,11 @@ in {
     packages = with pkgs; [
       brave
       nginx
-      hyprland
-      rustup # installed sustem wide on asahi for kernel support
-
-      # this can't be uninstall on arch
       killall
     ];
 
-    sessionVariables = {
-    };
+    sessionVariables = {};
 
-    sessionPath = [
-    ];
+    sessionPath = [];
   };
 }

@@ -6,6 +6,7 @@
       ls = "exa";
       la = "ls -a";
       e = "nvim";
+      land = "cat ~/.config/george.txt | cowsay -W 70";
     };
 
     # useBabelfish = true;

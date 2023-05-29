@@ -9,9 +9,7 @@
   home.stateVersion = "22.11";
   programs.home-manager.enable = true;
 
-  # home.file.".icons/default".source = "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
-
-  # gtk themeing
+  ## gtk themeing
   # gtk = {
   #   enable = true;
   #   gtk3.extraConfig.gtk-decoration-layout = "menu:";
@@ -31,17 +29,11 @@
     (import ./shell/fish.nix {inherit config pkgs;})
     (import ./shell/bin/default.nix {inherit config;})
 
-    # (import ./xdg.nix)
-
     (import ./utils/rofi/default.nix {inherit config pkgs colors;})
     (import ./utils/waybar {inherit pkgs;})
   ];
 
   home = {
-    activation = {
-      # installConfig = ''# shell code in here'';
-    };
-
     packages = with pkgs; [
       pfetch
       cava
@@ -53,17 +45,19 @@
       mpc-cli
       pass
       bottom
+      handlr-regex
 
-      # desktop things
+      ### desktop things
       eww-wayland
       xdg-desktop-portal-hyprland
       swww
 
       (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
 
-      # tools
+      ### tools
       jq
-      htop # acpi
+      htop
+      # acpi
       # wl-gammactl
       # wlsunset
       # wl-clipboard
@@ -75,21 +69,23 @@
 
       # fun
       fortune
+      neo-cowsay
       jp2a
       glow
       gum
       slides
       charm
       # vhs
-
       skate
 
-      # notion-app-enhanced
+      libreoffice
 
       # file manager
+      lf
       # lf-sixel
 
       # langs
+      rustup
       zig
       nodejs
       go
