@@ -19,7 +19,6 @@
     hyprland
   } @ inputs: let
     inherit (self) outputs;
-    # system = builtins.currentSystem;
     system = "x86_64-linux";
     # system = "aarch64-linux";
     pkgs = import nixpkgs {
@@ -39,8 +38,6 @@
             home.username = "focus";
             home.homeDirectory = "/home/focus";
           }
-          # hyprland.homeManagerModules.default
-          # {wayland.windowManager.hyprland.enable = true;}
         ];
       };
       fears = home-manager.lib.homeManagerConfiguration {
@@ -62,10 +59,6 @@
         specialArgs = {inherit inputs outputs;};
         modules = [./hosts/steambox];
       };
-      steamfunk = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/steamfunk];
-      };
       hazed = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [./hosts/hazed];
@@ -74,7 +67,6 @@
     };
 
     steambox = self.nixosConfigurations.steambox.config.system.build.toplevel;
-    steamfunk = self.nixosConfigurations.steamfunk.config.system.build.toplevel;
     hazed = self.nixosConfigurations.hazed.config.system.build.toplevel;
   };
 }

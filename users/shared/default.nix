@@ -44,7 +44,6 @@
 
     packages = with pkgs; [
       pfetch
-      killall
       cava
       feh
       exa
@@ -65,10 +64,10 @@
       # tools
       jq
       htop # acpi
-      wl-gammactl
-      wlsunset
-      wl-clipboard
-      hyprpicker
+      # wl-gammactl
+      # wlsunset
+      # wl-clipboard
+      # hyprpicker
       pavucontrol
       brightnessctl
       playerctl

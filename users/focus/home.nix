@@ -10,18 +10,18 @@ in {
   home.username = "focus";
   home.homeDirectory = "/home/focus";
 
+  # this is managed by pacman so we ignore it
+  # however, i still want to use home-manager
+  # to control it
+  programs.fish.enable = false;
+
   imports = [
     (import ../shared {inherit inputs lib config pkgs colors;})
   ];
 
   home = {
     packages = with pkgs; [
-      firefox
-      (inputs.hyprland.packages.${pkgs.system}.hyprland.override {legacyRenderer = true;})
-
-      # rustc is installed systen-wide, as it cant use jemallco
-      # but cargo still needs to be installed
-      cargo
+      # (inputs.hyprland.packages.${pkgs.system}.hyprland.override {legacyRenderer = true;})
     ];
 
     sessionVariables = {};

@@ -1,13 +1,12 @@
 { config, pkgs, ... }: {
   programs.fish = {
-    enable = true;
+    # enable = true;
 
-    # shellAliases = {
-    #   la = "exa -l";
-    #   ls = "ls --color=auto";
-    #   v = "nvim";
-    #   suda = "sudo -E -s";
-    # };
+    shellAliases = {
+      ls = "exa";
+      la = "ls -a";
+      e = "nvim";
+    };
 
     # useBabelfish = true;
 
