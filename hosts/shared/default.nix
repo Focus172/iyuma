@@ -13,6 +13,7 @@
   networking.networkmanager.enable = true;
 
   programs.dconf.enable = true;
+  # programs.hyprland.enable = true;
 
   # Enable sound.
   sound.enable = true;

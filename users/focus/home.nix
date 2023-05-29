@@ -12,15 +12,16 @@ in {
 
   imports = [
     (import ../shared {inherit inputs lib config pkgs colors;})
-    (import ./hyprland.nix {inherit pkgs lib inputs config;})
+    # (import ./hyprland.nix {inherit pkgs lib inputs config;})
   ];
 
   home = {
-    packages = with pkgs; [ 
+    packages = with pkgs; [
       firefox
+      (inputs.hyprland.packages.${pkgs.system}.hyprland.override {legacyRenderer = true;})
     ];
 
-    sessionVariables = { };
+    sessionVariables = {};
 
     sessionPath = [
       # "$HOME/.local/bin"
