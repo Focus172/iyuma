@@ -20,8 +20,8 @@
   } @ inputs: let
     inherit (self) outputs;
     # system = builtins.currentSystem;
-    # system = "x86_64-linux";
-    system = "aarch64-linux";
+    system = "x86_64-linux";
+    # system = "aarch64-linux";
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;

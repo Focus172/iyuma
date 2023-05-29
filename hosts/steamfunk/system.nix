@@ -3,9 +3,11 @@
   # Asahi things
   hardware.asahi.peripheralFirmwareDirectory = ./firmware;
   hardware.asahi.withRust = true;
-  hardware.asahi.addEdgeKernelConfig = true;
 
-  # hardware.asahi.useExperimentalGPUDriver = true; 
+  hardware.asahi.useExperimentalGPUDriver = true; 
+  # Above implies thing
+  # hardware.asahi.addEdgeKernelConfig = true;
+
   # hardware.asahi.experimentalGPUInstallMode = "driver";
 
   boot.loader.efi.canTouchEfiVariables = false;

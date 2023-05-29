@@ -12,12 +12,12 @@
   # home.file.".icons/default".source = "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
 
   # gtk themeing
-  gtk = {
-    enable = true;
-    gtk3.extraConfig.gtk-decoration-layout = "menu:";
-    iconTheme.name = "WhiteSur";
-    theme.name = "gruvbox-dark-gtk";
-  };
+  # gtk = {
+  #   enable = true;
+  #   gtk3.extraConfig.gtk-decoration-layout = "menu:";
+  #   iconTheme.name = "WhiteSur";
+  #   theme.name = "gruvbox-dark-gtk";
+  # };
 
   nixpkgs.overlays = [];
 
@@ -32,7 +32,7 @@
     (import ./shell/bin/default.nix {inherit config;})
 
     # (import ./xdg.nix)
-    # (import ./gtk-gruv.nix)
+
     (import ./utils/rofi/default.nix {inherit config pkgs colors;})
     (import ./utils/waybar {inherit pkgs;})
   ];
@@ -43,15 +43,7 @@
     };
 
     packages = with pkgs; [
-
-      # (pkgs.callPackage ../shared/icons/whitesur.nix {})
-      # (pkgs.callPackage ../shared/icons/colloid.nix {})
-      # (pkgs.callPackage ../shared/icons/fluent.nix {})
-      # (pkgs.callPackage ../shared/icons/elementary.nix {})
-      neofetch
       pfetch
-
-      # notion-app-enhanced
       starship
       killall
       cava
@@ -67,9 +59,11 @@
       eww-wayland
       xdg-desktop-portal-hyprland
       swww
-      (nerdfonts.override {
-        fonts = ["Hack" "Mononoki"];
-      })
+
+      # (nerdfonts.override {
+      #   fonts = ["Hack" "Mononoki"];
+      # })
+      nerdfonts
 
       # tools
       jq htop # acpi
@@ -78,12 +72,17 @@
 
       # fun
       fortune jp2a
-      glow vhs gum
-      slides charm skate
+      glow gum
+      slides charm 
+      # vhs 
 
-      # needed for sourcing bashing scripts
+      skate
+
+      # needed for sourcing bash scripts
       babelfish
 
+      # notion-app-enhanced
+      
       # file manager
       # lf-sixel
 

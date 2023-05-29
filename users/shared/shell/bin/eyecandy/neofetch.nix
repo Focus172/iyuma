@@ -4,22 +4,22 @@
   home.file.".config/neofetch/config.conf" = {
     text = ''
       print_info() {
-        prin " \n \n ╭───────┤ $(color 4) edora $(color 15)├───────╮"
+        prin " \n \n ╭───────┤ $(color 4)Nix $(color 15)├───────╮"
         info " " kernel
         # info " " model
         # info "﬙ " cpu
-        # info "﬙ " gpu
-        info " " wm
+        info "﬙ " gpu
+        info " " de
         info " " shell
         info " " term
-        # info "󰏖 " packages
+        info "󰏖 " packages
         info " " memory
         info "󰔛 " uptime
         prin " \n \n ╰─────────────────────────╯"
         prin " \n \n \n \n $(color 1) \n $(color 2) \n $(color 3) \n $(color 4) \n $(color 5) \n $(color 6) \n $(color 7) \n $(color 0)"
       }
 
-      kernel_shorthand="on"
+      kernel_shorthand="off"
       uptime_shorthand="on"
       memory_percent="on"
       memory_unit="gib"
@@ -37,18 +37,12 @@
       bold="off"
       separator=""
 
-      image_backend="ascii" # ascii kitty iterm2
-      image_source="/home/demeter/.config/neofetch/image.png" # auto /path/to/img /path/to/ascii
-      image_size="200px" # auto 00px 00% none
-
-      ascii_distro="Fedora_small"
-      ascii_colors=(distro)
-      ascii_bold="on"
-
+      image_backend="ascii" 
+      image_source="/home/focus/.config/neofetch/smile.txt" 
       image_loop="true"
       crop_mode="normal" # normal fit fill
-      crop_offset="center" # northwest north northeast west center east southwest south southeast
-      gap=0 # num -num
+      crop_offset="center" 
+      gap=0 
     '';
   };
 }
