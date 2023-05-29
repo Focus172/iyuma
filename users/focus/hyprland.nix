@@ -8,6 +8,14 @@
   # terminal =  
   # menu
 in {
+  imports = [
+    inputs.hyprland.nixosModules.default
+    {
+      programs.hyprland = {
+
+      }        
+    }
+  ]
   home = {
     packages = with pkgs; {
       wl-clipboard
