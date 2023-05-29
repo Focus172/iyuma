@@ -4,9 +4,9 @@
   hardware.asahi.peripheralFirmwareDirectory = ./firmware;
   hardware.asahi.withRust = true;
   hardware.asahi.addEdgeKernelConfig = true;
-  hardware.asahi.useExperimentalGPUDriver = true; 
 
-  hardware.asahi.experimentalGPUInstallMode = "driver";
+  # hardware.asahi.useExperimentalGPUDriver = true; 
+  # hardware.asahi.experimentalGPUInstallMode = "driver";
 
   boot.loader.efi.canTouchEfiVariables = false;
 

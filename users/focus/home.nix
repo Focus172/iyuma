@@ -12,7 +12,6 @@ in {
 
   imports = [
     (import ../shared {inherit inputs lib config pkgs colors;})
-    # (import ./hyprland.nix {inherit pkgs lib inputs config;})
   ];
 
   home = {
@@ -23,8 +22,6 @@ in {
 
     sessionVariables = {};
 
-    sessionPath = [
-      # "$HOME/.local/bin"
-    ];
+    sessionPath = [];
   };
 }

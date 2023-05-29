@@ -33,9 +33,7 @@
     network.startWhenNeeded = true;
   };
 
-  # misc other things to make mpd work
 
-  # Allows mpd to work with playerctl.
   home.packages = [ pkgs.playerctl ];
   # services.mpdris2.enable = true;
   services.playerctld.enable = true;

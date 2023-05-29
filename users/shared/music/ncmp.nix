@@ -1,13 +1,14 @@
-{ config, pkgs }:
-
 {
+  config,
+  pkgs,
+}: {
   programs.ncmpcpp = {
     enable = true;
-    # package = pkgs.ncmpcpp.override {
-    #   visualizerSupport = true;
-    #   clockSupport = true;
-    #   taglibSupport = true;
-    # };
+    package = pkgs.ncmpcpp.override {
+      visualizerSupport = true;
+      clockSupport = true;
+      taglibSupport = true;
+    };
     mpdMusicDir = "${config.home.homeDirectory}/aud/music";
     settings = {
       # Miscelaneous
@@ -42,6 +43,7 @@
       statusbar_visibility = "no";
       header_visibility = "no";
       titles_visibility = "no";
+
       # progress bar
       progressbar_look = "‎‎‎";
       progressbar_color = "black";
@@ -71,4 +73,3 @@
     };
   };
 }
-

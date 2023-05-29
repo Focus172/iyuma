@@ -19,6 +19,7 @@ in {
     packages = with pkgs; [
       brave
       nginx
+      hyprland
     ];
 
     sessionVariables = {

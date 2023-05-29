@@ -1,10 +1,10 @@
-{}:
-rec {
-   wallpaper = "ahhhh.png"; 
+{}: rec {
+  wallpaper = "ahhhh.png"; 
   foreground = "dad0bc";
   background = "1b2124";
-  mbg = "20282b";
   bg2 = "22292d";
+  mbg = "20282b";
+
   cursorColor = "d3c6a6";
   contrast = "22292d";
   cursorline = "22292d";

@@ -1,16 +1,14 @@
-{ colors }:
-
-with colors;{
+{colors}:
+with colors; {
   programs.foot = {
     enable = true;
     settings = {
-
       main = {
         font = "Hack Nerd Font:size=12";
         dpi-aware = "yes";
-        line-height = 16;
+        # line-height = 16;
         pad = "16x16";
-        vertical-letter-offset = "3px";
+        # vertical-letter-offset = "3px";
       };
 
       mouse = {
@@ -18,7 +16,7 @@ with colors;{
       };
 
       colors = {
-        alpha=0.80;
+        alpha = 0.80;
         background = "${background}";
         foreground = "${foreground}";
         regular0 = "${color0}";
@@ -39,7 +37,6 @@ with colors;{
         bright6 = "${color14}";
         bright7 = "${color15}";
       };
-
     };
   };
 }

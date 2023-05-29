@@ -7,7 +7,7 @@
 
   networking.hostName = "steambox";
 
-  programs.hyprland.enable = true;
+  # programs.hyprland.enable = true;
 
   # TODO: add users per system
 
