@@ -20,6 +20,7 @@ in {
       brave
       nginx
       hyprland
+      rustup # installed sustem wide on asahi for kernel support
     ];
 
     sessionVariables = {

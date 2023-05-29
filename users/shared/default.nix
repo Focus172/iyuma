@@ -28,7 +28,7 @@
     (import ./music/ncmp.nix {inherit config pkgs;})
 
     (import ./shell/foot.nix {inherit colors;})
-    (import ./shell/fish {inherit config pkgs;})
+    (import ./shell/fish.nix {inherit config pkgs;})
     (import ./shell/bin/default.nix {inherit config;})
 
     # (import ./xdg.nix)
@@ -44,7 +44,6 @@
 
     packages = with pkgs; [
       pfetch
-      starship
       killall
       cava
       feh
@@ -54,61 +53,60 @@
       alejandra
       mpc-cli
       pass
+      bottom
 
       # desktop things
       eww-wayland
       xdg-desktop-portal-hyprland
       swww
 
-      # (nerdfonts.override {
-      #   fonts = ["Hack" "Mononoki"];
-      # })
-      nerdfonts
+      (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
 
       # tools
-      jq htop # acpi
-      wl-gammactl wlsunset wl-clipboard hyprpicker
-      pavucontrol brightnessctl playerctl imagemagick
+      jq
+      htop # acpi
+      wl-gammactl
+      wlsunset
+      wl-clipboard
+      hyprpicker
+      pavucontrol
+      brightnessctl
+      playerctl
+      imagemagick
 
       # fun
-      fortune jp2a
-      glow gum
-      slides charm 
-      # vhs 
+      fortune
+      jp2a
+      glow
+      gum
+      slides
+      charm
+      # vhs
 
       skate
 
-      # needed for sourcing bash scripts
-      babelfish
-
       # notion-app-enhanced
-      
+
       # file manager
       # lf-sixel
 
       # langs
       zig
       nodejs
-      cargo
-      # rustc
       go
       sassc
-      # nodePackages_latest.typescript
     ];
 
     sessionVariables = {
-      QT_XCB_GL_INTEGRATION = "none"; # kde-connect
       EDITOR = "nvim";
       VISUAL = "nvim";
       BROWSER = "brave";
       TERMINAL = "foot";
-      NIXPKGS_ALLOW_UNFREE = "1";
       SHELL = "fish";
+      NIXPKGS_ALLOW_UNFREE = "1";
     };
 
-    sessionPath = [
-      # "$HOME/.local/bin"
-    ];
+    sessionPath = [];
   };
 
   nixpkgs.config = {

@@ -12,8 +12,8 @@
     # useBabelfish = true;
 
     interactiveShellInit = ''
-      starship init fish | source &
-      cat ~/.nix-profile/etc/profile.d/hm-session-vars.sh | babelfish | source
+      # starship init fish | source &
+      # cat ~/.nix-profile/etc/profile.d/hm-session-vars.sh | babelfish | source
     '';
 
     shellInit = ''
@@ -23,12 +23,12 @@
     '';
   };
 
-  # programs.starship = {
-    # enable = true;
+  programs.starship = {
+    enable = true;
     # settings = {
     #   format = "$directory$git_branch$git_status$cmd_duration\n[ ](fg:blue)  ";
     #   git_branch.format = "via [$symbol$branch(:$remote_branch)]($style) ";
     #   command_timeout = 1000;
     # };
-  # };
+  };
 }

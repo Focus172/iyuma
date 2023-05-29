@@ -4,7 +4,7 @@
   home.file.".config/neofetch/config.conf" = {
     text = ''
       print_info() {
-        prin " \n \n ╭───────┤ $(color 4)Nix $(color 15)├───────╮"
+        prin " \n \n ╭───────┤  $(color 4)Nix  $(color 15)├───────╮"
         info " " kernel
         # info " " model
         # info "﬙ " cpu
@@ -38,7 +38,7 @@
       separator=""
 
       image_backend="ascii" 
-      image_source="/home/focus/.config/neofetch/smile.txt" 
+      image_source="/home/focus/.config/smile.txt" 
       image_loop="true"
       crop_mode="normal" # normal fit fill
       crop_offset="center" 
