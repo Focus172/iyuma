@@ -22,6 +22,7 @@
       lines_scrolled = "0";
       follow_now_playing_lyrics = "yes";
       lyrics_fetchers = "musixmatch";
+      lyrics_directory = "${config.home.homeDirectory}/.local/share/lyrics";
 
       # visualizer
       visualizer_data_source = "/tmp/mpd.fifo";

@@ -24,8 +24,8 @@
   imports = [
     # Importing Configutations
     (import ./music/cava.nix {inherit colors;})
-    # (import ./music/mpd.nix {inherit config pkgs;})
-    # (import ./music/ncmp.nix {inherit config pkgs;})
+    (import ./music/mpd.nix {inherit config pkgs;})
+    (import ./music/ncmp.nix {inherit config pkgs;})
 
     (import ./shell/foot.nix {inherit colors;})
     (import ./shell/fish {inherit config pkgs;})
@@ -53,7 +53,6 @@
 
       # notion-app-enhanced
       starship
-      # imagemagick
       killall
       cava
       feh
@@ -61,7 +60,7 @@
       gitui
       bat
       alejandra
-      # mpc-cli
+      mpc-cli
       pass
 
       # desktop things
@@ -74,13 +73,13 @@
 
       # tools
       jq htop # acpi
-      # wl-gammactl wlsunset wl-clipboard hyprpicker
-      # pavucontrol brightnessctl playerctl imagemagick
+      wl-gammactl wlsunset wl-clipboard hyprpicker
+      pavucontrol brightnessctl playerctl imagemagick
 
       # fun
-      # fortune jp2a
-      # glow vhs gum
-      # slides charm skate
+      fortune jp2a
+      glow vhs gum
+      slides charm skate
 
       # needed for sourcing bashing scripts
       babelfish
@@ -89,12 +88,12 @@
       # lf-sixel
 
       # langs
-      # zig
-      # nodejs
-      # cargo
+      zig
+      nodejs
+      cargo
       # rustc
-      # go
-      # sassc
+      go
+      sassc
       # nodePackages_latest.typescript
     ];
 
