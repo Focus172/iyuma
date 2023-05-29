@@ -23,6 +23,7 @@ in {
   home = {
     packages = with pkgs; [
       # (inputs.hyprland.packages.${pkgs.system}.hyprland.override {legacyRenderer = true;})
+      git
     ];
 
     sessionVariables = {};
