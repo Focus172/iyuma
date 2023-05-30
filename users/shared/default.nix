@@ -65,6 +65,13 @@
   ];
 
   home = {
+    activation = {
+      # these projects use jemalloc which doesnt work with 32k page size
+      # this means that the packaged verison can not work on some systems
+      cargoInstall = ''
+        # cargo install fd-find
+      '';
+    };
     packages = with pkgs; [
       pfetch
       cava
@@ -127,9 +134,8 @@
       brightnessctl
       cliphist
       # direnv
-      fd
       grim
-      insomnia
+      # insomnia
       libreoffice-fresh
       mako
       ripgrep

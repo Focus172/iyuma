@@ -16,7 +16,7 @@
         "$golang"
         "$cmd_duration"
         "$status"
-        "\n$character"
+        "$character"
       ];
       status = {
         symbol = "✗";
@@ -46,7 +46,7 @@
         format = "[$symbol ](yellow dimmed)";
       };
       directory = {
-        format = " [](fg:bright-black)[$path](bg:bright-black fg:white)[](fg:bright-black)";
+        format = "[](fg:bright-black)[$path](bg:bright-black fg:white)[](fg:bright-black)";
         # truncation_length = 20;
         # truncation_symbol = "~/…/";
       };
