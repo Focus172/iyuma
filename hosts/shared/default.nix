@@ -2,6 +2,10 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -10,7 +14,13 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    networkmanager.enable = true;
+    firewall.enable = false;
+  };
+
+  security.sudo.enable = true;
+
 
   programs.dconf.enable = true;
   programs.hyprland.enable = true;
@@ -46,22 +56,11 @@
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.focus = {
-    isNormalUser = true;
-    shell = pkgs.fish;
-    description = "focus";
-    extraGroups = [ "wheel" "networkmanager" "audio" "video" "libvirtd" ];
-    packages = with pkgs; []; # see home manager for things
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
+    vim 
     git
     # busybox
     coreutils
@@ -81,13 +80,33 @@
 
   nix = {
     package = pkgs.nixFlakes;
-    extraOptions = "experimental-features = nix-command flakes";
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      trusted-users = [ "root" "@wheel" ];
+      auto-optimise-store = true;
+      warn-dirty = false;
+    };
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 5d";
+    };
+    optimise.automatic = true;
   };
 
+  
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "22.11";
+  system.copySystemConfiguration = false;
 }

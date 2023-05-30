@@ -10,6 +10,6 @@
     };
   };
   imports = [
-    ./eyecandy/neofetch.nix
+    ./neofetch.nix
   ];
 }

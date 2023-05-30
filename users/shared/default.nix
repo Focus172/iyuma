@@ -46,6 +46,7 @@
       pass
       bottom
       handlr-regex
+      ripgrep
 
       ### desktop things
       eww-wayland
@@ -90,6 +91,7 @@
       nodejs
       go
       sassc
+      gcc
     ];
 
     sessionVariables = {

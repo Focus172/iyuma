@@ -2,19 +2,17 @@
   programs.starship = {
     enable = true;
     settings = {
-      add_newline = true;
+      add_newline = false;
       format = lib.strings.concatStrings [
-        "$nix_shell"
-        "$os"
+        # "$nix_shell"
+        # "$os"
         "$directory"
         "$container"
         "$git_branch $git_status"
-        "$python"
-        "$nodejs"
-        "$lua"
         "$rust"
         "$java"
-        "$c"
+        "$kotlin"
+        "$zig"
         "$golang"
         "$cmd_duration"
         "$status"
@@ -23,7 +21,7 @@
       status = {
         symbol = "✗";
         not_found_symbol = "󰍉 Not Found";
-        not_executable_symbol = " Can't Execute E";
+        not_executable_symbol = " Not Executable";
         sigint_symbol = "󰂭 ";
         signal_symbol = "󱑽 ";
         success_symbol = "";
@@ -49,8 +47,8 @@
       };
       directory = {
         format = " [](fg:bright-black)[$path](bg:bright-black fg:white)[](fg:bright-black)";
-        truncation_length = 4;
-        truncation_symbol = "~/…/";
+        # truncation_length = 20;
+        # truncation_symbol = "~/…/";
       };
       directory.substitutions = {
         "Documents" = " ";
@@ -70,46 +68,13 @@
       };
       os = {
         disabled = false;
-        # format = "[](fg:blue)[$symbol](bg:blue fg:black)[](fg:blue)";
         format = "$symbol";
       };
       os.symbols = {
         Arch = "[ ](fg:bright-blue)";
         Debian = "[ ](fg:red)";
-        EndeavourOS = "[ ](fg:purple)";
-        Fedora = "[ ](fg:blue)";
         NixOS = "[ ](fg:bright-white)";
-        openSUSE = "[ ](fg:green)";
-        SUSE = "[ ](fg:green)";
         Ubuntu = "[ ](fg:bright-purple)";
-      };
-      python = {
-        symbol = "";
-        format = "[$symbol ](yellow)";
-      };
-      nodejs = {
-        symbol = " ";
-        format = "[$symbol ](yellow)";
-      };
-      lua = {
-        symbol = "󰢱";
-        format = "[$symbol ](blue)";
-      };
-      rust = {
-        symbol = "";
-        format = "[$symbol ](red)";
-      };
-      java = {
-        symbol = "";
-        format = "[$symbol ](white)";
-      };
-      c = {
-        symbol = "";
-        format = "[$symbol ](blue)";
-      };
-      golang = {
-        symbol = "";
-        format = "[$symbol ](blue)";
       };
     };
   };
