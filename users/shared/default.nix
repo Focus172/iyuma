@@ -7,17 +7,48 @@
   ...
 }: {
   home.stateVersion = "22.11";
-  programs.home-manager.enable = true;
+  programs = {
+    # allow home-manager to manage itself
+    home-manager.enable = true;
 
-  ## gtk themeing
-  # gtk = {
-  #   enable = true;
-  #   gtk3.extraConfig.gtk-decoration-layout = "menu:";
-  #   iconTheme.name = "WhiteSur";
-  #   theme.name = "gruvbox-dark-gtk";
-  # };
+    bat.enable = true;
+    exa = {
+      enable = true;
+      enableAliases = true;
+    };
+    fish = {
+      enable = true;
+      shellAliases = {
+        "cat" = "bat";
+        "cd" = "z";
+      };
+    };
+    git = {
+      enable = true;
+      userName = "Focus172";
+      userEmail = "evan.stokdyk@gmail.com";
+      extraConfig = {
+        credential.helper = "store --file ~/.config/git/.git-credentials";
+        init.defaultBranch = "main";
+        url."https://github.com/".insteadOf = [ "gh:" "github:" ];
+        url."https://gitlab.com/".insteadOf = [ "gl:" "gitlab:" ];
+      };
+    };
+    starship.enable = true;
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+  };
 
-  nixpkgs.overlays = [];
+  gtk = {
+    enable = true;
+    theme = {
+      package = pkgs.catppuccin-gtk;
+      name = "Catppuccin-Dark";
+    };
+  };
+
 
   imports = [
     # Importing Configutations
@@ -47,6 +78,7 @@
       bottom
       handlr-regex
       ripgrep
+      fzf
 
       ### desktop things
       eww-wayland
@@ -79,8 +111,6 @@
       # vhs
       skate
 
-      libreoffice
-
       # file manager
       lf
       # lf-sixel
@@ -92,6 +122,23 @@
       go
       sassc
       gcc
+
+      alsa-utils
+      brightnessctl
+      cliphist
+      # direnv
+      fd
+      grim
+      insomnia
+      libreoffice-fresh
+      mako
+      ripgrep
+      # rustdesk
+      slurp
+      swayidle
+      # swaylock-effects
+      # virt-manager
+      wl-clipboard
     ];
 
     sessionVariables = {
@@ -104,6 +151,15 @@
     };
 
     sessionPath = [];
+
+    file = {
+      # ".config/eww".source = ./configs/eww;
+      # ".config/hypr".source = ./configs/hypr;
+      ".config/mako".source = ./configs/mako;
+      ".config/swayidle".source = ./configs/swayidle;
+      ".config/swaylock".source = ./configs/swaylock;
+    };
+
   };
 
   nixpkgs.config = {

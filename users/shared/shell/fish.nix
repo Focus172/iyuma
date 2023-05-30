@@ -3,8 +3,8 @@
     enable = true;
 
     shellAliases = {
-      ls = "exa";
-      la = "ls -a";
+      # ls = "exa";
+      # la = "ls -a";
       e = "nvim";
       land = "cat $HOME/.config/george.txt | cowsay -W 70";
     };
