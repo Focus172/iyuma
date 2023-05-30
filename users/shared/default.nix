@@ -11,6 +11,7 @@
     # allow home-manager to manage itself
     home-manager.enable = true;
 
+
     bat.enable = true;
     exa = {
       enable = true;
@@ -51,7 +52,7 @@
 
 
   imports = [
-    # Importing Configutations
+    ## Importing Configutations
     (import ./music/cava.nix {inherit colors;})
     (import ./music/mpd.nix {inherit config pkgs;})
     (import ./music/ncmp.nix {inherit config pkgs;})
@@ -66,8 +67,8 @@
 
   home = {
     activation = {
-      # these projects use jemalloc which doesnt work with 32k page size
-      # this means that the packaged verison can not work on some systems
+      ## these projects use jemalloc which doesnt work with 32k page size
+      ## this means that the packaged verison can not work on some systems
       cargoInstall = ''
         # cargo install fd-find
       '';
@@ -91,16 +92,17 @@
       eww-wayland
       xdg-desktop-portal-hyprland
       swww
+      gitoxide
 
       (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
 
       ### tools
       jq
       htop
+      yt-dlp
       # acpi
       # wl-gammactl
       # wlsunset
-      # wl-clipboard
       # hyprpicker
       pavucontrol
       brightnessctl
@@ -115,8 +117,8 @@
       gum
       slides
       charm
-      # vhs
       skate
+      # vhs
 
       # file manager
       lf
@@ -142,9 +144,11 @@
       # rustdesk
       slurp
       swayidle
-      # swaylock-effects
       # virt-manager
       wl-clipboard
+
+      # swaylock-effects
+      # swayidle
     ];
 
     sessionVariables = {
@@ -160,7 +164,6 @@
 
     file = {
       # ".config/eww".source = ./configs/eww;
-      # ".config/hypr".source = ./configs/hypr;
       ".config/mako".source = ./configs/mako;
       ".config/swayidle".source = ./configs/swayidle;
       ".config/swaylock".source = ./configs/swaylock;

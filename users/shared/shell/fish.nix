@@ -7,6 +7,7 @@
       # la = "ls -a";
       e = "nvim";
       land = "cat $HOME/.config/george.txt | cowsay -W 70";
+      sdn = "shutdown -h now";
     };
 
     shellAbbrs = {
