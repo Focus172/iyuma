@@ -7,7 +7,7 @@
       enable = true;
       device = "nodev";
       efiSupport = true;
-      useOSProber = true;
+      # useOSProber = true;
       # font = path
       # fontSize = uint
       # theme = string
@@ -77,6 +77,7 @@
     git
     # busybox
     coreutils
+    lsof
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
