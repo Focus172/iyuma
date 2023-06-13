@@ -20,6 +20,8 @@ in {
       brave
       nginx
       killall
+      lutris
+      bottles
     ];
 
     sessionVariables = {};

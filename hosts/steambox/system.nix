@@ -12,4 +12,6 @@
     packages = with pkgs; []; # see home manager for things
   };
 
+  programs.steam.enable = true;
+  # virtualisation.virtualbox.host.enable = true;
 }

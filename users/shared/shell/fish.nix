@@ -3,11 +3,11 @@
     enable = true;
 
     shellAliases = {
-      # ls = "exa";
-      # la = "ls -a";
       e = "nvim";
+      i = "imv";
       land = "cat $HOME/.config/george.txt | cowsay -W 70";
       sdn = "shutdown -h now";
+      cd = "z";
     };
 
     shellAbbrs = {

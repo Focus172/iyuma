@@ -11,18 +11,11 @@
     # allow home-manager to manage itself
     home-manager.enable = true;
 
-
     bat.enable = true;
+    ripgrep.enable = true;
     exa = {
       enable = true;
       enableAliases = true;
-    };
-    fish = {
-      enable = true;
-      shellAliases = {
-        "cat" = "bat";
-        "cd" = "z";
-      };
     };
     git = {
       enable = true;
@@ -39,6 +32,15 @@
     zoxide = {
       enable = true;
       enableFishIntegration = true;
+    };
+    go = {
+      enable = true;
+      goPath = ".local/share/go";
+      goBin = ".local/share/go/bin";
+    };
+    imv = {
+      enable = true;
+      # config = ''test'';
     };
   };
 
@@ -62,16 +64,16 @@
     (import ./shell/bin/default.nix {inherit config;})
 
     (import ./utils/rofi/default.nix {inherit config pkgs colors;})
-    (import ./utils/waybar {inherit pkgs;})
+    # (import ./utils/waybar {inherit pkgs;})
   ];
 
   home = {
     activation = {
       ## these projects use jemalloc which doesnt work with 32k page size
       ## this means that the packaged verison can not work on some systems
-      cargoInstall = ''
-        # cargo install fd-find
-      '';
+      # cargoInstall = ''
+      #   # cargo install fd-find
+      # '';
     };
     packages = with pkgs; [
       pfetch
@@ -87,12 +89,14 @@
       handlr-regex
       ripgrep
       fzf
+      tmux
 
       ### desktop things
       eww-wayland
       xdg-desktop-portal-hyprland
       swww
       gitoxide
+      neovim
 
       (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
 
@@ -128,9 +132,7 @@
       rustup
       zig
       nodejs
-      go
       sassc
-      gcc
 
       alsa-utils
       brightnessctl
