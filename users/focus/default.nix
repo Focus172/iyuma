@@ -3,9 +3,17 @@
   config,
   pkgs,
   lib,
-  colors,
   ...
-}: {
+}: let
+  colors = import ../shared/cols/wave.nix {};
+in {
+  home.username = "focus";
+  home.homeDirectory = "/home/focus";
+
+  # programs.fish.loginShellInit = '' 
+  #   source ~/.nix-profile/etc/profile.d/nix.fish
+  # '';
+
   home.stateVersion = "22.11";
   programs = {
     # allow home-manager to manage itself
@@ -75,6 +83,7 @@
       #   # cargo install fd-find
       # '';
     };
+
     packages = with pkgs; [
       pfetch
       cava
@@ -151,6 +160,12 @@
 
       # swaylock-effects
       # swayidle
+
+      brave
+      nginx
+      killall
+      lutris
+
     ];
 
     sessionVariables = {

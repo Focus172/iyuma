@@ -1,7 +1,7 @@
 _: {
   imports = [
     ./hardware-configuration.nix
-    ../shared
+    ./common.nix
     ./system.nix
   ];
 }

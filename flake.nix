@@ -12,8 +12,10 @@
     home-manager,
   } @ inputs: let
     inherit (self) outputs;
+
     system = "x86_64-linux";
     # system = "aarch64-linux";
+
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
@@ -26,14 +28,7 @@
         inherit pkgs;
         extraSpecialArgs = {inherit inputs outputs self;};
         modules = [
-          ./users/focus/home.nix
-        ];
-      };
-      fears = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {inherit inputs outputs self;};
-        modules = [
-          ./users/fears/home.nix
+          ./users/focus
         ];
       };
     };
@@ -44,13 +39,8 @@
         specialArgs = {inherit inputs outputs;};
         modules = [./hosts/steambox];
       };
-      hazed = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/hazed];
-      };
     };
 
     steambox = self.nixosConfigurations.steambox.config.system.build.toplevel;
-    hazed = self.nixosConfigurations.hazed.config.system.build.toplevel;
   };
 }
