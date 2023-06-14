@@ -14,6 +14,7 @@
     inherit (self) outputs;
 
     system = "x86_64-linux";
+    # builtins.currentSystem;
     # system = "aarch64-linux";
 
     pkgs = import nixpkgs {

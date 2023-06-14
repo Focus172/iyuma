@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  colors = import ../shared/cols/wave.nix {};
+  colors = import ./cols/wave.nix {};
 in {
   home.username = "focus";
   home.homeDirectory = "/home/focus";
@@ -165,6 +165,8 @@ in {
       nginx
       killall
       lutris
+
+      tty-clock
 
     ];
 

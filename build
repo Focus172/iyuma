@@ -2,7 +2,7 @@
 
 usr() {
     echo "Rebuilding user configuration..."
-    home-manager switch --flake ".#$user"
+    home-manager switch --flake ".#focus"
 }
 
 sys() {
@@ -18,11 +18,11 @@ sys() {
 }
 
 case $1 in 
-    "desktop") user="fears" && host="steambox"
+    "desktop") host="steambox"
     ;;
-    "laptop") user="fears" && host="hazed"
+    "laptop") host="hazed"
     ;;
-    "asahi") user="focus"
+    "asahi")
     ;;
     *) echo "Enter a host to rebuild: desktop, laptop, or asahi" && exit 1
     ;;
