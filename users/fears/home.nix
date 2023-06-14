@@ -21,7 +21,6 @@ in {
       nginx
       killall
       lutris
-      bottles
     ];
 
     sessionVariables = {};

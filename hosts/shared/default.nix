@@ -16,24 +16,20 @@
     # plymouth.enable
   };
 
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking = {
     networkmanager.enable = true;
-    firewall.enable = false;
+    # firewall.enable = false;
   };
 
   security.sudo.enable = true;
-
 
   programs.dconf.enable = true;
   programs.hyprland.enable = true;
@@ -61,10 +57,10 @@
   };
 
   # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
+  #services.xserver = {
+  #  layout = "us";
+  #  xkbVariant = "";
+  #};
 
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
@@ -77,7 +73,7 @@
     git
     # busybox
     coreutils
-    lsof
+    # lsof
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -106,21 +102,10 @@
     };
     optimise.automatic = true;
   };
-
   
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11";
-  system.copySystemConfiguration = false;
 }
