@@ -13,9 +13,9 @@
   } @ inputs: let
     inherit (self) outputs;
 
-    system = "x86_64-linux";
+    # system = "x86_64-linux";
     # builtins.currentSystem;
-    # system = "aarch64-linux";
+    system = "aarch64-darwin";
 
     pkgs = import nixpkgs {
       inherit system;
@@ -30,6 +30,13 @@
         extraSpecialArgs = {inherit inputs outputs self;};
         modules = [
           ./users/focus
+        ];
+      };
+      evan = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {inherit inputs outputs self;};
+        modules = [
+          ./users/evan
         ];
       };
     };
