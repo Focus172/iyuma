@@ -13,9 +13,9 @@
   } @ inputs: let
     inherit (self) outputs;
 
-    # system = "x86_64-linux";
+    system = "x86_64-linux";
     # builtins.currentSystem;
-    system = "aarch64-darwin";
+    # system = "aarch64-darwin";
 
     pkgs = import nixpkgs {
       inherit system;
@@ -40,15 +40,5 @@
         ];
       };
     };
-
-    # host configurations
-    nixosConfigurations = {
-      steambox = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/steambox];
-      };
-    };
-
-    steambox = self.nixosConfigurations.steambox.config.system.build.toplevel;
   };
 }

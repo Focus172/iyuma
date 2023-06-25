@@ -16,7 +16,7 @@ with colors; {
       };
 
       colors = {
-        alpha = 0.80;
+        alpha = 0.60;
         background = "${background}";
         foreground = "${foreground}";
         regular0 = "${color0}";

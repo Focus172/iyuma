@@ -1,13 +1,15 @@
 # Iyuma
-A no-good, very bad, horrid sysconf. It works on my machine so hope you have fun as well
+A no-good, very bad, horrid sysconf. It works on my machine so hope you have 
+fun as well.
 
-make sure to import you hardware config
-```bash
-sudo cp /etc/nixos/hardware-configuration.nix ./nixos/hardware-configuration.nix
-sudo chown $USER ./nixos/hardware-configuration.nix
-```
+the files in /hosts are hardlinked to /etc/nixos/ and owned by the user.
+you can figure it out i belive in you
 
-You can now build just like this:
+once you have done that you can just
 ```bash
-./build all 
+nixos-rebuild switch
+
+# or 
+
+home-manager switch --flake ".#$user"
 ```

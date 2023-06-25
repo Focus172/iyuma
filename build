@@ -8,13 +8,9 @@ usr() {
 sys() {
     [ -z "$host" ] && echo "This set up doesnt suport a system build" && exit 1
 
+    sudo -n echo "" >/dev/null || echo "You need to be root to rebuild the system configuration."
     echo "Rebuilding system configuration..."
-    echo "As this is multi-user, you will be prompted for a password."
-    if [ "$host" = "hazed" ]; then
-        sudo nixos-rebuild switch
-    else
-        sudo nixos-rebuild switch --flake ".#$host"
-    fi
+    nixos-rebuild switch
 }
 
 case $1 in 

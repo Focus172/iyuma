@@ -5,7 +5,7 @@
   lib,
 ...
 }: let
-  colors = import ./cols/wave.nix {};
+  colors = import ../shared/cols/wave.nix {};
 in {
   home.username = "focus";
   home.homeDirectory = "/home/focus";
@@ -14,12 +14,13 @@ in {
     (import ../shared {inherit colors config inputs pkgs lib;})
 
     (import ./music/cava.nix {inherit colors;})
-    (import ./music/mpd.nix {inherit config pkgs;})
     (import ./music/ncmp.nix {inherit config pkgs;})
 
     (import ./rofi/default.nix {inherit config pkgs colors;})
 
+
     (import ./shell/foot.nix {inherit colors;})
+    (import ./shell/alacritty.nix {inherit colors;})
   ];
 
   programs = {
@@ -36,12 +37,14 @@ in {
     };
   };
 
+home = {
   packages = with pkgs; [
       mpc-cli
       xdg-desktop-portal-hyprland
       eww-wayland
       swww
       htop
+      blender
       # acpi
       # wl-gammactl
       # wlsunset
@@ -63,8 +66,15 @@ in {
       killall
       lutris
       cava
+      emacs
       tty-clock
       jp2a
+      ani-cli
+      mpv
+      clang
+      btar
+      fd
+      file
   ];
   file = {
       # ".config/eww".source = ./configs/eww;
@@ -72,5 +82,5 @@ in {
       ".config/swayidle".source = ./configs/swayidle;
       ".config/swaylock".source = ./configs/swaylock;
     };
-
+};
 }
