@@ -29,6 +29,7 @@
 
   # programs.dconf.enable = true;
   programs.hyprland.enable = true;
+  programs.steam.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -57,9 +58,6 @@
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   programs.fish.enable = true;
   # users.defaultUserShell = pkgs.fish;
@@ -90,7 +88,8 @@
   };
 
 
-  # virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.host.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
