@@ -70,7 +70,6 @@ in {
       handlr-regex
       ripgrep
       fzf
-      tmux
       gitoxide
       neovim
       (nerdfonts.override {fonts = ["Hack" "Mononoki"];})

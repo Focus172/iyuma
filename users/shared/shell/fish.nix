@@ -21,6 +21,9 @@
 
     interactiveShellInit = ''
       set -g fish_greeting 
+      if string match 'Darwin' (uname) > /dev/null
+          /opt/homebrew/bin/brew shellenv | source
+      end
     '';
 
     shellInit = ''

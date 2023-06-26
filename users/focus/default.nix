@@ -45,6 +45,7 @@ home = {
       swww
       htop
       blender
+      tmux
       # acpi
       # wl-gammactl
       # wlsunset
