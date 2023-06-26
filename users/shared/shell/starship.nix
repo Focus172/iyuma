@@ -4,8 +4,7 @@
     settings = {
       add_newline = false;
       format = lib.strings.concatStrings [
-        # "$nix_shell"
-        # "$os"
+        "$nix_shell"
         "$directory"
         "$container"
         "$git_branch $git_status"
@@ -51,30 +50,20 @@
         # truncation_symbol = "~/…/";
       };
       directory.substitutions = {
-        "Documents" = " ";
-        "Downloads" = " ";
-        "Music" = " ";
-        "Pictures" = " ";
-        "Videos" = " ";
-        "Projects" = "󱌢 ";
-        "School" = "󰑴 ";
-        "GitHub" = "";
+        "dox" = " ";
+        "dwnl" = " ";
+        "music" = " ";
+        "pix" = " ";
+        "vid" = " ";
+        "dev" = "󱌢 ";
+        "skool" = "󰑴 ";
+        "code" = "";
         ".config" = " ";
       };
       git_branch = {
         symbol = "";
         style = "";
         format = "[ $symbol $branch](fg:purple)(:$remote_branch)";
-      };
-      os = {
-        disabled = false;
-        format = "$symbol";
-      };
-      os.symbols = {
-        Arch = "[ ](fg:bright-blue)";
-        Debian = "[ ](fg:red)";
-        NixOS = "[ ](fg:bright-white)";
-        Ubuntu = "[ ](fg:bright-purple)";
       };
     };
   };

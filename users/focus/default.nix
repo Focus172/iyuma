@@ -41,10 +41,10 @@ home = {
   packages = with pkgs; [
       mpc-cli
       xdg-desktop-portal-hyprland
-      eww-wayland
+      # eww-wayland
       swww
       htop
-      blender
+      # blender
       tmux
       # acpi
       # wl-gammactl
@@ -65,12 +65,10 @@ home = {
       # swayidle
       nginx
       killall
-      lutris
       cava
       emacs
       tty-clock
-      jp2a
-      ani-cli
+      # ani-cli
       mpv
       clang
       btar
@@ -78,10 +76,9 @@ home = {
       file
   ];
   file = {
-      # ".config/eww".source = ./configs/eww;
-      ".config/mako".source = ./configs/mako;
-      ".config/swayidle".source = ./configs/swayidle;
-      ".config/swaylock".source = ./configs/swaylock;
+      ".config/mako/config".source = ./configs/mako;
+      ".config/swayidle/config".source = ./configs/swayidle;
+      ".config/swaylock/config".source = ./configs/swaylock;
     };
 };
 }
