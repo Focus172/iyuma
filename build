@@ -1,22 +1,9 @@
 #!/bin/sh
 
-usr() {
-    echo "Rebuilding user configuration..."
-    home-manager switch --flake ".#$user"
-}
-
-sys() {
-    [ -z "$host" ] && echo "This set up doesnt suport a system build" && exit 1
-
-    sudo -n echo "" >/dev/null || echo "You need to be root to rebuild the system configuration."
-    echo "Rebuilding system configuration..."
-    nixos-rebuild switch
-}
-
 case $1 in 
-    "desktop") user="focus" && host="steambox"
+    "desktop") user="focus"
     ;;
-    "laptop") user="focus" && host="hazed"
+    "laptop") user="focus"
     ;;
     "asahi") user="evan"
     ;;
@@ -24,14 +11,8 @@ case $1 in
     ;;
 esac
 
-case $2 in
-    "usr") usr 
-    ;;
-    "sys") sys
-    ;;
-    "all") sys && usr
-    ;;
-    *) echo "Enter a target to rebuild: usr or sys" && exit 1
-    ;;
-esac
+echo "Rebuilding user configuration..."
+home-manager switch --flake ".#$user"
 
+# to rebuild system configuration, run:
+# sudo nixos-rebuild switch

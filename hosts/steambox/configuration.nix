@@ -38,6 +38,8 @@ in {
 
   hardware.pulseaudio.enable = false;
 
+  services.printing.enable = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
