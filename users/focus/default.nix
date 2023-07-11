@@ -66,7 +66,6 @@ home = {
       nginx
       killall
       cava
-      emacs
       tty-clock
       # ani-cli
       mpv
@@ -74,6 +73,9 @@ home = {
       btar
       fd
       file
+      slack
+      slack-term
+      obsidian
   ];
   file = {
       ".config/mako/config".source = ./configs/mako;

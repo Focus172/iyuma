@@ -91,6 +91,9 @@
   # virtualisation.virtualbox.guest.enable = true;
   virtualisation.virtualbox.host.enable = true;
 
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
