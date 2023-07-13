@@ -14,7 +14,8 @@ in {
   programs = {
     # allow home-manager to manage itself
     home-manager.enable = true;
-
+    password-store.enable = true;
+    # rofi-pass.enable = true;
     bat.enable = true;
     ripgrep.enable = true;
     exa = {
@@ -61,11 +62,9 @@ in {
 
     packages = with pkgs; [
       pfetch
-      exa
       gitui
-      bat
       alejandra
-      pass
+      # pass
       bottom
       handlr-regex
       ripgrep
@@ -75,8 +74,6 @@ in {
       (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
       jq
       yt-dlp
-
-
 
       bacon
       imagemagick
@@ -93,7 +90,6 @@ in {
       zig
       nodejs
       sassc
-
     ];
 
     sessionVariables = {
@@ -106,8 +102,6 @@ in {
     };
 
     sessionPath = [];
-
-
   };
 
   nixpkgs.config = {

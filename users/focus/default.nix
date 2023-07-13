@@ -40,8 +40,6 @@ in {
 home = {
   packages = with pkgs; [
       mpc-cli
-      xdg-desktop-portal-hyprland
-      # eww-wayland
       swww
       htop
       # blender
@@ -53,7 +51,6 @@ home = {
       pavucontrol
       brightnessctl
       alsa-utils
-      cliphist
       grim
       libreoffice-fresh
       mako
@@ -61,6 +58,7 @@ home = {
       swayidle
       wl-clipboard
       brave
+      discord
       # swaylock-effects
       # swayidle
       nginx
@@ -68,14 +66,14 @@ home = {
       cava
       tty-clock
       # ani-cli
+      lf
       mpv
       clang
       btar
       fd
       file
-      slack
-      slack-term
       obsidian
+      obs-studio
   ];
   file = {
       ".config/mako/config".source = ./configs/mako;
