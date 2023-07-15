@@ -9,57 +9,10 @@ in {
 
   networking.hostName = "steambox";
 
-  # TODO: add users per system
-
 
   programs.steam.enable = true;
-
-
-  programs.steam.enable = true;
-
-  services.mpd = {
-    enable = true;
-    user = "focus";
-    musicDirectory = "${homeDirectory}/aud/music";
-    playlistDirectory = "${homeDirectory}/.config/mpd/playlists";
-    extraConfig = ''
-      audio_output {
-        type "alsa"
-        name "alsa"
-        device "hw:0,0"
-        mixer_type "software"
-      }
-    '';
-  };
-
-  hardware.pulseaudio.enable = false;
 
   services.printing.enable = true;
-
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    # alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
-  # Bootloader.
-  boot.loader = {
-    grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      # useOSProber = true;
-      # font = path
-      # fontSize = uint
-      # theme = string
-    };
-    efi.canTouchEfiVariables = true;
-    # plymouth.enable
-  };
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -75,7 +28,6 @@ in {
   security.sudo.enable = true;
 
   programs.dconf.enable = true;
-  programs.hyprland.enable = true;
 
   # Enable sound.
   sound.enable = true;
@@ -103,19 +55,6 @@ in {
   #  xkbVariant = "";
   #};
 
-  programs.fish.enable = true;
-  users.defaultUserShell = pkgs.fish;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = with pkgs; [
-    vim 
-    git
-    # busybox
-    coreutils
-    # lsof
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -129,21 +68,6 @@ in {
   services.openssh.enable = true;
   security.polkit.enable = true;
 
-  nix = {
-    package = pkgs.nixFlakes;
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      trusted-users = [ "root" "@wheel" ];
-      auto-optimise-store = true;
-      warn-dirty = false;
-    };
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 5d";
-    };
-    optimise.automatic = true;
-  };
-  
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -160,5 +84,4 @@ in {
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05";
-  system.copySystemConfiguration = false;
 }

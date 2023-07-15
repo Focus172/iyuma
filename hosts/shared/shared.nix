@@ -55,6 +55,15 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    # alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
@@ -102,6 +111,7 @@
       neovim
       pass 
       bat
+      imv
       ripgrep
       exa
       starship zoxide
@@ -171,34 +181,15 @@
   services.mpd = {
     enable = true;
     user = "focus";
-    musicDirectory = "/home/focus/aud";
-    dataDir = "/home/focus/.config/mpd";
+    musicDirectory = "${homeDirectory}/aud";
+    playlistDirectory = "${homeDirectory}/.config/mpd/playlists";
     extraConfig = ''
-    auto_update       "yes"
-    restore_paused    "yes"
-
-    audio_output {
-        type "pulse"
-        name "Pulseaudio"
-        server "127.0.0.1" 
-    }
-
-    audio_output {
-      	type            "fifo"
-      	name            "Visualizer"
-      	format          "44100:16:2"
-      	path            "/tmp/mpd.fifo"
-    }
-    
-    audio_output {
-      	type		    "httpd"
-      	name		    "lossless"
-      	encoder		    "flac"
-      	port		    "8000"
-      	max_client	    "8"
-      	mixer_type	    "software"
-      	format		    "44100:16:2"
-    }
+      audio_output {
+        type "alsa"
+        name "alsa"
+        device "hw:0,0"
+        mixer_type "software"
+      }
     '';
   };
 
