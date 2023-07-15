@@ -31,5 +31,4 @@
   };
 
   imports = [./starship.nix ];
-  # programs.starship.enable = true;
 }

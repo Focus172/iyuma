@@ -16,8 +16,6 @@ in {
     home-manager.enable = true;
     password-store.enable = true;
     # rofi-pass.enable = true;
-    bat.enable = true;
-    ripgrep.enable = true;
     exa = {
       enable = true;
       enableAliases = true;
@@ -48,7 +46,6 @@ in {
   imports = [
     ## Importing Configutations
     (import ./shell/fish.nix {inherit config pkgs;})
-    (import ./shell/bin/default.nix {inherit config;})
   ];
 
   home = {
@@ -64,8 +61,10 @@ in {
       pfetch
       gitui
       alejandra
+      ripgrep
       # pass
       bottom
+      bat
       handlr-regex
       ripgrep
       fzf
@@ -74,22 +73,22 @@ in {
       (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
       jq
       yt-dlp
-
       bacon
       imagemagick
       fortune
       neo-cowsay
       glow
-      gum
-      slides
-      charm
-      skate
+      # gum
+      # slides
+      # charm
+      # skate
       # vhs
-      # lf
+      lf
       rustup
       zig
-      nodejs
-      sassc
+      # nodejs
+      # sassc
+      syncthing
     ];
 
     sessionVariables = {

@@ -41,7 +41,6 @@ home = {
   packages = with pkgs; [
       mpc-cli
       swww
-      htop
       # blender
       tmux
       # acpi
