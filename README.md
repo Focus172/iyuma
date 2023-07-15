@@ -8,10 +8,5 @@ you can figure it out i belive in you
 once you have done that you can just
 ```bash
 git clone ...
-
 nixos-rebuild switch
-
-# or 
-
-home-manager switch --flake ".#$user"
 ```

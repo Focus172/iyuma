@@ -1,27 +1,10 @@
 { config, pkgs, ... }: {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ 
+    ./hardware-configuration.nix 
+    ./shared.nix
+  ];
 
   networking.hostName = "hazed";
-
-  boot.loader = {
-    grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      # useOSProber = true;
-      # font = path
-      # fontSize = uint
-      # theme = string
-    };
-    # plymouth.enable = true;
-
-    efi.efiSysMountPoint = "/boot/efi";
-    efi.canTouchEfiVariables = true;
-  };
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  time.timeZone = "America/Tijuana";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -29,28 +12,17 @@
 
   # programs.dconf.enable = true;
   programs.hyprland.enable = true;
-  programs.steam.enable = true;
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  # i18n.extraLocaleSettings = {
-  #   LC_ADDRESS = "en_US.UTF-8";
-  #   LC_IDENTIFICATION = "en_US.UTF-8";
-  #   LC_MEASUREMENT = "en_US.UTF-8";
-  #   LC_MONETARY = "en_US.UTF-8";
-  #   LC_NAME = "en_US.UTF-8";
-  #   LC_NUMERIC = "en_US.UTF-8";
-  #   LC_PAPER = "en_US.UTF-8";
-  #   LC_TELEPHONE = "en_US.UTF-8";
-  #   LC_TIME = "en_US.UTF-8";
-  # };
 
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkbOptions in tty.
   # };
+
+  services.syncthing.enable = true;
+  services.syncthing.user = "focus";
+  services.syncthing.dataDir = "/home/focus/";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -59,33 +31,11 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  programs.fish.enable = true;
   # users.defaultUserShell = pkgs.fish;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.focus = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" ];
-    shell = pkgs.fish;
-  };
 
   # security.polkit.enable = true;
   # security.sudo.enable = true;
-
-  nix = {
-    package = pkgs.nixFlakes;
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      trusted-users = [ "root" "@wheel" ];
-      auto-optimise-store = true;
-      warn-dirty = false;
-    };
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 5d";
-    };
-    optimise.automatic = true;
-  };
 
 
   # virtualisation.virtualbox.guest.enable = true;
@@ -108,16 +58,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    vim 
-    git
-
-    ## Only choose 1:
-    # busybox
-    coreutils
-  ];
-
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

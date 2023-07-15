@@ -1,0 +1,21 @@
+#!/bin/sh
+
+case $1 in 
+    "hazed") host="hazed"
+    ;;
+    "steambox") host="steambox"
+    ;;
+    *) echo "Enter a host to prep: hazed or steambox" && exit 1
+    ;;
+esac
+
+echo "Rebuilding user configuration..."
+
+# to rebuild system configuration, run:
+# sudo nixos-rebuild switch
+
+rm -rf /etc/nixos/*
+ln "./hosts/$host/configurations.nix" /etc/nixos/configuration.nix
+ln "./hosts/$host/hardware-configuration.nix" /etc/nixos/hardware-configuration.nix
+
+ln "./hosts/shared/shared.nix" /etc/nixos/shared.nix

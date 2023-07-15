@@ -9,7 +9,7 @@
       clockSupport = true;
       taglibSupport = true;
     };
-    mpdMusicDir = "${config.home.homeDirectory}/aud/music";
+    mpdMusicDir = "${config.home.homeDirectory}/aud";
     settings = {
       # Miscelaneous
       ncmpcpp_directory = "${config.home.homeDirectory}/.config/ncmpcpp";
