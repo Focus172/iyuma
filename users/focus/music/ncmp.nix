@@ -45,7 +45,7 @@
       titles_visibility = "no";
 
       # progress bar
-      progressbar_look = "‎‎‎";
+      progressbar_look = "---";
       progressbar_color = "black";
       progressbar_elapsed_color = "blue";
 
