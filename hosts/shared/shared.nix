@@ -56,6 +56,8 @@
   # services.printing.enable = true;
 
 
+  # Enable sound.
+  sound.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -64,9 +66,6 @@
     jack.enable = true;
   };
 
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
 
   programs.fish.enable = true;
   # users.defaultUserShell = pkgs.fish;
@@ -175,14 +174,20 @@
       file
       obsidian
       obs-studio
+      fzf
+      gnumake
+        # Neovim deps
+        stylua
+        lua-language-server
+        unzip
     ];
   };
 
   services.mpd = {
     enable = true;
     user = "focus";
-    musicDirectory = "${homeDirectory}/aud";
-    playlistDirectory = "${homeDirectory}/.config/mpd/playlists";
+    # musicDirectory = "${homeDirectory}/aud";
+    # playlistDirectory = "${homeDirectory}/.config/mpd/playlists";
     extraConfig = ''
       audio_output {
         type "alsa"

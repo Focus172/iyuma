@@ -1,19 +1,27 @@
 #!/bin/sh
 
-mac () {
-    echo "Running mac thing setup ..." 
-    brew bundle
-    echo "Done!"
+mac() {
+	echo "Running mac thing setup ..."
+	brew bundle
+	echo "Done!"
 }
 
-case $1 in 
-    "hazed") host="hazed"
-    ;;
-    "steambox") host="steambox"
-    ;;
-    "steamfunk") mac && exit 1
-    *) echo "Enter a host to prep: hazed or steambox" && exit 1
-    ;;
+case $1 in
+"hazed")
+	host="hazed"
+	;;
+"steambox")
+	host="steambox"
+	;;
+"steelworks")
+	host="steelworks"
+	;;
+"steamfunk")
+	mac && exit 1
+	;;
+*)
+	echo "Enter a host to prep: hazed or steambox" && exit 1
+	;;
 esac
 
 echo "Rebuilding user configuration..."
