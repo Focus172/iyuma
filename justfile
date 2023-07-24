@@ -40,8 +40,6 @@ cargo-install:
 	cargo install mprocs
 	cargo install porsmo
 	cargo install wiki-tui
-	cargo install jt
-
 
 linux: build-nix web-install cargo-install
 

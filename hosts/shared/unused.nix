@@ -1,27 +1,6 @@
-{ pkgs, outputs, overlays, lib, ... }:
-let
-  flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-  my-python-packages = ps: with ps; [
-    numpy
-  ];
-in
-{
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+{ pkgs, outputs, overlays, lib, ... }: {
 
   time.hardwareClockInLocalTime = true;
-
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  console = {
-    font = "Lat2-Terminus16";
-    useXkbConfig = true;
-  };
-
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "HackNerd" "CascadiaCode" "JetBrainsMono" ]; })
-  ];
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
@@ -40,13 +19,10 @@ in
     spotdl
     python310Packages.pip
     discord
-    firefox
     unzip
     imgclr
     git
-    pstree
     mpv
-    slurp
     xdotool
     simplescreenrecorder
     brightnessctl
@@ -61,25 +37,10 @@ in
   ];
 
   environment.shells = with pkgs; [ zsh ];
-
-  programs.dconf.enable = true;
-
   qt = {
     enable = true;
     platformTheme = "gtk2";
     style = "gtk2";
   };
 
-  services.printing.enable = true;
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = false;
-  };
-
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "us,";
-  };
-  security.polkit.enable = true;
 }

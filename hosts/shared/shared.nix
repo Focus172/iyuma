@@ -1,4 +1,7 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }: 
+let 
+    homeDirectory = "/home/${config.users.users.focus.name}";
+in {
 
   boot.loader = {
     grub = {
@@ -12,8 +15,10 @@
     };
     # plymouth.enable = true;
 
-    efi.efiSysMountPoint = "/boot/efi";
-    efi.canTouchEfiVariables = true;
+    efi = {
+      efiSysMountPoint = "/boot/efi";
+      canTouchEfiVariables = true;
+    };
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -22,31 +27,18 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  # networking.firewall.enable = false;
 
-  # programs.dconf.enable = true;
+  programs.dconf.enable = true;
   programs.hyprland.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # i18n.extraLocaleSettings = {
-  #   LC_ADDRESS = "en_US.UTF-8";
-  #   LC_IDENTIFICATION = "en_US.UTF-8";
-  #   LC_MEASUREMENT = "en_US.UTF-8";
-  #   LC_MONETARY = "en_US.UTF-8";
-  #   LC_NAME = "en_US.UTF-8";
-  #   LC_NUMERIC = "en_US.UTF-8";
-  #   LC_PAPER = "en_US.UTF-8";
-  #   LC_TELEPHONE = "en_US.UTF-8";
-  #   LC_TIME = "en_US.UTF-8";
-  # };
-
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkbOptions in tty.
-  # };
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";
+    useXkbConfig = false;
+  };
 
   services.syncthing.enable = true;
   services.syncthing.user = "focus";
@@ -66,9 +58,8 @@
     jack.enable = true;
   };
 
-
   programs.fish.enable = true;
-  # users.defaultUserShell = pkgs.fish;
+  users.defaultUserShell = pkgs.fish;
 
   # programs.neovim = {
   #   enable = false;
@@ -107,13 +98,12 @@
       rofi-wayland rofi-calc # rofi-pass
       ncmpcpp playerctl # clerk 
       foot alacritty
-      neovim
       pass 
       bat
       imv
       ripgrep
       exa
-      starship zoxide
+      starship
       go
       pfetch
       gitui
@@ -123,11 +113,10 @@
       ripgrep
       fzf
       gitoxide
-      jq
+      jql
       yt-dlp
       bacon
       imagemagick
-      # fortune
       # neo-cowsay
       # glow
       # gum
@@ -138,13 +127,10 @@
       lf
       rustup
       zig
-      # nodejs
-      # sassc
       mpc-cli
       swww
-      # htop
       # blender
-      tmux
+      zellij tmux
       # acpi
       # wl-gammactl
       # wlsunset
@@ -156,7 +142,6 @@
       libreoffice-fresh
       mako
       slurp
-      swayidle
       wl-clipboard
       brave
       discord
@@ -174,12 +159,12 @@
       file
       obsidian
       obs-studio
-      fzf
-      gnumake
-        # Neovim deps
-        stylua
-        lua-language-server
-        unzip
+      gnumake just
+      unzip
+
+      # Neovim deps
+      stylua lua-language-server
+      neovim
     ];
   };
 
@@ -198,8 +183,8 @@
     '';
   };
 
-  # security.polkit.enable = true;
-  # security.sudo.enable = true;
+  security.polkit.enable = true;
+  security.sudo.enable = true;
 
   nix = {
     package = pkgs.nixFlakes;

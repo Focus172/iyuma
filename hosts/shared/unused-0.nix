@@ -1,27 +1,5 @@
 { pkgs, home-manager, ... }: {
 
-  boot = {
-    loader = {
-      grub = {
-        enable = true;
-        efiSupport = true;
-        devices = [ "nodev" ];
-      };
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
-      };
-    };
-  };
-
-  # Impostazioni di rete
-  networking = {
-    networkmanager.enable = true;
-  };
-
-  nixpkgs.config.allowUnfree = true;
-
-  # Programmi da installare per tutto il sistema
   environment.systemPackages = with pkgs; [
     git
     greetd.tuigreet
@@ -49,18 +27,12 @@
     };
   };
 
-  # Configurazione dei programmi installati
   programs = {
-    fish.enable = true;
-    gnupg.agent = {
-      enable = true;
-    };
+    gnupg.agent.enable = true;
     ssh.startAgent = true;
   };
 
-  virtualisation = {
-    docker.enable = true;
-  };
+  virtualisation.docker.enable = true;
 
   # Abilitazione dei servizi PAM
   security = {
