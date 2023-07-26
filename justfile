@@ -41,6 +41,9 @@ cargo-install:
 	cargo install porsmo
 	cargo install wiki-tui
 
+plist-install:
+	cp ./syncthing.plist ~/Library/LaunchAgents/syncthing.plist
+
 linux: build-nix web-install cargo-install
 
 mac: brew-install web-install cargo-install
