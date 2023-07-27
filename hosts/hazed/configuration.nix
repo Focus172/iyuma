@@ -4,6 +4,22 @@
     ./shared.nix
   ];
 
+  boot.loader = {
+    grub = {
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+      # font = path
+      # fontSize = uint
+      # theme = string
+    };
+
+    efi = {
+      efiSysMountPoint = "/boot/efi";
+      canTouchEfiVariables = true;
+    };
+  };
+
   networking.hostName = "hazed";
 
   # virtualisation.virtualbox.guest.enable = true;

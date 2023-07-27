@@ -1,25 +1,9 @@
-{ config, pkgs, ... }: 
-let 
+{ config, pkgs, ... }:
+let
     homeDirectory = "/home/${config.users.users.focus.name}";
 in {
 
-  boot.loader = {
-    grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      # useOSProber = true;
-      # font = path
-      # fontSize = uint
-      # theme = string
-    };
-    # plymouth.enable = true;
-
-    efi = {
-      efiSysMountPoint = "/boot/efi";
-      canTouchEfiVariables = true;
-    };
-  };
+  # boot.plymouth.enable = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 

@@ -1,12 +1,31 @@
 { config, pkgs, ... }: {
-  imports = [ 
+  imports = [
     ./hardware-configuration.nix 
     ./shared.nix
   ];
 
+  boot.loader.systemd-boot.enable = true;
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = false;
+  };
+
+  # Enable thermal data
+  services.thermald.enable = true;
+
+  # Enables kernel 
+  boot.kernelParams = [ "mem_sleep_default=deep" ];
+
+  services.fprintd.enable = true; 
+
+  # Bring in some audio
+  security.rtkit.enable = true;
+
+  powerManagement = {
+    enable = true;
+    powertop.enable = true;
+    cpuFreqGovernor = "ondemand";
   };
 
   networking.hostName = "steelwork";
