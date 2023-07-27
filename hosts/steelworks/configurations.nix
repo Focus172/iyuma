@@ -14,10 +14,11 @@
   # Enable thermal data
   services.thermald.enable = true;
 
-  # Enables kernel 
+  # Enables kernel to save battery on lid close
   boot.kernelParams = [ "mem_sleep_default=deep" ];
 
-  services.fprintd.enable = true; 
+  # Enables touch id
+  services.fprintd.enable = true;
 
   # Bring in some audio
   security.rtkit.enable = true;
@@ -25,7 +26,7 @@
   powerManagement = {
     enable = true;
     powertop.enable = true;
-    cpuFreqGovernor = "ondemand";
+    cpuFreqGovernor = "powersave"; # alt "ondemand"
   };
 
   networking.hostName = "steelwork";

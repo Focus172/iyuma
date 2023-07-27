@@ -12,7 +12,7 @@ in {
   # Enable networking
   networking.networkmanager.enable = true;
 
-  programs.dconf.enable = true;
+  # programs.dconf.enable = true;
   programs.hyprland.enable = true;
 
   # Select internationalisation properties.
@@ -24,9 +24,9 @@ in {
     useXkbConfig = false;
   };
 
-  services.syncthing.enable = true;
-  services.syncthing.user = "focus";
-  services.syncthing.dataDir = "/home/focus/";
+  # services.syncthing.enable = true;
+  # services.syncthing.user = "focus";
+  # services.syncthing.dataDir = "/home/focus/";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -42,7 +42,15 @@ in {
     jack.enable = true;
   };
 
-  programs.fish.enable = true;
+  environment.shellAliases = {};
+  programs.fish = {
+    enable = true;
+    shellAliases = { # for some reason nix has opionated shell aliases
+      l = null;      # this is really dumb but I am too lazy to complain
+      ls = null;     # upstream so I guess I am the dumb one here. Anyware 
+      ll = null;     # this will do for now.
+    };
+  };
   users.defaultUserShell = pkgs.fish;
 
   # programs.neovim = {
@@ -64,9 +72,9 @@ in {
 
     fontconfig = {
       defaultFonts = {
-        # serif = [ "Vazirmatn" "Ubuntu" ];
-        # sansSerif = [ "Vazirmatn" "Ubuntu" ];
-        # monospace = [ "Ubuntu" ];
+        # serif = [ "Hack" "Mononoki" ];
+        # sansSerif = [ "Mononoki" ];
+        # monospace = [ "Hack Mono" ];
       };
     };
   };
@@ -79,10 +87,10 @@ in {
     description = "focus";
     extraGroups = [ "wheel" "networkmanager" "audio" "video" "libvirtd" ];
     packages = with pkgs; [
-      rofi-wayland rofi-calc # rofi-pass
-      ncmpcpp playerctl # clerk 
-      foot alacritty
-      pass 
+      rofi-wayland # rofi-calc rofi-pass
+      # playerctl ncmpcpp mpc-cli
+      alacritty foot 
+      pass
       bat
       imv
       ripgrep
@@ -91,7 +99,6 @@ in {
       go
       pfetch
       gitui
-      alejandra
       bottom
       handlr-regex
       ripgrep
@@ -111,10 +118,9 @@ in {
       lf
       rustup
       zig
-      mpc-cli
       swww
       # blender
-      zellij tmux
+      zellij # tmux
       # acpi
       # wl-gammactl
       # wlsunset
@@ -145,27 +151,30 @@ in {
       obs-studio
       gnumake just
       unzip
+      libnotify
 
       # Neovim deps
-      stylua lua-language-server
+      stylua 
+      lua-language-server
+      alejandra
       neovim
     ];
   };
 
-  services.mpd = {
-    enable = true;
-    user = "focus";
+  # services.mpd = {
+    # enable = true;
+    # user = "focus";
     # musicDirectory = "${homeDirectory}/aud";
     # playlistDirectory = "${homeDirectory}/.config/mpd/playlists";
-    extraConfig = ''
-      audio_output {
-        type "alsa"
-        name "alsa"
-        device "hw:0,0"
-        mixer_type "software"
-      }
-    '';
-  };
+    # extraConfig = ''
+      # audio_output {
+        # type "alsa"
+        # name "alsa"
+        # device "hw:0,0"
+        # mixer_type "software"
+      # }
+    # '';
+  # };
 
   security.polkit.enable = true;
   security.sudo.enable = true;
@@ -184,9 +193,6 @@ in {
     };
     optimise.automatic = true;
   };
-
-
-  # virtualisation.virtualbox.guest.enable = true;
 
   xdg.portal.enable = true;
   # xdg.portal.wlr.enable = true;

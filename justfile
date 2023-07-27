@@ -31,8 +31,6 @@ build-nix:
 	sudo nixos-rebuild switch
 
 cargo-install:
-	# cargo install termmusic
-	# cargo install termmusic-server
 	cargo install cargo-expand
 	cargo install cargo-info
 	cargo install cargo-watch
