@@ -3,7 +3,22 @@ let
     homeDirectory = "/home/${config.users.users.focus.name}";
 in {
 
-  # boot.plymouth.enable = true;
+  boot = {
+    loader = {
+      efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        # useOSProber = true;
+        # configurationLimit = 2;
+      # font = path
+      # fontSize = uint
+      # theme = string
+      };
+      timeout = 3;
+    };
+  };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 

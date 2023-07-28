@@ -1,24 +1,9 @@
 { config, pkgs, ... }: {
   imports = [ 
     ./hardware-configuration.nix 
-    ./shared.nix
   ];
 
-  boot.loader = {
-    grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      # font = path
-      # fontSize = uint
-      # theme = string
-    };
-
-    efi = {
-      efiSysMountPoint = "/boot/efi";
-      canTouchEfiVariables = true;
-    };
-  };
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   networking.hostName = "hazed";
 

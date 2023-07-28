@@ -3,22 +3,7 @@
     ./hardware-configuration.nix 
   ];
 
-  boot = {
-    loader = {
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
-      };
-      grub = {
-        enable = true;
-        devices = [ "nodev" ];
-        efiSupport = true;
-        # useOSProber = true;
-        # configurationLimit = 2;
-      };
-      timeout = 3;
-    };
-  };
+  boot.loader.efi.efiSysMountPoint = "/boot";
 
   # boot.loader.systemd-boot.enable = true;
   # boot.loader.grub.enable = true;

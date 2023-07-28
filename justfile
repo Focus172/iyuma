@@ -4,33 +4,30 @@ jerry := ```
 test -e "$HOME/.local/bin/jerry" && echo '# Jerry already install' \
 	|| echo "curl -sL 'https://raw.githubusercontent.com/justchokingaround/jerry/main/jerry.sh' -o ~/.local/bin/jerry && chmod +x ~/.local/bin/jerry"
 ```
+packages := "cargo-expand cargo-info cargo-watch du-dust mprocs porsmo wiki-tui"
 
 default:
 	just --list
 
-brew-install:
+brew:
 	brew bundle
 
-web-install:
+web:
 	{{jerry}}
 
-# builds the nix configuration
+# builds nix
 nix host:
 	@echo "Requesting sudo privaliges ..."
 	sudo nixos-rebuild switch --flake .#{{host}}
 
-cargo-install:
-	cargo install cargo-expand
-	cargo install cargo-info
-	cargo install cargo-watch
-	cargo install du-dust
-	cargo install mprocs
-	cargo install porsmo
-	cargo install wiki-tui
+cargo:
+	nix-shell --run 'cargo install {{packages}}'
 
-linux: web-install cargo-install
+# installs all software used on linux
+linux host: web cargo (nix host)
+	@echo "Done!"
 
-mac: brew-install web-install cargo-install
+mac: brew web cargo
 
 
 # vim: set ft=make :
