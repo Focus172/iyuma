@@ -66,15 +66,6 @@ in {
   };
   users.defaultUserShell = pkgs.fish;
 
-  # programs.neovim = {
-  #   enable = false;
-  #   defaultEditor = true;
-  #   withRuby = false;
-  #   withNodeJs = false;
-  #   withPython3 = false;
-  # };
-
-
   fonts.packages = with pkgs; [
     (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
   ];
@@ -86,84 +77,6 @@ in {
     shell = pkgs.fish;
     description = "focus";
     extraGroups = [ "wheel" "networkmanager" "audio" "video" "libvirtd" ];
-    packages = with pkgs; [
-      rofi-wayland # rofi-calc rofi-pass
-      # playerctl ncmpcpp mpc-cli
-      alacritty cool-retro-term
-      pass
-      zathura imv
-      bat
-      ripgrep
-      starship
-      go
-      pfetch
-      gitui
-      bottom
-      handlr-regex
-      ripgrep
-      fzf
-      gitoxide
-      jql
-      yt-dlp
-      bacon
-      imagemagick
-      # neo-cowsay
-      # glow
-      # gum
-      # slides
-      # charm
-      # skate
-      # vhs
-      lf
-      rustup
-      zig
-      swaybg # swww
-      # blender
-      zellij
-      # acpi
-      # wl-gammactl
-      # wlsunset
-      # hyprpicker
-      pavucontrol
-      brightnessctl
-      alsa-utils
-      grim
-      libreoffice-fresh
-      mako
-      slurp
-      wl-clipboard
-      brave
-      discord
-      # swaylock-effects
-      # swayidle
-      # nginx
-      python312
-      killall
-      cava
-      tty-clock
-      # ani-cli
-      mpv
-      clang
-      btar
-      fd
-      file
-      obsidian
-      obs-studio
-      gnumake just
-      unzip
-      libnotify
-      waybar
-
-      # HACK: the agent isn't working for me so just installing it raw
-      pinentry-rofi
-      pinentry
-
-      # Neovim deps
-      stylua
-      lua-language-server
-      alejandra
-      neovim
-    ];
   };
 
   # services.mpd = {
