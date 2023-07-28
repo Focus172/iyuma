@@ -1,10 +1,29 @@
 { config, pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix 
-    ./shared.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
+  boot = {
+    loader = {
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+      grub = {
+        enable = true;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        # useOSProber = true;
+        # configurationLimit = 2;
+      };
+      timeout = 3;
+    };
+  };
+
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.device = "nodev";
+  # boot.loader.grub.efiSupport = true; 
 
   hardware.bluetooth = {
     enable = true;

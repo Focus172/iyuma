@@ -63,7 +63,7 @@ in {
 
 
   fonts = {
-    enableDefaultFonts = true;
+    # enableDefaultFonts = true;
     fonts = with pkgs; [
       (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
       # fira-code

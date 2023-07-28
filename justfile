@@ -14,21 +14,10 @@ brew-install:
 web-install:
 	{{jerry}}
 
-# removes sys nix files (RUN WITH CARE)
-clean-nix:
-	rm -rf /etc/nixos/*
-
-# links sys nix conf (host: "hazed"|"steambox"|"steelworks"|"steamfunk")
-link-nix host: clean-nix
-	test -e "./hosts/{{host}}/configurations.nix"
-	ln "./hosts/{{host}}/configurations.nix" /etc/nixos/configuration.nix
-	ln "./hosts/{{host}}/hardware-configuration.nix" /etc/nixos/hardware-configuration.nix
-	ln "./hosts/shared/shared.nix" /etc/nixos/shared.nix
-
 # builds the nix configuration
-build-nix: 
+nix host:
 	@echo "Requesting sudo privaliges ..."
-	sudo nixos-rebuild switch
+	sudo nixos-rebuild switch --flake .#{{host}}
 
 cargo-install:
 	cargo install cargo-expand
@@ -39,10 +28,7 @@ cargo-install:
 	cargo install porsmo
 	cargo install wiki-tui
 
-plist-install:
-	cp ./syncthing.plist ~/Library/LaunchAgents/syncthing.plist
-
-linux: build-nix web-install cargo-install
+linux: web-install cargo-install
 
 mac: brew-install web-install cargo-install
 
