@@ -11,16 +11,15 @@ in {
         devices = [ "nodev" ];
         efiSupport = true;
         # useOSProber = true;
-        # configurationLimit = 2;
-      # font = path
-      # fontSize = uint
-      # theme = string
+        configurationLimit = 2;
+        # font = path
+        # fontSize = uint
+        # theme = string
       };
-      timeout = 3;
+      timeout = 2;
     };
+    kernelPackages = pkgs.linuxPackages_latest;
   };
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   time.timeZone = "America/Tijuana";
 
@@ -45,7 +44,6 @@ in {
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
-
 
   # Enable sound.
   sound.enable = true;
@@ -77,22 +75,9 @@ in {
   # };
 
 
-  fonts = {
-    # enableDefaultFonts = true;
-    fonts = with pkgs; [
-      (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
-      # fira-code
-      # fira-code-symbols
-    ];
-
-    fontconfig = {
-      defaultFonts = {
-        # serif = [ "Hack" "Mononoki" ];
-        # sansSerif = [ "Mononoki" ];
-        # monospace = [ "Hack Mono" ];
-      };
-    };
-  };
+  fonts.packages = with pkgs; [
+    (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
+  ];
 
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -104,12 +89,11 @@ in {
     packages = with pkgs; [
       rofi-wayland # rofi-calc rofi-pass
       # playerctl ncmpcpp mpc-cli
-      alacritty
+      alacritty cool-retro-term
       pass
       zathura imv
       bat
       ripgrep
-      exa
       starship
       go
       pfetch
@@ -171,7 +155,6 @@ in {
       waybar
 
       # HACK: the agent isn't working for me so just installing it raw
-      gnupg
       pinentry-rofi
       pinentry
 
@@ -217,20 +200,18 @@ in {
   };
 
   xdg.portal.enable = true;
-  # xdg.portal.wlr.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-    # enable = true;
-    # enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   nixpkgs.config.allowUnfree = true;
 
-  # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
   environment.systemPackages = with pkgs; [

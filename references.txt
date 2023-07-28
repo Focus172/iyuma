@@ -11,5 +11,7 @@ https://github.com/end-4/dots-hyprland
 https://github.com/JaKooLit/Ja_HyprLanD-dots
 https://github.com/cseickel/dotfiles
 https://github.com/FlafyDev/nixos-config
+https://github.com/MatthiasBenaets/nixos-config
+https://github.com/rxyhn/yuki
 https://nx2.site/grub-ascii-theme
 https://nx2.site/my-ascii-art

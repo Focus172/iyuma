@@ -5,11 +5,6 @@
 
   boot.loader.efi.efiSysMountPoint = "/boot";
 
-  # boot.loader.systemd-boot.enable = true;
-  # boot.loader.grub.enable = true;
-  # boot.loader.grub.device = "nodev";
-  # boot.loader.grub.efiSupport = true; 
-
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = false;
