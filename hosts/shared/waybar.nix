@@ -1,30 +1,20 @@
 # vim: ts=2 : sw=2
 
-{ config, lib, pkgs, host, user, ...}:
+{ config, lib, pkgs, host, user, ...}: {
+  programs.waybar = {
+    enable = true;
+    package = pkgs.waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      patchPhase = ''
+        substituteInPlace src/modules/wlr/workspace_manager.cpp --replace "zext_workspace_handle_v1_activate(workspace_handle_);" "const std::string command = \"hyprctl dispatch workspace \" + name_; system(command.c_str());"
+      '';
+    });
+    # systemd = {
+      # enable = true;
+      # target = "sway-session.target";
+    # };
 
-let
-  sinkBuiltIn="Built-in Audio Analog Stereo";
-  sinkVideocard=''Ellesmere HDMI Audio \[Radeon RX 470\/480 \/ 570\/580\/590\] Digital Stereo \(HDMI 3\)'';
-  sinkBluetooth="S10 Bluetooth Speaker";
-  headset=sinkVideocard; # Change me
-  speaker=sinkBluetooth;
-in
-{
-
-    programs.waybar = {
-      enable = true;
-      package = pkgs.waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-        patchPhase = ''
-          substituteInPlace src/modules/wlr/workspace_manager.cpp --replace "zext_workspace_handle_v1_activate(workspace_handle_);" "const std::string command = \"hyprctl dispatch workspace \" + name_; system(command.c_str());"
-        '';
-      });
-      # systemd = {
-        # enable = true;
-        # target = "sway-session.target";
-      # };
-
-      style = ''
+    style = ''
 * {
     border: none;
     border-radius: 2;
@@ -77,7 +67,6 @@ tooltip {
 
 #custom-language,
 #custom-updates,
-#custom-weather,
 #window,
 #clock,
 #battery,
@@ -562,18 +551,6 @@ tooltip {
 /*   border-radius: 0px; */
 /*   background-clip: padding-box; */
 /* } */
-/**/
-/* #custom-arch { */
-/*   background-color: #13171b; */
-/*   color: #747a83; */
-/*   padding: 0 10px; */
-/*   font-size: 20px; */
-/*   margin: 2px 0px 5px 0px; */
-/*   border: 3px solid rgba(0, 0, 0, 0); */
-/*   border-radius: 90px; */
-/*   background-clip: padding-box; */
-/* } */
-/**/
 /* #workspaces button { */
 /*   transition: none; */
 /*   padding-left: 6px; */
@@ -602,15 +579,6 @@ tooltip {
 /* #workspaces button.urgent { */
 /*   color: #e06c75; */
 /* } */
-/**/
-/* #cpu { */
-/*   color: #61afef; */
-/* } */
-/**/
-/* #memory { */
-/*   color: #c678dd; */
-/* } */
-/**/
 /* #temperature { */
 /*   color: #d19a66; */
 /* } */
@@ -619,42 +587,6 @@ tooltip {
 /*   background-color: #e06c75; */
 /*   color: #1e222a; */
 /* } */
-/**/
-/* #custom-media { */
-/*   background-color: #13171b; */
-/*   color: #b6beca; */
-/* } */
-/**/
-/* #custom-fans { */
-/*   color: #98c379; */
-/* } */
-/**/
-/**/
-/* #idle_inhibitor { */
-/*   color: #abb2bf; */
-/* } */
-/**/
-/* #idle_inhibitor.activated { */
-/*   background-color: #abb2bf; */
-/*   color: #1e222a; */
-/* } */
-/**/
-/* #language { */
-/*   color: #56b6c2; */
-/* } */
-/**/
-/* #pulseaudio { */
-/*   color: #a6adb9; */
-/* } */
-/**/
-/* #pulseaudio.muted { */
-/*   color: #e06c75; */
-/* } */
-/**/
-/* #backlight { */
-/*   color: #a6adb9; */
-/* } */
-/**/
 /* #battery { */
 /*   margin-top: 5px; */
 /*   margin-bottom: 4px; */
@@ -678,67 +610,6 @@ tooltip {
 /*         color: #e06c75; */
 /*     } */
 /* } */
-/**/
-/*   #network { */
-/*     margin-top: 2px; */
-/*     margin-bottom: 1px; */
-/*     margin-left: 0px; */
-/*     margin-right: 18px; */
-/*     padding-left: 6px; */
-/*     padding-right: 6px; */
-/*     font-size: 13px; */
-/*   } */
-/**/
-/*   #backlight, */
-/*   #pulseaudio, */
-/*   #custom-bluetooth { */
-/*     margin-top: 5px; */
-/*     margin-bottom: 4px; */
-/*     margin-left: 0px; */
-/*     margin-right: 6px; */
-/*     padding: 0px 10px; */
-/*   } */
-/**/
-/*  widget > * { */
-/*     margin-top: 10px; */
-/*     margin-bottom: 10px; */
-/*   } */
-/*   .modules-left > widget > * { */
-/*     margin-left: 12px; */
-/*     margin-right: 12px; */
-/*   } */
-/*   .modules-left > widget:first-child > * { */
-/*     margin-left: 25px; */
-/*   } */
-/*   .modules-left > widget:last-child > * { */
-/*     margin-right: 12px; */
-/*   } */
-/*   .modules-center > widget > * { */
-/*     margin-left: 12px; */
-/*     margin-right: 12px; */
-/*   } */
-/*   .modules-right > widget > * { */
-/*     padding: 0 12px; */
-/*     margin-left: 0; */
-/*     margin-right: 0; */
-/*   } */
-/*   .modules-right > widget:first-child > * { */
-/*     border-radius: 5px 0 0 5px; */
-/*   } */
-/*   .modules-right > widget:last-child > * { */
-/*     border-radius: 0 5px 5px 0; */
-/*     margin-right: 20px; */
-/*   } */
-/*   #taskbar button.active { */
-/*     border-bottom-color: #3b4b58; */
-/*     border-bottom-width: 1px; */
-/*     border-bottom-style: solid; */
-/*   } */
-/*   #taskbar button { */
-/*     border-bottom-color: #13171b; */
-/*     border-bottom-width: 1px; */
-/*     border-bottom-style: solid; */
-/*   } */
       '';
       settings = with host; {
         Main = {
@@ -747,32 +618,19 @@ tooltip {
           height = 16;
           tray = { spacing = 5; };
 
-          modules-left = [ "custom/menu" "wlr/workspaces" "tray" "mpd"];
+          modules-left = [ "wlr/workspaces" "tray" "mpd"];
           modules-center = [ "clock" ];
           modules-right = ["battery" "pulseaudio" "pulseaudio#microphone" "backlight" "network" "cpu" "memory" "temperature"];
           # modules-right = [ "cpu" "memory" "custom/pad" "battery" "custom/pad" "backlight" "custom/pad" "pulseaudio" "custom/pad" "tray" ];
 
-          "custom/pad" = {
-            format = "      ";
-            tooltip = false;
-          };
-          "custom/menu" = {
-            format = "";
-            on-click = "~/.config/rofi/bin/launch.sh";
-            on-click-right = "~/.config/rofi/bin/power.sh";
-            tooltip = false;
-          };
           "wlr/workspaces" = {
-            format = "{name} {icon}";
+            format = "{name}";
             format-icons = {
               "1"="";
               "2"="";
               "3"="";
               "4"="";
               "5"="";
-              "6"="";
-              "7"="";
-              "8"="";
               "9"="";
               "10"="";
             };
@@ -780,29 +638,28 @@ tooltip {
             on-click = "activate";
           };
           clock = {
-            format = "{:%b %d %H:%M}  ";
+            format = "{:%b %d %H:%M}";
             tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-            #format-alt = "{:%A, %B %d, %Y} ";
           };
           cpu = {
-            format = " {usage}% <span font='11'></span> ";
-            interval = 1;
+            format = " {usage}%  ";
+            interval = 3;
           };
           disk = {
-            format = "{percentage_used}% <span font='11'></span>";
+            format = "{percentage_used}%  ";
             path = "/";
-            interval = 30;
+            interval = 300;
           };
           memory = {
-            format = "{}% <span font='11'></span>";
-            interval = 1;
+            format = "{}%  ";
+            interval = 3;
           };
           backlight = {
             device = "intel_backlight";
             format= "{percent}% {icon}";
             format-icons = ["" ""];
-            on-scroll-down = "${pkgs.light}/bin/light -U 5";
-            on-scroll-up = "${pkgs.light}/bin/light -A 5";
+            # on-scroll-down = "${pkgs.light}/bin/light -U 5";
+            # on-scroll-up = "${pkgs.light}/bin/light -A 5";
           };
           battery = {
             interval = 60;
@@ -810,22 +667,21 @@ tooltip {
               warning = 30;
               critical = 15;
             };
-            format = "{capacity}% <span font='11'>{icon}</span>";
-            format-charging = "{capacity}% <span font='11'></span>";
-            format-icons = ["" "" "" "" ""];
+            format = "{capacity}% {icon}";
+            format-charging = "{capacity}%  ";
+            format-icons = [" " " " " " " " " "];
             max-length = 25;
           };
           network = {
             format-wifi = " ";
             format-ethernet = "󰈀 "; #{ifname}: {ipaddr}/{cidr}";
-            format-linked = "<span font='11'>󱘖</span> {ifname} (No IP)";
-            format-disconnected = "<span font='11'>󱘖</span> Not connected";
-            #format-alt = "{ifname}: {ipaddr}/{cidr}";
+            format-linked = "󱘖 {ifname} (No IP)";
+            format-disconnected = "󱘖  Not connected";
             tooltip-format = "{essid} {ipaddr}/{cidr}";
-            #on-click-right = "${pkgs.alacritty}/bin/alacritty -e nmtui";
+            on-click-right = "alacritty -e nmtui";
           };
           pulseaudio = {
-            format = "<span font='11'>{icon}</span> {volume}% {format_source} ";
+            format = "{icon} {volume}% {format_source} ";
             format-bluetooth = "<span font='11'>{icon}</span> {volume}% {format_source} ";
             format-bluetooth-muted = "<span font='11'>x</span> {volume}% {format_source} ";
             format-muted = "<span font='11'>x</span> {volume}% {format_source} ";
@@ -850,33 +706,6 @@ tooltip {
             icon-size = 13;
           };
         };
-      };
-    };
-    home.file = {
-      ".config/waybar/script/kb.sh" = {              # Custom script: Keyboard battery indicator
-        text = ''
-          #!/bin/sh
-
-          for cap in /sys/class/power_supply/hid-dc:2c:26:36:79:9b-battery/capacity; do
-            BATT=$(cat "$cap")
-          done
-          for stat in /sys/class/power_supply/hid-dc:2c:26:36:79:9b-battery/status; do
-            STAT=$(cat "$stat")
-          done
-
-          if [[ "$STAT" == "Charging" ]] then
-            printf "<span font='13'> 󰌌</span><span font='10'></span> $BATT%%\n"
-          elif [[ "$STAT" == "Full" ]] then
-            printf "<span font='13'> 󰌌</span><span font='10'></span> Full\n"
-          elif [[ "$STAT" = "Discharging" ]] then
-            printf "<span font='13'> 󰌌</span> $BATT%%\n"
-          else
-            printf "\n"
-          fi
-
-          exit 0
-        '';
-        executable = true;
       };
     };
 }

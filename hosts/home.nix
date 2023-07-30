@@ -6,6 +6,9 @@
   imports =
     (import ./shared); # ++
     # (import ../modules/services);
+    #
+
+  programs.exa.enable = true;
 
   home = {
     username = "${user}";
@@ -88,7 +91,6 @@
       alejandra
       neovim
       appimage-run
-      exa
       #libnotify
       #wlr-randr
       #swaylock-fancy
