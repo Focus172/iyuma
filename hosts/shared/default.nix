@@ -1,3 +1,3 @@
 [
-  ./waybar.nix
+  # ./waybar.nix
 ]

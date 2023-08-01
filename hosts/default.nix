@@ -1,7 +1,11 @@
-{ lib, inputs, home-manager, nixpkgs, user, hyprland, ... }:
+{ lib, inputs, home-manager, nixpkgs, nixpkgs-stable, user, hyprland, ... }:
 let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
+    inherit system;
+    config.allowUnfree = true;
+  };
+  pkgs-stable = import nixpkgs-stable {
     inherit system;
     config.allowUnfree = true;
   };
@@ -9,7 +13,7 @@ in {
   steelwork = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system user hyprland;
+      inherit inputs system user hyprland pkgs-stable;
       host = {
         hostName = "steelwork";
       };
@@ -22,7 +26,7 @@ in {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-        inherit user;
+          inherit user pkgs-stable;
           host = {
             hostName = "steelwork";
           };
@@ -30,7 +34,7 @@ in {
         home-manager.users.${user} = {
           imports = [
             ./home.nix
-            # ./steelwork/home.nix
+            ./steelwork/home.nix
           ];
         };
       }
