@@ -2,41 +2,58 @@
   # services.mpd-discord-rpc.enable = false;
   # programs.ncmpcpp.enable = true;
 
+  # services.mpd = {
+  #   enable = true;
+  #   musicDirectory = "${config.home.homeDirectory}/aud";
+  #   dataDir = "${config.home.homeDirectory}/.config/mpd";
+  #   extraConfig = ''
+  #       auto_update       "yes"
+  #       restore_paused    "yes"
+  #       audio_output {
+  #           type "alsa"
+  #           name "Pulseaudio"
+  #           server "127.0.0.1"
+  #       }
+  #       audio_output {
+  #           type            "fifo"
+  #           name            "Visualizer"
+  #           format          "44100:16:2"
+  #           path            "/tmp/mpd.fifo"
+  #       }
+  #       audio_output {
+  #           type		    "httpd"
+  #           name		    "lossless"
+  #           encoder         "vorbis"
+  #           port            "6600"
+  #           max_client	    "8"
+  #           mixer_type	    "software"
+  #           format		    "44100:16:2"
+  #       }
+  #   '';
+  #   network.startWhenNeeded = true;
+  # };
+
   services.mpd = {
     enable = true;
-    musicDirectory = "${config.home.homeDirectory}/aud";
-    dataDir = "${config.home.homeDirectory}/.config/mpd";
+    # user = "focus";
+    musicDirectory = "/home/${user}/aud";
+    playlistDirectory = "/home/${user}/.config/mpd/playlists";
     extraConfig = ''
-        auto_update       "yes"
-        restore_paused    "yes"
-        audio_output {
-            type "pulse"
-            name "Pulseaudio"
-            server "127.0.0.1"
-        }
-        audio_output {
-            type            "fifo"
-            name            "Visualizer"
-            format          "44100:16:2"
-            path            "/tmp/mpd.fifo"
-        }
-        audio_output {
-            type		    "httpd"
-            name		    "lossless"
-            encoder         "vorbis"
-            port            "6600"
-            max_client	    "8"
-            mixer_type	    "software"
-            format		    "44100:16:2"
-        }
+      auto_update "yes"
+      pid_file "/tmp/mpd.pid"
+      audio_output {
+        type "pipewire"
+        name "Main Out"
+        # device "pipewire"
+        # mixer_type "software"
+      }
     '';
-    network.startWhenNeeded = true;
   };
-
 
   home.packages = [
     # pkgs.playerctl
     pkgs.mpc-cli
+    pkgs.lutris
   ];
   # services.mpdris2.enable = true;
   # services.playerctld.enable = true;

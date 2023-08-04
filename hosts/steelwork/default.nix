@@ -3,6 +3,8 @@
     ./hardware-configuration.nix 
   ];
 
+  programs.steam.enable = true;
+
   boot.loader.efi.efiSysMountPoint = "/boot";
 
   hardware.bluetooth = {

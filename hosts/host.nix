@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
-let
-    homeDirectory = "/home/${config.users.users.focus.name}";
-in {
+{ pkgs, ... }: # config
+# let
+    # homeDirectory = "/home/${config.users.users.focus.name}";
+# in 
+{
 
   boot = {
     loader = {
@@ -66,7 +67,7 @@ in {
   };
   users.defaultUserShell = pkgs.fish;
 
-  fonts.packages = with pkgs; [
+  fonts.fonts = with pkgs; [
     (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
   ];
 
@@ -78,21 +79,6 @@ in {
     description = "focus";
     extraGroups = [ "wheel" "networkmanager" "audio" "video" "libvirtd" ];
   };
-
-  # services.mpd = {
-    # enable = true;
-    # user = "focus";
-    # musicDirectory = "${homeDirectory}/aud";
-    # playlistDirectory = "${homeDirectory}/.config/mpd/playlists";
-    # extraConfig = ''
-      # audio_output {
-        # type "alsa"
-        # name "alsa"
-        # device "hw:0,0"
-        # mixer_type "software"
-      # }
-    # '';
-  # };
 
   security.polkit.enable = true;
   security.sudo.enable = true;

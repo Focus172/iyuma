@@ -1,14 +1,12 @@
-{ config, lib, pkgs, pkgs-stable, user, ... }: {
+{ config, lib, pkgs, user, ... }: {
 
   home.stateVersion = "23.05";
-  programs.home-manager.enable = true;
+  # programs.home-manager.enable = true;
 
   imports =
     (import ./shared); # ++
     # (import ../modules/services);
 
-  programs.exa.enable = true;
-  programs.exa.package = pkgs-stable.exa;
 
   programs.waybar = {
     enable = true;
@@ -28,6 +26,7 @@
         rofi-wayland # rofi-calc rofi-pass
         # playerctl ncmpcpp mpc-cli
         alacritty cool-retro-term
+        exa
         pass
         zathura imv
         bat
@@ -86,10 +85,12 @@
         fd
         file
         obsidian
-        obs-studio
+        # obs-studio
+        ffmpeg
         gnumake just
         unzip
         libnotify
+        newsboat
 
         # HACK: the agent isn't working for me so just installing it raw
         pinentry-rofi
@@ -140,10 +141,10 @@
     font.name = "Hack Nerd Font Medium";
   };
 
-  systemd.user.targets.tray = {
-    Unit = {
-      Description = "Home Manager System Tray";
-      Requires = [ "graphical-session-pre.target" ];
-    };
-  };
+  # systemd.user.targets.tray = {
+    # Unit = {
+      # Description = "Home Manager System Tray";
+      # Requires = [ "graphical-session-pre.target" ];
+    # };
+  # };
 }
