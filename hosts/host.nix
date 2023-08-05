@@ -1,8 +1,4 @@
-{ pkgs, ... }: # config
-# let
-    # homeDirectory = "/home/${config.users.users.focus.name}";
-# in 
-{
+{ pkgs, ... }: {
 
   boot = {
     loader = {
@@ -67,10 +63,14 @@
   };
   users.defaultUserShell = pkgs.fish;
 
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
-  ];
-
+  fonts = {
+    fonts = with pkgs; [
+      (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
+      rounded-mgenplus
+      # hanazono # a bit too fancy
+    ];
+    enableDefaultFonts = false;
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.focus = {

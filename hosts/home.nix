@@ -3,8 +3,8 @@
   home.stateVersion = "23.05";
   # programs.home-manager.enable = true;
 
-  imports =
-    (import ./shared); # ++
+  imports = (import ./shared);
+    # ++
     # (import ../modules/services);
 
 
@@ -32,34 +32,29 @@
         bat
         ripgrep
         starship
-        go
+        go rustup zig
+
         pfetch
-        gitui
         bottom
         handlr-regex
         ripgrep
         fzf
-        gitoxide
+        gitui gitoxide
         jql
         yt-dlp
         bacon
         imagemagick
         # neo-cowsay
-        # glow
-        # gum
-        # slides
-        # charm
-        # skate
-        # vhs
+        # glow gum
+        # slides charm
+        # skate vhs
         lf
-        rustup
-        zig
         swaybg # swww
         # blender
         zellij
         # acpi
-        # wl-gammactl
-        # wlsunset
+        wl-gammactl
+        wlsunset
         # hyprpicker
         pavucontrol
         brightnessctl
@@ -71,8 +66,8 @@
         wl-clipboard
         brave
         discord
-        # swaylock-effects
-        # swayidle
+        swaylock-effects swayidle
+        #swaylock-fancy
         # nginx
         python312
         killall
@@ -91,37 +86,36 @@
         unzip
         libnotify
         newsboat
+      # deluge
+      vorbis-tools
 
-        # HACK: the agent isn't working for me so just installing it raw
         pinentry-rofi
         pinentry
 
-        # Neovim deps
-        stylua
-        lua-language-server
-        alejandra
-        taplo
-        neovim
-        statix
+      ## Neovim deps
+      stylua
+      lua-language-server
+      alejandra
+      taplo
+      neovim
+      statix
+      appimage-run
 
-        appimage-run
-        #wlr-randr
-        #swaylock-fancy
-        #deluge
-        #steam
-        #light
-        vorbis-tools
+      ## Games
+      dolphin-emu
+      # retroarch
 
-        dolphin-emu
-        # retroarch
+      ## study
+      memento
+      onscripter-en
     ];
 
-    pointerCursor = {
-      gtk.enable = true;
-      name = "Catppuccin-Mocha-Dark-Cursors";
-      package = pkgs.catppuccin-cursors.mochaDark;
-      size = 16;
-    };
+    # pointerCursor = {
+    #   gtk.enable = true;
+    #   name = "Catppuccin-Mocha-Dark-Cursors";
+    #   package = pkgs.catppuccin-cursors.mochaDark;
+    #   size = 16;
+    # };
   };
 
   gtk = {
@@ -140,11 +134,4 @@
     };
     font.name = "Hack Nerd Font Medium";
   };
-
-  # systemd.user.targets.tray = {
-    # Unit = {
-      # Description = "Home Manager System Tray";
-      # Requires = [ "graphical-session-pre.target" ];
-    # };
-  # };
 }

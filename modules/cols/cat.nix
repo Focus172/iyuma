@@ -1,5 +1,4 @@
 {}: rec {
-  wallpaper = "peace.png";
   foreground = "f5e0dc";
   background = "11111b";
   bg2 = "1e1e2e";
@@ -33,7 +32,6 @@
 
   color7 = "B5BFE2";
   color15 = "83889a";
-  name = "cat";
 }
 
 /*
