@@ -36,4 +36,34 @@ in {
       }
     ];
   };
+  steambox = lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit inputs system user hyprland;
+      host = {
+        hostName = "steelwork";
+      };
+    };
+    modules = [
+      # hyprland.nixosModules.default
+      ./host.nix
+      ./steambox
+      home-manager.nixosModules.home-manager {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = {
+          inherit user;
+          host = {
+            hostName = "steambox";
+          };
+        };
+        home-manager.users.${user} = {
+          imports = [
+            ./home.nix
+            # ./steambox/home.nix
+          ];
+        };
+      }
+    ];
+  };
 }
