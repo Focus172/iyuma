@@ -1,0 +1,80 @@
+
+alsa-tools
+alsa-utils
+
+arch-install-scripts
+archlinuxarm-keyring
+asahi-desktop-meta
+
+asahi-meta
+base
+dmraid
+evtest
+
+imv
+neovim
+base-devel
+
+ttf-hack-nerd
+## ttf-mononoki
+
+firefox
+aur: firefox-pwa
+
+just make
+
+aur: paru
+
+openssh
+rsync
+
+grub
+iotop
+kde-applications-meta
+libgit2
+man-db
+mesa-demos
+nano
+net-tools
+netctl
+pacman-contrib
+pavucontrol
+plasma-meta
+powertop
+re2
+sysfsutils
+tinycompress
+unzip
+wget
+xf86-input-evdev
+xorg-xinit
+xorg-xinput
+zsh
+
+# bat
+# bacon
+# bottom
+# broot
+# exa
+# fd
+# fzf
+# gitoxide
+# gh
+# gnupg
+# imagemagick
+# hyperfine
+# jql
+lf
+# media-info
+# mpv
+# newsboat
+# node
+# pass
+# ripgrep
+# rsync
+# starship
+# vorbis-tools
+# yt-dlp
+# zellij
+# zig
+# discord
