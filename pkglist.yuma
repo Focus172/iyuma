@@ -1,4 +1,3 @@
-
 alsa-tools
 alsa-utils
 
@@ -7,19 +6,37 @@ archlinuxarm-keyring
 asahi-desktop-meta
 
 asahi-meta
-base
-dmraid
-evtest
+
+alacritty cool-retro-term
+
+linux-asahi-edge
+mesa-asahi-edge
+
+networkmanager-qt
+
+xdg-utils
 
 imv
 neovim
+starship
+
 base-devel
 
+rustup
+zig
+clang
+
+hyprland
+wayland
+# wayland-protocals
+
 ttf-hack-nerd
-## ttf-mononoki
+ttf-mononoki-nerd
 
 firefox
 aur: firefox-pwa
+
+aur: rofi-lbonn-wayland
 
 just make
 
@@ -27,54 +44,48 @@ aur: paru
 
 openssh
 rsync
-
 grub
-iotop
-kde-applications-meta
 libgit2
 man-db
-mesa-demos
 nano
 net-tools
 netctl
 pacman-contrib
 pavucontrol
-plasma-meta
-powertop
-re2
-sysfsutils
 tinycompress
 unzip
 wget
-xf86-input-evdev
-xorg-xinit
-xorg-xinput
+lf
 zsh
+bat
+bottom
+broot
+exa
+fd
+fzf
+gnupg
+mpv
+newsboat
+# node
+pass
+ripgrep
+vorbis-tools
+yt-dlp
+zellij
 
-# bat
+
+# imagemagick
 # bacon
-# bottom
-# broot
-# exa
-# fd
-# fzf
 # gitoxide
 # gh
-# gnupg
-# imagemagick
 # hyperfine
 # jql
-lf
 # media-info
-# mpv
-# newsboat
-# node
-# pass
-# ripgrep
-# rsync
-# starship
-# vorbis-tools
-# yt-dlp
-# zellij
-# zig
 # discord
+
+base
+dmraid
+evtest
+powertop
+re2
+sysfsutils

@@ -20,7 +20,7 @@ web:
 	chmod +x ~/.local/bin/*
 
 pkgs:
-	[ -z {{remove}} ] || sudo pacman -Rns {{remove}}
+	[ -z "{{remove}}" ] || sudo pacman -Rns {{remove}}
 	sudo pacman -S --needed {{pac}}
 	paru -S --needed {{aur}}
 
