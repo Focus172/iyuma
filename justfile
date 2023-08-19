@@ -27,6 +27,9 @@ pkgs:
 cargo:
 	cargo install {{crates}}
 
-linux: pkgs web cargo
+arch: pkgs web cargo
+
+nix: && web cargo
+	sudo nixos-rebuild switch --flake '.#steelwork'
 
 # vim: set ft=make :

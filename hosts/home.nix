@@ -4,59 +4,51 @@
   # programs.home-manager.enable = true;
 
   imports = (import ./shared);
-    # ++
-    # (import ../modules/services);
-
-
-  programs.waybar = {
-    enable = true;
-    package = pkgs.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      patchPhase = ''
-        substituteInPlace src/modules/wlr/workspace_manager.cpp --replace "zext_workspace_handle_v1_activate(workspace_handle_);" "const std::string command = \"hyprctl dispatch workspace \" + name_; system(command.c_str());"
-      '';
-    });
-  };
+    programs.firefox.enable = true;
 
   home = {
     username = "${user}";
     homeDirectory = "/home/${user}";
 
     packages = with pkgs; [
-        rofi-wayland # rofi-calc rofi-pass
-        # playerctl ncmpcpp mpc-cli
-        alacritty cool-retro-term
-        exa
-        pass
-        zathura imv
-        bat
-        ripgrep
-        starship
-        go rustup zig
+      ### applictions
+      rofi-wayland
+      brave # TODO: remove brave
+      pavucontrol
+      cpupower-gui
 
-        pfetch
-        bottom
+      ### Terminal Utils
+      alacritty cool-retro-term
+
+      exa bat pfetch
+      pass bottom
+      ripgrep fzf
+      starship
+      zellij # mprocs
+      lf
+
+      ### Utils
+      zathura imv
+      yt-dlp
+      imagemagick
+
+      ### Languaes
+      gitui gitoxide
+      bacon
+
+      go rustup zig
+      # sassc
+      ghc cabal-install
+      flutter python310 # node
+
+
         handlr-regex
-        ripgrep
-        fzf
-        gitui gitoxide
+      xdg-utils
         jql
-        yt-dlp
-        bacon
-        imagemagick
-        # neo-cowsay
-        # glow gum
-        # slides charm
-        # skate vhs
-        lf
         swaybg # swww
-        # blender
-        zellij
-        # acpi
         wl-gammactl
         wlsunset
-        # hyprpicker
-        pavucontrol
+
         brightnessctl
         alsa-utils
         grim
@@ -64,33 +56,41 @@
         mako
         slurp
         wl-clipboard
-        brave
-        discord
-        swaylock-effects swayidle
-        #swaylock-fancy
+
+        # neo-cowsay
+        # glow gum
+        # slides charm
+        # skate vhs
+        # blender
+        # acpi
+        # hyprpicker
         # nginx
-        python312
+        # ani-cli
+        # obsidian
+        # obs-studio
+      deluge
+      # protonvpn-gui
+
+
+        discord
         killall
         cava
         tty-clock
-        # ani-cli
         mpv
         clang
         btar
         fd
         file
-        obsidian
-        # obs-studio
         ffmpeg
         gnumake just
         unzip
         libnotify
         newsboat
-      # deluge
       vorbis-tools
+      appimage-run
 
-        pinentry-rofi
-        pinentry
+      pinentry # pinentry-rofi
+
 
       ## Neovim deps
       stylua
@@ -99,23 +99,24 @@
       taplo
       neovim
       statix
-      appimage-run
+      zls
+      haskell-language-server
 
-      ## Games
+      ### Games
       dolphin-emu
       # retroarch
 
-      ## study
+      ### study
       memento
       onscripter-en
     ];
 
-    # pointerCursor = {
-    #   gtk.enable = true;
-    #   name = "Catppuccin-Mocha-Dark-Cursors";
-    #   package = pkgs.catppuccin-cursors.mochaDark;
-    #   size = 16;
-    # };
+    pointerCursor = {
+      gtk.enable = true;
+      name = "Catppuccin-Mocha-Dark-Cursors";
+      package = pkgs.catppuccin-cursors.mochaDark;
+      size = 36;
+    };
   };
 
   gtk = {

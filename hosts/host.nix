@@ -18,6 +18,14 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
+  ### printing
+  services.printing.enable = true;
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
+  # for a WiFi printer
+  services.avahi.openFirewall = true;
+
+
   time.timeZone = "America/Tijuana";
 
   # Enable networking
@@ -39,9 +47,6 @@
   # services.syncthing.user = "focus";
   # services.syncthing.dataDir = "/home/focus/";
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
   # Enable sound.
   sound.enable = true;
   services.pipewire = {
@@ -51,17 +56,26 @@
     pulse.enable = true;
     jack.enable = true;
   };
+  environment.variables = {
+    ZDOTDIR = "$HOME/.config/zsh";
+    EDITOR = "nvim";
+  };
 
-  environment.shellAliases = {};
-  programs.fish = {
+  programs.zsh = {
     enable = true;
+    syntaxHighlighting.enable = true;
+    enableCompletion = true;
+  };
+
+  programs.fish = {
+    enable = false;
     shellAliases = { # for some reason nix has opionated shell aliases
       l = null;      # this is really dumb but I am too lazy to complain
       ls = null;     # upstream so I guess I am the dumb one here. Anyware 
       ll = null;     # this will do for now.
     };
   };
-  users.defaultUserShell = pkgs.fish;
+  users.defaultUserShell = pkgs.zsh;
 
   fonts = {
     fonts = with pkgs; [
@@ -75,7 +89,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.focus = {
     isNormalUser = true;
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
     description = "focus";
     extraGroups = [ "wheel" "networkmanager" "audio" "video" "libvirtd" ];
   };

@@ -1,3 +1,4 @@
 [
-  # ./waybar.nix
+  ./waybar.nix
+  # ./locking.nix
 ]
