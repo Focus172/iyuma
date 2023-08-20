@@ -19,6 +19,12 @@ web:
 	{{jerry}}
 	chmod +x ~/.local/bin/*
 
+firefox:
+	@echo "BEFORE RUNNING THIS MAKE SURE YOUR PROFILES ARE MOVE TO THE CORRENT DIR. UPDATE THE PROFILES.INI FILE TO MATCH THE CORRECT LOCATION"
+	@read
+	cp ./user.js ~/.mozilla/firefox/work.profile/
+	cp ./user.js ~/.mozilla/firefox/personal.profile/
+
 pkgs:
 	[ -z "{{remove}}" ] || sudo pacman -Rns {{remove}}
 	sudo pacman -S --needed {{pac}}
