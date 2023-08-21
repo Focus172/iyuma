@@ -26,9 +26,16 @@ firefox:
 	cp ./user.js ~/.mozilla/firefox/personal.profile/
 
 pkgs:
-	[ -z "{{remove}}" ] || sudo pacman -Rns {{remove}}
-	sudo pacman -S --needed {{pac}}
-	paru -S --needed {{aur}}
+	# [ -z "{{remove}}" ] || sudo pacman -Rns {{remove}}
+	# sudo pacman -S --needed {{pac}}
+	# paru -S --needed {{aur}}
+	echo "Run the yuma comamnd if installed"
+
+yuma-desktop:
+	yuma ./pkglist.yuma ./desktop.yuma
+
+yuma-asahi:
+	yuma ./pkglist.yuma ./asahi.yuma
 
 cargo:
 	cargo install {{crates}}

@@ -1,97 +1,98 @@
+# vim: ft=yaml
 ##! A collections of packages to install
 
-aur: paru
-
 ## ---------- Audio -------- ##
-alsa-tools alsa-utils
-pipewire-alsa pipewire-pulse
-pavucontrol
-mpd ncmpcpp mpc
+
+pac: 
+- alsa-tools
+- alsa-utils
+- pipewire-alsa
+- pipewire-pulse
+- pavucontrol
+- mpd
+- ncmpcpp
+- mpc
+- linux-headers
 
 ## ---------- Code -------- ##
 ### -------- Editor ------ ###
-neovim
-lua-language-server zls
+- neovim
+- lua-language-server
+- zls
 
 ### -------- Langs ------- ###
-rustup zig clang nodejs
-
-### ------- Tooling ------ ###
-just make base-devel
-bacon
-
-## --------- Tools ---------- ##
-xdg-utils imv
-networkmanager-qt
-imagemagick
-brightnessctl
-
-## --------- WM -------- ##
-wayland hyprland
-waybar
-aur: rofi-lbonn-wayland
-
-## -------- Fonts --------- ##
-ttf-hack-nerd   ttf-mononoki-nerd
-
-## -------- Applications ----------- ##
-firefox
-aur: firefox-pwa
-alacritty cool-retro-term
-
-## -------- Libraries ---------- ##
-libgit2
-openssh
-
-## ----------- Shell Utils ------------ ##
-aur: pfetch
-unzip
-wget
-starship
-lf
-zsh
-bat
-bottom
-broot
-exa
-fd
-fzf
-gnupg
-mpv
-newsboat
-pass
-ripgrep
-vorbis-tools
-yt-dlp
-zellij
-rsync
+- rustup
+- zig
+- clang
+- nodejs
+- just
+- make
+- base-devel
+- bacon
+- xdg-utils
+- imv
+- networkmanager-qt
+- imagemagick
+- brightnessctl
+- wayland
+- hyprland
+- waybar
+- ttf-hack-nerd
+- ttf-mononoki-nerd
+- firefox
+- alacritty
+- cool-retro-term
+- libgit2
+- openssh
+- unzip
+- wget
+- starship
+- lf
+- zsh
+- bat
+- bottom
+- broot
+- exa
+- fd
+- fzf
+- gnupg
+- mpv
+- newsboat
+- pass
+- ripgrep
+- vorbis-tools
+- yt-dlp
+- zellij
+- rsync
 # media-info
-
-
-net-tools
-netctl
-man-db
+- net-tools
+# netctl
+- man-db
 # pacman-contrib
 # tinycompress
-
 # gitoxide
 # gh
 # hyperfine
 # jql
 # discord
+- nano
+- dmraid
+- evtest
+- powertop
+- re2
+# linux-asahi-edge
+# mesa-asahi-edge
+# archlinuxarm-keyring
+# asahi-meta
+- grub
+- base
+- sysfsutils
+# btrfs-progs
+- ndctl
+- xfsprogs
 
-
-## ----------- Core ------------- ##
-nano
-dmraid evtest
-powertop re2
-
-## --------- Asahi Core --------- ##
-linux-asahi-edge mesa-asahi-edge
-archlinuxarm-keyring
-asahi-meta
-
-## --------- Linux Core --------- ##
-grub
-base sysfsutils
-# btrfs-progs ndctl xfsprogs
+aur:
+- paru
+- rofi-lbonn-wayland
+- pfetch
+- firefox-pwa
