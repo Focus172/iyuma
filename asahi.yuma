@@ -1,44 +1,47 @@
-antidote
-archey
-btop
-diff-pdf
-difftastic
-duf
-gpatch
-hugo
-loc
-micro
-ncdu
-neofetch
-nmap
-opam
-open-mpi
-openblas
-pdfgrep
-peco
-plplot
-ranger
-redis
-scc
-shellcheck
-swiftformat
-swiftlint
-terminal-notifier
-tldr
-trash
-tree
-ugit
-zoxide
-zlib
-teamookla/speedtest/speedtest"
+# vim: ft=yaml
 
+pac:
+- linux-asahi-edge
+- mesa-asahi-edge
+- archlinuxarm-keyring
+- asahi-meta
+- netctl
+# - antidote
+### - archey
+# - diff-pdf
+# - difftastic
+### - duf
+### - gpatch
+# - hugo
+### - loc
+# - micro
+# - ncdu
+# - nmap
+# - opam
+### - open-mpi
+# - openblas
+# - pdfgrep
+# - peco
+# - plplot
+# - redis
+### - scc
+# - shellcheck
+# - swiftformat
+# - swiftlint
+### - terminal-notifier
+- tldr
+### - ugit
+# - zlib
 
-basictex
-db-browser-for-sqlite
-notunes
-openinterminal
-orbstack
-raycast
-rio
-swimat
-syntax-highlight
+# - teamookla/speedtest/speedtest
+# - basictex
+# - db-browser-for-sqlite
+# - notunes
+### - openinterminal
+### - orbstack
+### - raycast
+### - rio
+### - swimat
+# - syntax-highlight
+
+aur:

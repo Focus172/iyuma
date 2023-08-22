@@ -12,7 +12,9 @@ pac:
 - mpd
 - ncmpcpp
 - mpc
-- linux-headers
+
+# - ndctl
+# - xfsprogs
 
 ## ---------- Code -------- ##
 ### -------- Editor ------ ###
@@ -80,16 +82,11 @@ pac:
 - evtest
 - powertop
 - re2
-# linux-asahi-edge
-# mesa-asahi-edge
-# archlinuxarm-keyring
-# asahi-meta
 - grub
 - base
 - sysfsutils
 # btrfs-progs
-- ndctl
-- xfsprogs
+
 
 aur:
 - paru

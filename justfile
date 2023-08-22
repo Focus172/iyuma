@@ -15,6 +15,9 @@ crates := "cargo-expand cargo-info cargo-watch du-dust mprocs porsmo wiki-tui gi
 default:
 	just --list
 
+keys:
+	sudo loadkeys ./keys.kmap
+
 web:
 	{{jerry}}
 	chmod +x ~/.local/bin/*
@@ -32,10 +35,10 @@ pkgs:
 	echo "Run the yuma comamnd if installed"
 
 yuma-desktop:
-	yuma ./pkglist.yuma ./desktop.yuma
+	yuma ./main.yuma ./desktop.yuma
 
 yuma-asahi:
-	yuma ./pkglist.yuma ./asahi.yuma
+	yuma ./main.yuma ./asahi.yuma
 
 cargo:
 	cargo install {{crates}}

@@ -1,10 +1,9 @@
-{}: rec {
-  foreground = "f5e0dc";
-  background = "11111b";
-  bg2 = "1e1e2e";
-  mbg = "1b1b29";
+let foreground = "f5e0dc";
+let background = "11111b";
+let alt-background = "1e1e2e";
+let mbg = "1b1b29";
 
-  cursorColor = "181825";
+let cursorColor = "181825";
   contrast = "181825";
   cursorline = "181825";
   comment = "6c7086";
@@ -30,9 +29,8 @@
   color6 = "81C8BE";
   color14 = "81C8BE";
 
-  color7 = "B5BFE2";
-  color15 = "83889a";
-}
+let color7 = "B5BFE2";
+let color15 = "83889a";
 
 /*
 *

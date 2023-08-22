@@ -5,6 +5,7 @@ pac:
 - acpid-openrc
 - alsa-firmware
 - alsa-utils-openrc
+- linux-headers
 # - amd-ucode
 - artix-archlinux-support
 - artix-grub-theme
@@ -35,7 +36,6 @@ pac:
 - openrc-settingsd
 - openssh-openrc
 # - powertop
-- print-manager
 - raw-thumbnailer
 - rsync-openrc
 - scrot
@@ -46,7 +46,6 @@ pac:
 - sweeper
 - sysfsutils
 # - syslog-ng-openrc
-- terminus-font
 - texinfo
 - tumbler
 - vkd3d
