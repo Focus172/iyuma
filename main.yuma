@@ -6,8 +6,6 @@
 pac: 
 - alsa-tools
 - alsa-utils
-- pipewire-alsa
-- pipewire-pulse
 - pavucontrol
 - mpd
 - ncmpcpp
@@ -87,9 +85,9 @@ pac:
 - sysfsutils
 # btrfs-progs
 
-
 aur:
 - paru
 - rofi-lbonn-wayland
 - pfetch
 - firefox-pwa
+- zsh-antidote

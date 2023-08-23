@@ -4,6 +4,8 @@ pac:
 - linux-asahi-edge
 - mesa-asahi-edge
 - archlinuxarm-keyring
+- pipewire-alsa
+- pipewire-pulse
 - asahi-meta
 - netctl
 # - antidote
