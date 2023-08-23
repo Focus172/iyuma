@@ -10,6 +10,9 @@ pac:
 - mpd
 - ncmpcpp
 - mpc
+- hyperfine
+- mako
+- libnotify
 
 # - ndctl
 # - xfsprogs
@@ -78,8 +81,8 @@ pac:
 - nano
 - dmraid
 - evtest
-- powertop
-- re2
+# - powertop
+# - re2
 - grub
 - base
 - sysfsutils
@@ -91,3 +94,4 @@ aur:
 - pfetch
 - firefox-pwa
 - zsh-antidote
+- sddm-theme-corners-git

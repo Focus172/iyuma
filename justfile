@@ -23,6 +23,11 @@ firefox:
 	cp ./user.js ~/.mozilla/firefox/work.profile/
 	cp ./user.js ~/.mozilla/firefox/personal.profile/
 
+# needs root
+sddm:
+	cp ./src/sddm/sddm.conf /etc/sddm.conf
+	cp ./src/sddm/*.face.icon /usr/share/sddm/faces/
+
 cargo:
 	cargo install {{crates}}
 
