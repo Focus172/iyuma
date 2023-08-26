@@ -1,4 +1,0 @@
-[
-  ./waybar.nix
-  # ./locking.nix
-]

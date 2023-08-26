@@ -31,10 +31,4 @@ sddm:
 cargo:
 	cargo install {{crates}}
 
-arch set: web cargo
-	yuma main.yuma {{set}}.yuma
 
-nix: && web cargo
-	sudo nixos-rebuild switch --flake '.#steelwork'
-
-# vim: set ft=make :

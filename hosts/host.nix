@@ -97,21 +97,6 @@
   security.polkit.enable = true;
   security.sudo.enable = true;
 
-  nix = {
-    package = pkgs.nixFlakes;
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      trusted-users = [ "root" "@wheel" ];
-      auto-optimise-store = true;
-      warn-dirty = false;
-    };
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 5d";
-    };
-    optimise.automatic = true;
-  };
-
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
 
@@ -122,8 +107,6 @@
     enable = true;
     enableSSHSupport = true;
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   services.openssh.enable = true;
 
