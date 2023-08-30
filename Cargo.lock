@@ -3,18 +3,8 @@
 version = 3
 
 [[package]]
-name = "inline-doc"
-version = "0.1.0"
-source = "git+https://github.com/Focus172/yuma.git#25bcccc427931fe573c78f642bd405bfa608ea53"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
-]
-
-[[package]]
 name = "iyuma"
-version = "0.1.0"
+version = "0.0.0"
 dependencies = [
  "yuma",
 ]
@@ -57,7 +47,17 @@ checksum = "301abaae475aa91687eb82514b328ab47a211a533026cb25fc3e519b86adfc3c"
 [[package]]
 name = "yuma"
 version = "0.1.0"
-source = "git+https://github.com/Focus172/yuma.git#25bcccc427931fe573c78f642bd405bfa608ea53"
+source = "git+https://github.com/Focus172/freight.git#da6d6c3da293795dadfad2f8c501945c3af0dc0f"
 dependencies = [
- "inline-doc",
+ "yumadoc",
+]
+
+[[package]]
+name = "yumadoc"
+version = "0.0.1"
+source = "git+https://github.com/Focus172/freight.git#da6d6c3da293795dadfad2f8c501945c3af0dc0f"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
