@@ -1,16 +1,87 @@
-#![feature(lazy_cell)]
-
 //! Configuration for packages to install
-
-use std::{cell::LazyCell, env};
-
-mod asahi;
-mod desktop;
-
-// const HOSTNAME: LazyCell<String> = LazyCell::new(|| env::var("HOST").unwrap());
 
 fn main() {
     let mut ctx = yuma::ctx();
+
+    ctx.add_if_hosts(
+        &["steambox", "steamfunk"],
+        &[
+            // # - acpi
+            // # - acpid-openrc
+            "alsa-utils-openrc",
+            "amd-ucode",
+            "intel-ucode",
+            "artix-archlinux-support",
+            "b43-fwcutter",
+            // # - cronie-openrc
+            // "cryptsetup-openrc",
+            // # - cups-openrc
+            "dhcpcd-openrc",
+            "dmraid",
+            "grub",
+            // # - ecryptfs-utils
+            // # - gwenview
+            // # - haveged-openrc
+            // # - inxi
+
+            // ### The likely broke it
+            // # - libva-vdpau-driver
+            // # - libvdpau-va-gl
+            "lsb-release",
+            "lvm2-openrc",
+            // # - man-pages
+            // # - markdownpart
+            "mdadm-openrc",
+            "memtest86+",
+            "mkinitcpio-openswap",
+            // # - nbd
+            "nfs-utils-openrc",
+            "ntp-openrc",
+            // # - nvidia
+            // # - openrc-settingsd
+            "openssh-openrc",
+            // # - partitionmanager
+            // # - powertop
+            // # - print-manager
+            // # - raw-thumbnailer
+            "rsync-openrc",
+            // # - scrot
+            "sddm-openrc",
+            // # - spectacle
+            // # - svgpart
+            // # - sweeper
+            // # - syslog-ng-openrc
+            // # - terminus-font
+            // # - texinfo
+            // # - tumbler
+            "vkd3d",
+            "wpa_supplicant-openrc",
+            // ytmdl
+            // pulseaudio
+            // libnotify
+            // xdg-utils
+            // gtk3
+            // jq
+            // st
+            // spotdl
+            // python310Packages.pip
+            // discord
+            // unzip
+            // imgclr
+            // git
+            // mpv
+            // xdotool
+            // simplescreenrecorder
+            // brightnessctl
+            // pamixer
+            // nix-prefetch-git
+            // brillo
+            // wmctrl
+            // slop
+            // ripgrep
+            // maim
+        ],
+    );
 
     // # Audio
     // aon gjalg nfa
@@ -102,86 +173,6 @@ fn main() {
         "sddm-theme-corners-git",
     ]);
 
-    // if "steamfunk" == HOSTNAME.as_str() {
-        ctx.add(&[
-            // # - acpi
-            // # - acpid-openrc
-            "alsa-utils-openrc",
-            "amd-ucode",
-            "intel-ucode",
-            "artix-archlinux-support",
-            "b43-fwcutter",
-            // # - cronie-openrc
-            // "cryptsetup-openrc",
-            // # - cups-openrc
-            "dhcpcd-openrc",
-            "dmraid",
-        "grub",
-            // # - ecryptfs-utils
-            // # - gwenview
-            // # - haveged-openrc
-            // # - inxi
-
-            // ### The likely broke it
-            // # - libva-vdpau-driver
-            // # - libvdpau-va-gl
-            "lsb-release",
-            "lvm2-openrc",
-            // # - man-pages
-            // # - markdownpart
-            "mdadm-openrc",
-            "memtest86+",
-            "mkinitcpio-openswap",
-            // # - nbd
-            "nfs-utils-openrc",
-            "ntp-openrc",
-            // # - nvidia
-            // # - openrc-settingsd
-            "openssh-openrc",
-            // # - partitionmanager
-            // # - powertop
-            // # - print-manager
-            // # - raw-thumbnailer
-            "rsync-openrc",
-            // # - scrot
-            "sddm-openrc",
-            // # - spectacle
-            // # - svgpart
-            // # - sweeper
-            // # - syslog-ng-openrc
-            // # - terminus-font
-            // # - texinfo
-            // # - tumbler
-            "vkd3d",
-            "wpa_supplicant-openrc",
-
-    // ytmdl
-    // pulseaudio
-    // libnotify
-    // xdg-utils
-    // gtk3
-    // jq
-    // st
-    // spotdl
-    // python310Packages.pip
-    // discord
-    // unzip
-    // imgclr
-    // git
-    // mpv
-    // xdotool
-    // simplescreenrecorder
-    // brightnessctl
-    // pamixer
-    // nix-prefetch-git
-    // brillo
-    // wmctrl
-    // slop
-    // ripgrep
-    // maim
-        ]);
-    // }
-
     // ### applictions
     // # brave
     // # pavucontrol
@@ -272,13 +263,129 @@ fn main() {
     // - memento
     // - onscripter-en
 
-    // if "steambox" == HOSTNAME.as_str() {
-    //     desktop::add(&mut ctx);
-    // }
+    ctx.add_if_host("steambox", &["bottles", "steam"]);
 
-    // if "hazed" == HOSTNAME.as_str() {
-    //     asahi::add(&mut ctx);
-    // }
+    ctx.add_if_host(
+        "steambox",
+        &[
+            "hugo",
+            "linux-headers",
+            "meson",
+            "nm-connection-editor",
+            "nmap",
+            "powertop",
+            "pulseaudio-alsa",
+            "qastools",
+        ],
+    );
+
+    ctx.add_if_host(
+        "steambox",
+        &[
+            // ### for powermanagement and event, bad for desktop,
+            // ### look into for laptop
+            // # - acpi
+            "amd-ucode",
+            "intel-ucode",
+            "cpupower-openrc",
+            // "acpid-openrc"
+
+            // - alsa-firmware
+            // - alsa-utils-openrc
+            // - pulseaudio-alsa
+            // # - amd-ucode
+            // - artix-archlinux-support
+            // - b43-fwcutter
+            // # - bluez-openrc
+            // # - cronie-openrc
+            // - cryptsetup-openrc
+            // # cups-openrc
+            // - dhcpcd-openrc
+            // - dmraid
+            // - haveged-openrc
+            // - inxi
+            // - libva-vdpau-driver
+            // - libvdpau-va-gl
+            // - lsb-release
+            // - lvm2-openrc
+            // # man-pages
+            // # - markdownpart
+            // - mdadm-openrc
+            // - memtest86+
+            // - mkinitcpio-openswap
+            // # - nbd
+            // - nfs-utils-openrc
+            // - ntp-openrc
+            // # - openrc-settingsd
+            // - openssh-openrc
+            // # - powertop
+            // - raw-thumbnailer
+            "rsync-openrc",
+            // # - scrot
+            // - sddm-openrc
+            // # - svgpart
+            // # - sweeper
+            "sysfsutils",
+            // # - syslog-ng-openrc
+            // # - texinfo
+            // # - tumbler
+            "vkd3d",
+            "wpa_supplicant-openrc",
+            // aur
+            "gtk-theme-iris-dark-git",
+        ],
+    );
+
+    ctx.add_if_host(
+        "hazed",
+        &[
+
+    // - linux-asahi-edge
+    // - mesa-asahi-edge
+    // - archlinuxarm-keyring
+    // - pipewire-alsa
+    // - pipewire-pulse
+    // - asahi-meta
+    // - netctl
+    // # - antidote
+    // ### - archey
+    // # - diff-pdf
+    // # - difftastic
+    // ### - duf
+    // ### - gpatch
+    // # - hugo
+    // ### - loc
+    // # - micro
+    // # - ncdu
+    // # - nmap
+    // # - opam
+    // ### - open-mpi
+    // # - openblas
+    // # - pdfgrep
+    // # - peco
+    // # - plplot
+    // # - redis
+    // ### - scc
+    // # - shellcheck
+    // # - swiftformat
+    // # - swiftlint
+    // ### - terminal-notifier
+    // - tldr
+    // ### - ugit
+    // # - zlib
+    //
+    // # - teamookla/speedtest/speedtest
+    // # - basictex
+    // # - db-browser-for-sqlite
+    // # - notunes
+    // ### - openinterminal
+    // ### - orbstack
+    // ### - raycast
+    // ### - rio
+    // ### - swimat
+    // # - syntax-highlight
+    ],
+    );
 
     ctx.add(&["paru", "pacman"]);
 
