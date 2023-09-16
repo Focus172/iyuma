@@ -5,4 +5,4 @@ edition = "2021"
 
 [dependencies]
 yuma = { git = "https://github.com/Focus172/freight.git" }
-# yuma = "0.1.0"
+anyhow = "1"

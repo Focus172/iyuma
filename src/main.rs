@@ -1,140 +1,109 @@
 //! Configuration for packages to install
 
-mod colors;
+use yuma::prelude::*;
 
-// #[yuma::doc]
-fn main() {
-    let mut ctx = yuma::ctx();
+mod colors;
+mod web;
+
+fn main() -> Result<(), YumaError> {
+    yuma::init_logger()?;
+
+    let mut ctx = ctx();
 
     // # Audio
     // fake docs and stuff
     //
     // ## Alsa
-    ctx.add(&["alsa-tools", "alsa-utils", "alsa-firmware"]);
+    ctx.add(["alsa-tools", "alsa-utils", "alsa-firmware"]);
+    // - pulseaudio-alsa
+    // - alsa-utils-openrc
+    // tinycompress
+
     // ## Clients
-    ctx.add(&["pavucontrol", "mpd", "mpc", "ncmpcpp"]);
+    ctx.add(["pavucontrol", "mpd", "mpc", "ncmpcpp"]);
 
     // # Code
-    ctx.add(&["neovim"]);
+    ctx.add(["neovim"]);
     // ## Lsp
-    ctx.add(&["lua-language-server", "zls", "taplo-cli"]);
-    // ctx.add(&["stylua", "haskell-language-server", "shellcheck"]);
+    ctx.add(["lua-language-server", "zls", "taplo-cli", "stylua"]);
+
+    // "shellcheck"]);
+    // "haskell-language-server",
+
+    ctx.add(["emacs"]);
 
     // ## Langs
-    ctx.add(&["rustup", "zig", "clang", "nodejs"]);
+    ctx.add(["rustup", "zig", "clang", "nodejs"]);
     // ## Tooling
-    ctx.add(&["just", "make", "base-devel"]);
+    ctx.add(["just", "make", "base-devel", "bacon"]);
 
-    ctx.add(&["alacritty", "cool-retro-term"]);
+    ctx.add(["alacritty", "cool-retro-term"]);
 
-    // "wayland",
-    ctx.add(&["sddm-theme-corners-git"]);
-    ctx.add(&["rofi-lbonn-wayland", "hyprland", "waybar"]);
-
-    ctx.add(&["zsh", "zsh-antidote"]);
-
-    ctx.add(&[
-        // -------- Utils -------
-        "xdg-utils",
-        "tldr",
-        "bacon",
-        "imv",
-        "networkmanager-qt",
-        "imagemagick",
-        "brightnessctl",
-        "ttf-hack-nerd",
-        "ttf-mononoki-nerd",
-        "libgit2",
-        "openssh",
-        "unzip",
-        "wget",
-        "starship",
-        "lf",
-        "bat",
-        "bottom",
-        "broot",
-        "exa",
-        "fd",
-        "fzf",
-        "mpv",
-        "newsboat",
-        "pass",
-        "gnupg",
-        "ripgrep",
-        "vorbis-tools",
-        "yt-dlp",
-        "zellij",
-        "rsync",
-        "hyperfine",
-        "mako",
-        "swaybg",
-        "man-db",
-        "mediainfo",
-        "nm-connection-editor",
-        "nmap",
-        // "linux-headers",
-        "qastools",
-        // "net-tools",
-        // "netctl",
-        // # pacman-contrib
-        // # tinycompress
-        // ndctl
-        // xfsprogs
-        // # gitoxide
-        // # gh
-        // # jql
-        "discord",
-        "nano",
-        "pfetch",
-        // ### - archey
-        // # - diff-pdf
-        // # - difftastic
-        // ### - duf
-        // ### - gpatch
-        // ### - loc
-        // # - micro
-        // # - ncdu
-        // # - opam
-        // ### - open-mpi
-        // # - openblas
-        // # - pdfgrep
-        // # - peco
-        // # - plplot
-        // # - redis
-        // ### - scc
-        // # - swiftformat
-        // # - swiftlint
-        // ### - terminal-notifier
-        // ### - ugit
-        // # - zlib
-        //
-        // # - teamookla/speedtest/speedtest
-        // # - basictex
-        // # - db-browser-for-sqlite
-        // # - notunes
-        // ### - openinterminal
-        // ### - orbstack
-        // ### - raycast
-        // ### - rio
-        // ### - swimat
-        // # - syntax-highlight
+    // WM
+    ctx.add(["rofi-lbonn-wayland", "hyprland", "waybar", "wayland"]);
+    // And DM
+    ctx.add([
+        "sddm-theme-corners-git",
+        "sddm",
     ]);
+    ctx.add(["sddm-openrc".b().on_hosts(&["steambox", "steamfunk"])]);
 
-    // ------- Firefox --------
-    ctx.add(&["firefox", "firefox-pwa"]);
+    ctx.add(["zsh", "zsh-antidote"]);
 
-    ctx.add_if_hosts(
-        &["steambox", "steamfunk"],
-        &[
+    // ----- Libs ------
+    ctx.add(["libgit2", "openssh"]);
+
+    // ---- Utils -------
+    ctx.add(["xdg-utils", "tldr", "imagemagick"]);
+    ctx.add(["libnotify", "mako"]);
+
+    ctx.add(["imv", "grim", "slurp"]);
+
+    ctx.add(["ttf-hack-nerd", "ttf-mononoki-nerd"]);
+
+    // Fancy Shell tools
+    ctx.add(["lf", "bat", "bottom", "eza", "fd", "fzf", "mpv"]);
+
+    // Other Shell tools
+    ctx.add(["brightnessctl", "unzip", "wget"]);
+    ctx.add(["broot", "newsboat", "ripgrep", "vorbis-tools", "yt-dlp"]);
+    ctx.add(["zellij", "rsync", "hyperfine"]);
+
+    ctx.add(["starship"]);
+
+    // Needs alsa kernal modules
+    ctx.add(["cava"]);
+
+    // Security
+    ctx.add(["pass", "gnupg"]);
+    ctx.add(["nmap"]);
+
+    ctx.add(["swaybg", "man-db", "mediainfo", "linux-headers", "qastools"]);
+
+    // "nm-connection-editor",
+    // "networkmanager-qt",
+    // "net-tools",
+    // "netctl",
+
+    // # gh
+    ctx.add(["gitoxide", "nano", "pfetch"]);
+
+    // ======== Applications ==========
+    ctx.add(["discord"]);
+    // ------------- Web --------------
+    crate::web::install(&mut ctx)?;
+
+    // "sddm-openrc",
+    ctx.add(
+        [
             "cpupower-openrc",
-            // "acpid-openrc"
+            // "acpid-openrc",
             "alsa-utils-openrc",
             "amd-ucode",
             "intel-ucode",
             "artix-archlinux-support",
             // "b43-fwcutter",
             "cronie-openrc",
-            // "cryptsetup-openrc",
             // "cups-openrc",
             "dhcpcd-openrc",
             // ecryptfs-utils
@@ -162,68 +131,80 @@ fn main() {
             // raw-thumbnailer
             "rsync-openrc",
             // scrot
-            "sddm-openrc",
             // spectacle
             // svgpart
             // sweeper
-            // syslog-ng-openrc
-            // terminus-font
             // texinfo
             // tumbler
             "vkd3d",
             "wpa_supplicant-openrc",
-            // ytmdl
-            // pulseaudio
-            // libnotify
-            // xdg-utils
-            // gtk3
-            // jq
+            "gtk3",
+            "jq",
             // st
             // pip3
             // unzip
             // imgclr
             // xdotool
-            // simplescreenrecorder
-            // brightnessctl
+            // "simplescreenrecorder",
             // pamixer
             // brillo
-            // slop
             // ripgrep
-            // maim
-        ],
+            "gtk-theme-iris-dark-git",
+        ]
+        .b()
+        .on_hosts(&["steambox", "steamfunk"]),
     );
+    // ndctl
+    // xfsprogs
+    // ### - archey
+    // # - diff-pdf
+    // # - difftastic
+    // ### - duf
+    // ### - gpatch
+    // ### - loc
+    // # - micro
+    // # - ncdu
+    // # - opam
+    // ### - open-mpi
+    // # - openblas
+    // # - pdfgrep
+    // # - peco
+    // # - plplot
+    // # - redis
+    // ### - scc
+    // # - swiftformat
+    // # - swiftlint
+    //
+    // ### - terminal-notifier
+    // ### - ugit
+    // # - zlib
+    //
+    // # - basictex
+    // # - db-browser-for-sqlite
+    // # - notunes
+    // ### - openinterminal
+    // ### - orbstack
+    // ### - raycast
+    // ### - rio
+    // ### - swimat
+    // # - syntax-highlight
 
-    // ### applictions
-    // # pavucontrol
-    // exa bat pfetch
-    // pass
-    // ripgrep fzf
-    // starship
-    //
-    // ### Utils
-    // zathura
-    // imv
-    // yt-dlp
-    // imagemagick
-    //
-    //
+    // Alternative to grim + slurp
+    // maim, slop
+
     // sassc
     // ghc
     // flutter
-    // python310 # node
+    // python310 node
     //
-    // xdg-utils
     // jql
-    // swaybg # swww
+    // swaybg swww
     // wl-gammactl
     // wlsunset
     //
     // brightnessctl
     // alsa-utils
-    // grim
     // libreoffice-fresh
-    // mako
-    // slurp
     // wl-clipboard
     //
     // neo-cowsay
@@ -239,18 +220,13 @@ fn main() {
     // obs-studio
     // deluge
     //
-    //
     // killall
-    // cava
     // tty-clock
-    // mpv
     // clang
     // btar
-    // fd
     // file
     // ffmpeg
     // unzip
-    // libnotify
     // appimage-run
     // pinentry-rofi
     //
@@ -261,25 +237,18 @@ fn main() {
     // ### study
     // memento
     // onscripter-en
-    // "meson",
 
-    ctx.add_if_host("steambox", &["bottles", "steam"]);
+    ctx.add(
+        ["steam", "heroic-games-launcher"]
+            .b()
+            .on_hosts(&["steambox"]),
+    );
 
-    // "hugo",
-    ctx.add_if_host("steambox", &["pulseaudio-alsa"]);
-
-    ctx.add_if_host(
-        "steambox",
-        &[
-            // ### for powermanagement and event, bad for desktop,
-            // ### look into for laptop
+    ctx.add(
+        [
+            "pulseaudio-alsa",
             "amd-ucode",
             "intel-ucode",
-            // - alsa-firmware
-            // - alsa-utils-openrc
-            // - pulseaudio-alsa
-            // # - amd-ucode
-            // - artix-archlinux-support
             // - b43-fwcutter
             // # - bluez-openrc
             // # - cronie-openrc
@@ -316,27 +285,40 @@ fn main() {
             // # - tumbler
             "vkd3d",
             "wpa_supplicant-openrc",
-            // aur
-            "gtk-theme-iris-dark-git",
-        ],
+            "hugo",
+        ]
+        .b()
+        .on_hosts(&["steambox"]),
     );
 
-    ctx.add_if_host(
-        "hazed",
-        &["linux-asahi-edge", "mesa-asahi-edge", "asahi-meta"]
+    ctx.add(
+        [
+            "linux-asahi-edge",
+            "mesa-asahi-edge",
+            "asahi-meta",
+            "archlinuxarm-keyring",
+        ]
+        .b()
+        .on_hosts(&["hazed"]),
     );
-    ctx.add_if_host(
-        "hazed",
-        &["pipewire-alsa", "pipewire-pulse", "archlinuxarm-keyring"]
+
+    ctx.add(
+        ["pipewire-alsa", "pipewire-pulse"]
+            .b()
+            .on_hosts(&["hazed"]),
     );
 
     // "re2",
     // "btrfs-progs"
-    ctx.add(&["dmraid", "evtest", "sysfsutils"]);
-    ctx.add(&["grub", "base"]);
+    ctx.add(["dmraid", "evtest", "sysfsutils"]);
+    ctx.add(["grub", "base"]);
 
     // TODO: Make a insure sane method
-    ctx.add(&["paru", "pacman"]);
+    ctx.add(["paru", "pacman"]);
+
+    ctx.add(["neofetch".b().on_hosts(&["not a host"])]);
 
     ctx.update();
+
+    Ok(())
 }
