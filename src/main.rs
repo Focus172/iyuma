@@ -14,57 +14,91 @@ fn main() -> Result<(), YumaError> {
     // fake docs and stuff
     //
     // ## Alsa
-    ctx.add(["alsa-tools", "alsa-utils", "alsa-firmware"]);
+    ctx.add(
+        ["alsa-tools", "alsa-utils", "alsa-firmware"]
+            .b()
+            .on_os("linux"),
+    );
     // - pulseaudio-alsa
     // - alsa-utils-openrc
     // tinycompress
 
     // ## Clients
-    ctx.add(["pavucontrol", "mpd", "mpc", "ncmpcpp"]);
+    ctx.add(["pavucontrol", "mpd", "mpc", "ncmpcpp"].b().on_os("linux"));
 
     // # Code
     ctx.add(["neovim"]);
     // ## Lsp
-    ctx.add(["lua-language-server", "zls", "taplo-cli", "stylua"]);
+    ctx.add(
+        ["lua-language-server", "zls", "taplo-cli", "stylua"]
+            .b()
+            .on_os("linux"),
+    );
 
     // "shellcheck"]);
     // "haskell-language-server",
 
-    ctx.add(["emacs"]);
+    // ctx.add(["emacs"]);
 
     // ## Langs
-    ctx.add(["rustup", "zig", "clang", "nodejs"]);
+    ctx.add([
+        "rustup".b().on_os("linux"),
+        "rustup-init".b().on_os("macos"),
+        "zig".b(),
+        "clang".b().on_os("linux"),
+        "nodejs".b().on_os("linux"),
+        "node".b().on_os("macos"),
+    ]);
+
     // ## Tooling
-    ctx.add(["just", "make", "base-devel", "bacon"]);
+    ctx.add(["just", "make", "bacon"]);
+    ctx.add("base-devel".b().on_os("linux"));
 
     ctx.add(["alacritty", "cool-retro-term"]);
+    ctx.add("jupyterlab".b().on_os("macos"));
 
     // WM
-    ctx.add(["rofi-lbonn-wayland", "hyprland", "waybar", "wayland"]);
+    ctx.add(
+        ["rofi-lbonn-wayland", "hyprland", "waybar", "wayland"]
+            .b()
+            .on_os("linux"),
+    );
     // And DM
-    ctx.add([
-        "sddm-theme-corners-git",
-        "sddm",
-    ]);
-    ctx.add(["sddm-openrc".b().on_hosts(&["steambox", "steamfunk"])]);
+    ctx.add(["sddm-theme-corners-git", "sddm"].b().on_os("linux"));
+    ctx.add("sddm-openrc".b().on_hosts(&["steambox", "steamfunk"]));
 
-    ctx.add(["zsh", "zsh-antidote"]);
+    ctx.add([
+        "zsh".b(),
+        "zsh-antidote".b().on_os("linux"),
+        "antidote".b().on_os("macos"),
+    ]);
 
     // ----- Libs ------
     ctx.add(["libgit2", "openssh"]);
 
     // ---- Utils -------
-    ctx.add(["xdg-utils", "tldr", "imagemagick"]);
+    ctx.add([
+        "xdg-utils".b().on_os("linux"),
+        "tldr".b(),
+        "imagemagick".b(),
+    ]);
+    #[cfg(target_os = "linux")]
     ctx.add(["libnotify", "mako"]);
 
+    #[cfg(target_os = "linux")]
     ctx.add(["imv", "grim", "slurp"]);
 
-    ctx.add(["ttf-hack-nerd", "ttf-mononoki-nerd"]);
+    ctx.add(
+        ["ttf-hack-nerd", "ttf-mononoki-nerd"]
+            .b()
+            .on_arches(&["x86_64"]),
+    );
 
     // Fancy Shell tools
     ctx.add(["lf", "bat", "bottom", "eza", "fd", "fzf", "mpv"]);
 
     // Other Shell tools
+    #[cfg(target_os = "linux")]
     ctx.add(["brightnessctl", "unzip", "wget"]);
     ctx.add(["broot", "newsboat", "ripgrep", "vorbis-tools", "yt-dlp"]);
     ctx.add(["zellij", "rsync", "hyperfine"]);
@@ -72,13 +106,18 @@ fn main() -> Result<(), YumaError> {
     ctx.add(["starship"]);
 
     // Needs alsa kernal modules
-    ctx.add(["cava"]);
+    ctx.add("cava");
 
     // Security
     ctx.add(["pass", "gnupg"]);
-    ctx.add(["nmap"]);
+    ctx.add("nmap");
 
-    ctx.add(["swaybg", "man-db", "mediainfo", "linux-headers", "qastools"]);
+    #[cfg(target_os = "linux")]
+    ctx.add(
+        ["swaybg", "man-db", "mediainfo", "linux-headers", "qastools"]
+            .b()
+            .on_arches(&["x86_64"]),
+    );
 
     // "nm-connection-editor",
     // "networkmanager-qt",
@@ -89,11 +128,12 @@ fn main() -> Result<(), YumaError> {
     ctx.add(["gitoxide", "nano", "pfetch"]);
 
     // ======== Applications ==========
-    ctx.add(["discord"]);
+    ctx.add("discord");
     // ------------- Web --------------
-    crate::web::install(&mut ctx)?;
+    crate::web::install(&mut ctx);
 
-    // "sddm-openrc",
+    ctx.add("gitui".b().on_os("macos"));
+
     ctx.add(
         [
             "cpupower-openrc",
@@ -238,11 +278,7 @@ fn main() -> Result<(), YumaError> {
     // memento
     // onscripter-en
 
-    ctx.add(
-        ["steam", "heroic-games-launcher"]
-            .b()
-            .on_hosts(&["steambox"]),
-    );
+    ctx.add(["steam", "heroic-games-launcher"].b().on_host("steambox"));
 
     ctx.add(
         [
@@ -288,7 +324,7 @@ fn main() -> Result<(), YumaError> {
             "hugo",
         ]
         .b()
-        .on_hosts(&["steambox"]),
+        .on_host("steambox"),
     );
 
     ctx.add(
@@ -299,24 +335,18 @@ fn main() -> Result<(), YumaError> {
             "archlinuxarm-keyring",
         ]
         .b()
-        .on_hosts(&["hazed"]),
+        .on_host("hazed"),
     );
 
-    ctx.add(
-        ["pipewire-alsa", "pipewire-pulse"]
-            .b()
-            .on_hosts(&["hazed"]),
-    );
+    ctx.add(["pipewire-alsa", "pipewire-pulse"].b().on_host("hazed"));
 
     // "re2",
     // "btrfs-progs"
-    ctx.add(["dmraid", "evtest", "sysfsutils"]);
-    ctx.add(["grub", "base"]);
+    ctx.add(["dmraid", "evtest", "sysfsutils"].b().on_os("linux"));
+    ctx.add(["grub", "base"].b().on_os("linux"));
 
     // TODO: Make a insure sane method
-    ctx.add(["paru", "pacman"]);
-
-    ctx.add(["neofetch".b().on_hosts(&["not a host"])]);
+    ctx.add(["paru", "pacman"].b().on_os("linux"));
 
     ctx.update();
 

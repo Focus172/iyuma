@@ -36,7 +36,6 @@ checksum = "af150ab688ff2122fcef229be89cb50dd66af9e01a4ff320cc137eecc9bacc38"
 name = "iyuma"
 version = "0.0.0"
 dependencies = [
- "anyhow",
  "yuma",
 ]
 
@@ -140,9 +139,9 @@ dependencies = [
 
 [[package]]
 name = "syn"
-version = "2.0.33"
+version = "2.0.36"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9caece70c63bfba29ec2fed841a09851b14a235c60010fa4de58089b6c025668"
+checksum = "91e02e55d62894af2a08aca894c6577281f76769ba47c94d5756bec8ac6e7373"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -248,7 +247,7 @@ checksum = "712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f"
 [[package]]
 name = "yuma"
 version = "0.2.1"
-source = "git+https://github.com/Focus172/freight.git#ebfcf6d7bb9badbda9d598504f65c321a5b7874b"
+source = "git+https://github.com/Focus172/freight.git#9adb16fcad758bb8eb6120d8eb4196d773df24c0"
 dependencies = [
  "anyhow",
  "log",
@@ -263,7 +262,7 @@ dependencies = [
 [[package]]
 name = "yumadoc"
 version = "0.0.1"
-source = "git+https://github.com/Focus172/freight.git#ebfcf6d7bb9badbda9d598504f65c321a5b7874b"
+source = "git+https://github.com/Focus172/freight.git#9adb16fcad758bb8eb6120d8eb4196d773df24c0"
 dependencies = [
  "proc-macro2",
  "quote",

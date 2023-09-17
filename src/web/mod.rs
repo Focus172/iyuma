@@ -1,23 +1,25 @@
-use std::fs;
+
 use yuma::prelude::*;
 
-use yuma::YumaCtx;
+pub fn install(ctx: &mut YumaCtx) {
+    ctx.add([
+        "firefox",
+        #[cfg(target_os = "linux")]
+        "firefox-pwa",
+    ]);
 
-pub fn install(ctx: &mut YumaCtx) -> anyhow::Result<()> {
-    ctx.add(["firefox", "firefox-pwa"]);
-    ctx.schedule(self::userjs);
-    Ok(())
+    #[cfg(target_os = "linux")]
+    ctx.schedule("firefox userjs", self::userjs);
 }
 
-#[allow(unused)]
-// fn userjs(ctx: &mut YumaCtx) -> YumaResult {
+#[cfg(target_os = "linux")]
 fn userjs() -> YumaResult {
+    use std::fs;
+
     let userjs = include_str!("./user.js");
 
     let home = std::env::var("HOME").unwrap();
     let firefox_path = format!("{}/.mozilla/firefox/", home);
-
-    dbg!(&firefox_path);
 
     for path in fs::read_dir(firefox_path)?
         .flatten()
@@ -35,4 +37,3 @@ fn userjs() -> YumaResult {
     }
     Ok(())
 }
-
