@@ -16,13 +16,6 @@ web:
 	{{jerry}}
 	chmod +x ~/.local/bin/*
 
-firefox:
-	@echo "BEFORE RUNNING THIS MAKE SURE YOUR PROFILES ARE MOVE TO THE CORRENT DIR."
-	@echo "UPDATE THE PROFILES.INI FILE TO MATCH THE CORRECT LOCATION. Enter to continue."
-	read
-	cp ./user.js ~/.mozilla/firefox/work.profile/
-	cp ./user.js ~/.mozilla/firefox/personal.profile/
-
 # needs root
 sddm:
 	cp ./src/sddm/sddm.conf /etc/sddm.conf

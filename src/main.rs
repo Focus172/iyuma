@@ -5,8 +5,8 @@ use yuma::prelude::*;
 mod colors;
 mod web;
 
-fn main() -> Result<(), YumaError> {
-    yuma::init_logger()?;
+fn main() -> Result<()> {
+    yuma::log::init()?;
 
     let mut ctx = ctx();
 
@@ -27,18 +27,24 @@ fn main() -> Result<(), YumaError> {
     ctx.add(["pavucontrol", "mpd", "mpc", "ncmpcpp"].b().on_os("linux"));
 
     // # Code
-    ctx.add(["neovim"]);
+    // ctx.add(y! { PKG neovim });
+    ctx.add("neovim");
+
     // ## Lsp
     ctx.add(
-        ["lua-language-server", "zls", "taplo-cli", "stylua"]
-            .b()
-            .on_os("linux"),
+        [
+            "lua-language-server",
+            "zls",
+            "taplo-cli",
+            "stylua",
+            // "shellcheck",
+            // "haskell-language-server",
+        ]
+        .b()
+        .on_os("linux"),
     );
 
-    // "shellcheck"]);
-    // "haskell-language-server",
-
-    // ctx.add(["emacs"]);
+    // ctx.add("emacs".b().on_os("linux"));
 
     // ## Langs
     ctx.add([
@@ -65,7 +71,7 @@ fn main() -> Result<(), YumaError> {
     );
     // And DM
     ctx.add(["sddm-theme-corners-git", "sddm"].b().on_os("linux"));
-    ctx.add("sddm-openrc".b().on_hosts(&["steambox", "steamfunk"]));
+    ctx.add("sddm-openrc".b().on_hosts(["steambox", "steamfunk"]));
 
     ctx.add([
         "zsh".b(),
@@ -91,19 +97,18 @@ fn main() -> Result<(), YumaError> {
     ctx.add(
         ["ttf-hack-nerd", "ttf-mononoki-nerd"]
             .b()
-            .on_arches(&["x86_64"]),
+            .on_arches(["x86_64"]),
     );
 
     // Fancy Shell tools
     ctx.add(["lf", "bat", "bottom", "eza", "fd", "fzf", "mpv"]);
 
     // Other Shell tools
-    #[cfg(target_os = "linux")]
-    ctx.add(["brightnessctl", "unzip", "wget"]);
+    ctx.add(["brightnessctl", "unzip", "wget"].b().on_os("linux"));
     ctx.add(["broot", "newsboat", "ripgrep", "vorbis-tools", "yt-dlp"]);
     ctx.add(["zellij", "rsync", "hyperfine"]);
 
-    ctx.add(["starship"]);
+    ctx.add("starship");
 
     // Needs alsa kernal modules
     ctx.add("cava");
@@ -116,16 +121,15 @@ fn main() -> Result<(), YumaError> {
     ctx.add(
         ["swaybg", "man-db", "mediainfo", "linux-headers", "qastools"]
             .b()
-            .on_arches(&["x86_64"]),
+            .on_os("linux"),
     );
 
-    // "nm-connection-editor",
-    // "networkmanager-qt",
+    ctx.add("nm-connection-editor");
     // "net-tools",
     // "netctl",
 
     // # gh
-    ctx.add(["gitoxide", "nano", "pfetch"]);
+    // ctx.add(["gitoxide", "nano", "pfetch"]);
 
     // ======== Applications ==========
     ctx.add("discord");
@@ -137,63 +141,63 @@ fn main() -> Result<(), YumaError> {
     ctx.add(
         [
             "cpupower-openrc",
-            // "acpid-openrc",
             "alsa-utils-openrc",
             "amd-ucode",
             "intel-ucode",
             "artix-archlinux-support",
-            // "b43-fwcutter",
             "cronie-openrc",
-            // "cups-openrc",
             "dhcpcd-openrc",
-            // ecryptfs-utils
-            // gwenview
-            // haveged-openrc
-            // inxi
-
-            // libva-vdpau-driver
-            // libvdpau-va-gl
             "lsb-release",
             "lvm2-openrc",
-            // man-pages
-            // markdownpart
             "mdadm-openrc",
             "memtest86+",
             "mkinitcpio-openswap",
-            // nbd
             "nfs-utils-openrc",
             "ntp-openrc",
-            // openrc-settingsd
             "openssh-openrc",
-            // partitionmanager
-            // powertop
-            // print-manager
-            // raw-thumbnailer
             "rsync-openrc",
-            // scrot
-            // spectacle
-            // svgpart
-            // sweeper
-            // texinfo
-            // tumbler
             "vkd3d",
             "wpa_supplicant-openrc",
             "gtk3",
             "jq",
-            // st
-            // pip3
-            // unzip
-            // imgclr
-            // xdotool
-            // "simplescreenrecorder",
-            // pamixer
-            // brillo
-            // ripgrep
             "gtk-theme-iris-dark-git",
         ]
         .b()
-        .on_hosts(&["steambox", "steamfunk"]),
+        .on_hosts(["steambox", "steamfunk"]),
     );
+
+    // "acpid-openrc",
+    // "b43-fwcutter",
+    // "cups-openrc",
+    // ecryptfs-utils
+    // gwenview
+    // haveged-openrc
+    // inxi
+    // libva-vdpau-driver
+    // libvdpau-va-gl
+    // man-pages
+    // markdownpart
+    // nbd
+    // openrc-settingsd
+    // partitionmanager
+    // powertop
+    // print-manager
+    // raw-thumbnailer
+    // scrot
+    // spectacle
+    // svgpart
+    // sweeper
+    // texinfo
+    // tumbler
+    // st
+    // pip3
+    // unzip
+    // imgclr
+    // xdotool
+    // "simplescreenrecorder",
+    // pamixer
+    // brillo
+    // ripgrep
     // ndctl
     // xfsprogs
     // ### - archey
@@ -327,16 +331,9 @@ fn main() -> Result<(), YumaError> {
         .on_host("steambox"),
     );
 
-    ctx.add(
-        [
-            "linux-asahi-edge",
-            "mesa-asahi-edge",
-            "asahi-meta",
-            "archlinuxarm-keyring",
-        ]
-        .b()
-        .on_host("hazed"),
-    );
+    // Asahi things
+    ctx.add(["linux-asahi-edge", "mesa-asahi-edge"].b().on_host("hazed"));
+    ctx.add(["asahi-meta", "archlinuxarm-keyring"].b().on_host("hazed"));
 
     ctx.add(["pipewire-alsa", "pipewire-pulse"].b().on_host("hazed"));
 
@@ -347,8 +344,60 @@ fn main() -> Result<(), YumaError> {
 
     // TODO: Make a insure sane method
     ctx.add(["paru", "pacman"].b().on_os("linux"));
+    ctx.add(
+        [
+            // "android-udev",
+            // "baobab",
+            // "bazel",
+            "bear",
+            "blender",
+            "catch2",
+            "chocolate-doom",
+            "cmake",
+            "eslint",
+            // "flake8",
+            "gdm",
+            "gitoxide",
+            "gnome-backgrounds",
+            "gnome-calculator",
+            // "gnome-calendar",
+            // "gnome-characters",
+            // "gnome-connections",
+            "gnome-font-viewer",
+            // "gnome-logs",
+            // "gnome-maps",
+            // "gnome-shell-extension-gsconnect",
+            // "gnome-shell-extension-gtile",
+            // "gnome-shell-extensions",
+            "gnome-tweaks",
+            "gnome-weather",
+            "gptfdisk",
+            "libgnomekbd",
+            "libmfx",
+            "loupe",
+            "meson",
+            "minecraft-launcher",
+            "modrinth-app",
+            "mpdevil",
+            "nano",
+            "nautilus",
+            "nim",
+            "obs-studio",
+            "obsidian",
+            "pdftk",
+            "pfetch",
+            // "python-black",
+            "scdoc",
+            "snapshot",
+            "stb",
+            "steam",
+            "xdg-user-dirs-gtk",
+        ]
+        .b()
+        .on_os("linux"),
+    );
 
-    ctx.update();
+    ctx.update()?;
 
     Ok(())
 }

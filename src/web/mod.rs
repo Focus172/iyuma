@@ -1,4 +1,3 @@
-
 use yuma::prelude::*;
 
 pub fn install(ctx: &mut YumaCtx) {
@@ -13,9 +12,7 @@ pub fn install(ctx: &mut YumaCtx) {
 }
 
 #[cfg(target_os = "linux")]
-fn userjs() -> YumaResult {
-    use std::fs;
-
+fn userjs() -> Result<()> {
     let userjs = include_str!("./user.js");
 
     let home = std::env::var("HOME").unwrap();
