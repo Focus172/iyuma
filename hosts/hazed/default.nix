@@ -1,14 +1,11 @@
 { config, pkgs, ... }: {
-  imports = [ 
-    ./hardware-configuration.nix 
-  ];
+
+  imports = [ ./hardware-configuration.nix ];
 
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
   networking.hostName = "hazed";
-
-  # virtualisation.virtualbox.guest.enable = true;
   virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.guest.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -18,4 +15,3 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
 }
-

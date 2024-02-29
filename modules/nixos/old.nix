@@ -1,5 +1,4 @@
 { pkgs, ... }: {
-
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;
@@ -52,10 +51,10 @@
   services.pipewire = {
     enable = true;
     alsa.enable = true;
-    # alsa.support32Bit = true;
     pulse.enable = true;
-    jack.enable = true;
+    # jack.enable = true;
   };
+
   environment.variables = {
     ZDOTDIR = "$HOME/.config/zsh";
     EDITOR = "nvim";
@@ -66,20 +65,20 @@
     syntaxHighlighting.enable = true;
     enableCompletion = true;
   };
+  users.defaultUserShell = pkgs.zsh;
 
   programs.fish = {
     enable = false;
     shellAliases = { # for some reason nix has opionated shell aliases
       l = null;      # this is really dumb but I am too lazy to complain
-      ls = null;     # upstream so I guess I am the dumb one here. Anyware 
+      ls = null;     # upstream so I guess I am the dumb one here. Anyware
       ll = null;     # this will do for now.
     };
   };
-  users.defaultUserShell = pkgs.zsh;
 
   fonts = {
     fonts = with pkgs; [
-      (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
+      (nerdfonts.override { fonts = ["Hack" "Mononoki"]; })
       rounded-mgenplus
       # hanazono # a bit too fancy
     ];
@@ -100,9 +99,6 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
@@ -110,11 +106,5 @@
 
   services.openssh.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    git
-
-    ## Only choose 1:
-    # busybox
-    coreutils
-  ];
+  environment.systemPackages = with pkgs; [ git coreutils ];
 }

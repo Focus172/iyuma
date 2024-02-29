@@ -18,11 +18,11 @@
       grace=2;
       screenshots =true;
       clock =true;
-# effect-vignette=0.5:0.5
-# effect-blur=7x5
-# ignore-empty-password =true;
+      # effect-vignette=0.5:0.5
+      # effect-blur=7x5
+      # ignore-empty-password =true;
     };
   };
 
-  home.packages = [pkgs.swayidle];
+  home.packages = [ pkgs.swayidle ];
 }

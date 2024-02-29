@@ -1,7 +1,0 @@
-[package]
-name = "iyuma"
-version = "0.0.0"
-edition = "2021"
-
-[dependencies]
-yuma = { git = "https://github.com/Focus172/freight.git" }
