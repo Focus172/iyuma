@@ -1,30 +1,36 @@
 {
-  lib, inputs, nixpkgs,
+  inputs,
+  nixpkgs,
   # nixpkgs-unstable,
-  user,
   ...
 }:
 let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
-    inherit system;
+    system = system; # inherit system;
     config.allowUnfree = true;
   };
+  lib = nixpkgs.lib;
+  user = "focus";
   # unstable = import nixpkgs-unstable {
   #   inherit system;
   #   config.allowUnfree = true;
   # };
-in {
+in
+{
   steamfunk = lib.nixosSystem {
-    inherit system;
+    system = system; # inherit system;
+
+    # args that are passed to each of the modules
     specialArgs = {
-        inherit inputs user;
-        host.hostName = "steamfunk";
+      inputs = inputs; # inherit inputs user;
+      user = user;
+      host.hostName = "steamfunk";
     };
     modules = [
-        # ./home.nix
-        ./steamfunk
-        # ../modules/nixos
+      ./steamfunk
+      # ./home.nix
+      # ../modules/nixos
     ];
   };
 }

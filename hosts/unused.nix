@@ -1,5 +1,4 @@
 { pkgs, home-manager, ... }: {
-
   environment.systemPackages = with pkgs; [
     git
     greetd.tuigreet
@@ -14,16 +13,19 @@
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --time --asterisks --greeting 'Welcome home' --cmd Hyprland";
       };
     };
+  };
+
+  services = {
     pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
     };
-    printing.enable = true; # Abilita CUPS
+    printing.enable = true; # Cups
     upower = {
-      enable = true; # Abilita UPower
-      ignoreLid = true; # Ignora lo stato del coperchio
+      enable = true;
+      ignoreLid = true;
     };
   };
 

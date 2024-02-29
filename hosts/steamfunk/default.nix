@@ -207,8 +207,13 @@
       rclone-browser
 
       # (callPackage /home/focus/.config/iyuma/firefoxpwa.nix {})
+
+      mprocs
+      du-dust
+      wiki-tui
+
+        # komikku
     ]
-    # ++ [ unstable.komikku ]
     ;
   };
   environment.systemPackages = with pkgs; [ vim git ];
