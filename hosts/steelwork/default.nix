@@ -1,6 +1,10 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
-    ./hardware-configuration.nix 
+    ./hardware-configuration.nix
   ];
 
   programs.steam.enable = true;
@@ -20,7 +24,7 @@
   services.tlp.enable = true;
 
   # Enables kernel to save battery on lid close
-  boot.kernelParams = [ "mem_sleep_default=deep" ];
+  boot.kernelParams = ["mem_sleep_default=deep"];
 
   # Enables touch id
   services.fprintd.enable = true;
@@ -33,6 +37,27 @@
     powertop.enable = true;
     cpuFreqGovernor = "powersave"; # alt "ondemand"
   };
+
+  # environment.systemPackages = with pkgs; [
+  #   git
+  #   vim
+  # ];
+  #
+  # services.upower = {
+  #   enable = true;
+  #   ignoreLid = true;
+  # };
+  # virtualisation.docker.enable = true;
+  #
+  # programs = {
+  #   gnupg.agent.enable = true;
+  #   ssh.startAgent = true;
+  # };
+  #
+  # time.hardwareClockInLocalTime = true;
+  # security.rtkit.enable = true;
+  # virtualisation.libvirtd.enable = true;
+  # environment.shells = with pkgs; [ zsh ];
 
   networking.hostName = "steelwork";
 

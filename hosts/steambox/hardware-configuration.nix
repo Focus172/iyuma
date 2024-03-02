@@ -27,10 +27,10 @@
     fsType = "vfat";
   };
 
- #  fileSystems."/mnt/gentoo" = {
- #   device = "/dev/disk/by-uuid/f5a3a4d6-4d04-4beb-8345-0fe75601d477";
- #   fsType = "ext4";
- # };
+  #  fileSystems."/mnt/gentoo" = {
+  #   device = "/dev/disk/by-uuid/f5a3a4d6-4d04-4beb-8345-0fe75601d477";
+  #   fsType = "ext4";
+  # };
 
   swapDevices = [
     {device = "/dev/disk/by-uuid/7e924084-eef4-481c-92ab-426cd45e9d6b";}

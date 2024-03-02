@@ -1,4 +1,10 @@
-{ config, lib, pkgs, user, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  user,
+  ...
+}: {
   home.packages = with pkgs; [
     playerctl
     # pkgs.mpc-cli
@@ -55,7 +61,6 @@
   #     }
   #   '';
   # };
-
 
   # services.mpdris2.enable = true;
   # services.playerctld.enable = true;

@@ -25,10 +25,10 @@ in
     # };
     # cargoLock = {
     #   importCargoLock = "${source}/native/Cargo.lock";
-      # lockFile = "${source}/native/Cargo.lock";
-      # outputHashes = {
-      #   "data-url-0.1.0" = "5c297a1c74b71ae29df00c3e22dd9534821d60eb9af5a0192823fa2acea70c2a";
-      # };
+    # lockFile = "${source}/native/Cargo.lock";
+    # outputHashes = {
+    #   "data-url-0.1.0" = "5c297a1c74b71ae29df00c3e22dd9534821d60eb9af5a0192823fa2acea70c2a";
+    # };
     # };
 
     pname = "firefox-pwa";
@@ -36,7 +36,6 @@ in
 
     src = "${source}/native";
     cargoSha256 = "sha256-zLl7WvGzN/ltc7hT5cAsp3ByrlThQmRXrGM5rKbntdY=";
-
 
     doCheck = false;
 

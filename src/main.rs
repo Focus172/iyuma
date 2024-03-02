@@ -166,9 +166,9 @@ fn main() -> Result<()> {
         .on_hosts(["steambox", "steamfunk"]),
     );
 
-    // "acpid-openrc",
-    // "b43-fwcutter",
-    // "cups-openrc",
+    // acpid-openrc
+    // b43-fwcutter
+    // cups-openrc
     // ecryptfs-utils
     // gwenview
     // haveged-openrc

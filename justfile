@@ -1,6 +1,5 @@
 #!/usr/bin/env just --justfile
 
-
 # rust packages
 crates := "cargo-expand cargo-info cargo-watch"
 

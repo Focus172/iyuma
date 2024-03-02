@@ -3,8 +3,7 @@
   nixpkgs,
   # nixpkgs-unstable,
   ...
-}:
-let
+}: let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
     system = system; # inherit system;
@@ -16,8 +15,7 @@ let
   #   inherit system;
   #   config.allowUnfree = true;
   # };
-in
-{
+in {
   steamfunk = lib.nixosSystem {
     system = system; # inherit system;
 
@@ -29,8 +27,9 @@ in
     };
     modules = [
       ./steamfunk
+      ../modules/nixos
       # ./home.nix
-      # ../modules/nixos
     ];
+    # ++ ( import ../modules/home-manager {} );
   };
 }
