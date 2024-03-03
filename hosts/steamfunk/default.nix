@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
   pkgs,
@@ -9,10 +6,6 @@
 }: {
   # Include the results of the hardware scan.
   imports = [./hardware-configuration.nix];
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "steamfunk";
 
@@ -36,9 +29,9 @@
     };
   };
 
-  # ------------- Input --------------- #
   i18n.defaultLocale = "en_US.UTF-8";
 
+  # ------------- Input --------------- #
   i18n.inputMethod = {
     enabled = "fcitx5";
     fcitx5.addons = [pkgs.fcitx5-mozc];
@@ -47,7 +40,7 @@
   environment.variables = {
     XMODIFIERS = "@im=fcitx";
     XMODIFIER = "@im=fcitx";
-    GTK_IM_MODULE = "fcitx";
+    # GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
     GLFW_IM_MODULE = "fcitx";
   };

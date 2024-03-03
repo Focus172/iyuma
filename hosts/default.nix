@@ -1,6 +1,6 @@
 {
-  inputs,
   nixpkgs,
+  # inputs,
   # nixpkgs-unstable,
   ...
 }: let
@@ -21,8 +21,8 @@ in {
 
     # args that are passed to each of the modules
     specialArgs = {
-      inputs = inputs; # inherit inputs user;
-      user = user;
+      # inputs = inputs;
+      user = user; # inherit user;
       host.hostName = "steamfunk";
     };
     modules = [

@@ -6,7 +6,8 @@
   ...
 }: {
   home.packages = with pkgs; [
-    playerctl
+    hello
+    # playerctl
     # pkgs.mpc-cli
     # pkgs.lutris
   ];

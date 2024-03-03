@@ -4,17 +4,22 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
     # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # home-manager = {
-    #   url = "github:nix-community/home-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    home-manager = {
+      url = "github:nix-community/home-manager/release-23.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
+  # This request each of the arguments from the flake registry. It is how you
+  # get data from each thing you brought into scope.
   outputs = {
-    self,
     nixpkgs,
+    home-manager,
+    # self,
+    # inputs,
     ...
-  } @ inputs: {
+  }: {
+    # @ inputs to add it as an arg i think
     # The imports a map which is assined to this value each key is a thing that
     # can be build as config when no name is passed then `default` is built.
     #
@@ -23,6 +28,8 @@
     # In summary, what this line does is import a function from `./hosts` and
     # then call it with 3 arguments. It just so happens that the names of that
     # each of those values exists in this scope and have the same name.
-    nixosConfigurations = import ./hosts {inherit inputs nixpkgs;};
+    nixosConfigurations = import ./hosts {inherit nixpkgs;}; # inherit inputs
+
+    homeConfigurations = import ./home {inherit nixpkgs;};
   };
 }

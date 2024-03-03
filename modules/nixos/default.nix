@@ -3,7 +3,11 @@
   pkgs,
   ...
 }: {
-  imports = [./hyprland.nix];
+  imports = [
+    ./hyprland.nix
+    ./boot.nix
+    # ./sync.nix
+  ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -22,12 +26,16 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.blueman.enable = true;
 
+  environment.shellAliases = {};
+  # add .local/bin to bath
+  environment.localBinInPath = true;
   environment.variables = {
     ZDOTDIR = "$HOME/.config/zsh";
   };
 
-  programs.zsh = {enable = true;};
-  users.defaultUserShell = pkgs.zsh;
+  # NixOs non-nessisary pacakage
+  # defualt is pkgs.perl pkgs.rsync pkgs.strace
+  environment.defaultPackages = [pkgs.rsync pkgs.strace];
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -52,11 +60,11 @@
     allowUnfree = true;
   };
 
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    libsecret
-    openssl
-  ];
+  # programs.nix-ld.enable = true;
+  # programs.nix-ld.libraries = with pkgs; [
+  #   libsecret
+  #   openssl
+  # ];
 
   programs.neovim = {
     enable = true;
@@ -64,27 +72,40 @@
     vimAlias = true;
   };
 
-  programs.fish.enable = true;
-
   # ------------- Fonts --------------- #
-  fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
-    dejavu_fonts
-    ipafont
-    kochi-substitute
-  ];
+  fonts = {
+    packages = with pkgs; [
+      (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
+      dejavu_fonts
+      ipafont
+      kochi-substitute
+      # rounded-mgenplus
+      # Too Fancy
+      # hanazono
+    ];
+    enableDefaultPackages = false;
+  };
 
   fonts.fontconfig.defaultFonts = {
     monospace = ["Hack Nerd Mono" "IPAGothic"];
     sansSerif = ["DejaVu Sans" "IPAPGothic"];
     serif = ["DejaVu Serif" "IPAPMincho"];
   };
+
+  # nix does bad things with my fish config
+  programs.fish.enable = false;
+
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
   # ----------------------------------- #
   users.users.focus = {
     isNormalUser = true;
     description = "Evan Stokdyk";
-    extraGroups = ["networkmanager" "wheel"];
+    shell = pkgs.zsh;
+    extraGroups = ["wheel" "networkmanager" "audio" "video" "libvirtd"];
     packages = with pkgs; [
+      fish
+
       firefox
       alacritty
       fzf
@@ -98,7 +119,7 @@
       clang # zig
       swww
       # gnome.nautilus
-      rofi
+      rofi-wayland
       pass
       wl-clipboard
       fdupes
@@ -151,7 +172,7 @@
       pfetch
 
       drive
-      # komikku
+      komikku
       # heroic
 
       pavucontrol
@@ -182,43 +203,17 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [vim git];
+  environment.systemPackages = with pkgs; [vim git coreutils]; # busybox
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # boot = {
-  #   loader = {
-  #     efi.canTouchEfiVariables = true;
-  #     grub = {
-  #       enable = true;
-  #       devices = ["nodev"];
-  #       efiSupport = true;
-  #       # useOSProber = true;
-  #       configurationLimit = 2;
-  #       # font = path
-  #       # fontSize = uint
-  #       # theme = string
-  #     };
-  #     timeout = 2;
-  #   };
-  #   kernelPackages = pkgs.linuxPackages_latest;
-  # };
-  #
   # ### printing
   # services.printing.enable = true;
   # services.avahi.enable = true;
   # services.avahi.nssmdns = true;
   # # for a WiFi printer
   # services.avahi.openFirewall = true;
-  #
-  # time.timeZone = "America/Tijuana";
-  #
-  # # Enable networking
-  # networking.networkmanager.enable = true;
-  #
-  # # programs.dconf.enable = true;
-  # programs.hyprland.enable = true;
-  #
+
   # # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
   #
@@ -227,71 +222,14 @@
   #   keyMap = "us";
   #   useXkbConfig = false;
   # };
-  #
-  # # services.syncthing.enable = true;
-  # # services.syncthing.user = "focus";
-  # # services.syncthing.dataDir = "/home/focus/";
-  #
-  # # Enable sound.
-  # sound.enable = true;
-  # services.pipewire = {
-  #   enable = true;
-  #   alsa.enable = true;
-  #   pulse.enable = true;
-  #   # jack.enable = true;
-  # };
-  #
-  # environment.variables = {
-  #   ZDOTDIR = "$HOME/.config/zsh";
-  #   EDITOR = "nvim";
-  # };
-  #
-  # programs.zsh = {
-  #   enable = true;
-  #   syntaxHighlighting.enable = true;
-  #   enableCompletion = true;
-  # };
-  # users.defaultUserShell = pkgs.zsh;
-  #
-  # programs.fish = {
-  #   enable = false;
-  #   shellAliases = {
-  #     # for some reason nix has opionated shell aliases
-  #     l = null; # this is really dumb but I am too lazy to complain
-  #     ls = null; # upstream so I guess I am the dumb one here. Anyware
-  #     ll = null; # this will do for now.
-  #   };
-  # };
-  #
-  # fonts = {
-  #   fonts = with pkgs; [
-  #     (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
-  #     rounded-mgenplus
-  #     # hanazono # a bit too fancy
-  #   ];
-  #   enableDefaultFonts = false;
-  # };
-  #
-  # # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.focus = {
-  #   isNormalUser = true;
-  #   shell = pkgs.zsh;
-  #   description = "focus";
-  #   extraGroups = ["wheel" "networkmanager" "audio" "video" "libvirtd"];
-  # };
-  #
+
   # security.polkit.enable = true;
   # security.sudo.enable = true;
-  #
-  # xdg.portal.enable = true;
-  # xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland];
-  #
+
   # programs.gnupg.agent = {
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-  #
+
   # services.openssh.enable = true;
-  #
-  # environment.systemPackages = with pkgs; [git coreutils];
 }
