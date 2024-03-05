@@ -4,7 +4,11 @@
   pkgs,
   ...
 }: {
-  imports = [./pwa.nix];
+  imports = [];
+
+  home.packages = [
+    (callPackage ./pwa.nix {})
+  ];
 
   programs.firefox.enable = true;
 }

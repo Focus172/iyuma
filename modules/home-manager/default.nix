@@ -3,5 +3,12 @@
   pkgs,
   ...
 }: {
-  imports = [./jerry.nix ./firefox ./lock.nix];
+  imports = [
+    # ./firefox
+    # ./lock.nix
+  ];
+
+  home.packages = [
+    (callPackage ./jerry.nix {})
+  ];
 }

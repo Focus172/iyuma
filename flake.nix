@@ -3,9 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
-    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -30,6 +29,6 @@
     # each of those values exists in this scope and have the same name.
     nixosConfigurations = import ./hosts {inherit nixpkgs;}; # inherit inputs
 
-    homeConfigurations = import ./home {inherit nixpkgs;};
+    homeConfigurations = import ./home {inherit nixpkgs home-manager;};
   };
 }

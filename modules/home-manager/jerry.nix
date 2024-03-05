@@ -25,7 +25,6 @@ stdenv.mkDerivation (finalAttrs: {
   version = "1.9.9";
 
   src = fetchFromGitHub {
-    # https://raw.githubusercontent.com/justchokingaround/jerry/main/jerry.sh
     owner = "justchokingaround";
     repo = "jerry";
     rev = "a5e3bdae8ec49fa3fb0aa71f8f71cc0695612518";

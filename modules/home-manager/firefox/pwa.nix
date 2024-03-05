@@ -15,21 +15,15 @@
     sha256 = "sha256-zJSrZOLHyvvu+HoHrPkDDISuY9GqpKtwGn/7jKzg5pI=";
   };
 in
-  # cargoLock.lockFile / importCargoLock
   rustPlatform.buildRustPackage {
-    # cargoLock = rustPlatform.importCargoLock {
-    # lockFile = "${source}/native/Cargo.lock";
-    # outputHashes = {
-    #     # "rand-0.8.3" = "0ya2hia3cn31qa8894s3av2s8j5bjwb6yq92k0jsnlx7jid0jwqa";
-    # };
-    # };
-    # cargoLock = {
-    #   importCargoLock = "${source}/native/Cargo.lock";
-    # lockFile = "${source}/native/Cargo.lock";
-    # outputHashes = {
-    #   "data-url-0.1.0" = "5c297a1c74b71ae29df00c3e22dd9534821d60eb9af5a0192823fa2acea70c2a";
-    # };
-    # };
+    cargoLock = {
+      lockFile = "${source}/native/Cargo.lock";
+      outputHashes = {
+        "data-url-0.1.0" = "sha256-rESQz5jjNpVfIuTaRCAV2TLeUs09lOaLZVACsb/3Adg=";
+        "mime-0.4.0-a.0" = "sha256-LjM7LH6rL3moCKxVsA+RUL9lfnvY31IrqHa9pDIAZNE=";
+        "web_app_manifest-0.0.0" = "sha256-4tPeJkxphp7Bxn4GKOMZrGQyF6xIIGCNKJ4VGFbHGFk=";
+      };
+    };
 
     pname = "firefox-pwa";
     inherit version;
@@ -49,6 +43,7 @@ in
       sed -zi 's;name = "firefoxpwa"\nversion = "0.0.0";name = "firefoxpwa"\nversion = "2.1.2";' Cargo.lock
       # replace the version number in the profile template files
       sed -i $'s;DISTRIBUTION_VERSION = \'0.0.0\';DISTRIBUTION_VERSION = \'${version}\';' userchrome/profile/chrome/pwa/chrome.jsm
+
     '';
 
     installPhase = let
@@ -59,6 +54,8 @@ in
       install -Dm755 ${target}/firefoxpwa-connector $out/lib/firefoxpwa/firefoxpwa-connector
 
       # Manifest
+      # Replace the path to the one we install the connector to
+      sed -i "s;/usr/libexec/firefoxpwa-connector;$out/lib/firefoxpwa/firefoxpwa-connector;" manifests/linux.json
       install -Dm644 manifests/linux.json $out/lib/mozilla/native-messaging-hosts/firefoxpwa.json
 
       # Completions

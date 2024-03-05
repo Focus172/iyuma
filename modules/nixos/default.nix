@@ -27,8 +27,9 @@
   services.blueman.enable = true;
 
   environment.shellAliases = {};
+
   # add .local/bin to bath
-  environment.localBinInPath = true;
+  # environment.localBinInPath = true;
   environment.variables = {
     ZDOTDIR = "$HOME/.config/zsh";
   };
@@ -86,27 +87,26 @@
     enableDefaultPackages = false;
   };
 
-  fonts.fontconfig.defaultFonts = {
-    monospace = ["Hack Nerd Mono" "IPAGothic"];
-    sansSerif = ["DejaVu Sans" "IPAPGothic"];
-    serif = ["DejaVu Serif" "IPAPMincho"];
-  };
+  # fonts.fontconfig.defaultFonts = {
+  #   monospace = ["Hack Nerd Mono" "IPAGothic"];
+  #   sansSerif = ["DejaVu Sans" "IPAPGothic"];
+  #   serif = ["DejaVu Serif" "IPAPMincho"];
+  # };
 
   # nix does bad things with my fish config
   programs.fish.enable = false;
+  programs.zsh.enable = false;
 
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.bash;
   # ----------------------------------- #
   users.users.focus = {
     isNormalUser = true;
     description = "Evan Stokdyk";
-    shell = pkgs.zsh;
+    shell = pkgs.bash;
     extraGroups = ["wheel" "networkmanager" "audio" "video" "libvirtd"];
     packages = with pkgs; [
       fish
 
-      firefox
       alacritty
       fzf
       broot
@@ -190,14 +190,15 @@
       rclone
       rclone-browser
 
-      # (callPackage /home/focus/.config/iyuma/firefoxpwa.nix {})
-
       mprocs
       du-dust
       wiki-tui
       insync
 
       alejandra
+      brave
+      firefox
+      handlr-regex
 
       # neo-cowsay
     ];

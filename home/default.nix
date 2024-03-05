@@ -16,7 +16,7 @@ in {
     pkgs = pkgs; # inherit pkgs;
 
     modules = [
-      ./thing.nix
+      ./home.nix
       # ../modules/home-manager
     ];
   };
