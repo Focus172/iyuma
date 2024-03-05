@@ -28,7 +28,7 @@ stdenv.mkDerivation (finalAttrs: {
     owner = "justchokingaround";
     repo = "jerry";
     rev = "a5e3bdae8ec49fa3fb0aa71f8f71cc0695612518";
-    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    sha256 = "sha256-lgFsTpIb6i2QNDap9zMUE1qvvVMeMqsyENUMI0xN0Ro=";
   };
 
   nativeBuildInputs = [

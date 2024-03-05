@@ -14,10 +14,7 @@ nix:
 
 # install home manager packages
 home:
-    exit 1
-
-bootstrap-home:
-    exit 1
+    home-manager switch --flake .
 
 # loadkeys ./keys.kmap
 

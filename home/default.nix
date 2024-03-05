@@ -16,8 +16,8 @@ in {
     pkgs = pkgs; # inherit pkgs;
 
     modules = [
-      ./home.nix
-      # ../modules/home-manager
+      ./focus.nix
+      ../modules/home-manager
     ];
   };
 }
