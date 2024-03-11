@@ -18,6 +18,9 @@
     # inputs,
     ...
   }: {
+    # Home manager can be built with nix run . -- switch --flake .
+    defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
+
     # @ inputs to add it as an arg i think
     # The imports a map which is assined to this value each key is a thing that
     # can be build as config when no name is passed then `default` is built.

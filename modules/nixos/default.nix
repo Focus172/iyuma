@@ -6,6 +6,7 @@
   imports = [
     ./hyprland.nix
     ./boot.nix
+    ./gpg.nix
     # ./sync.nix
   ];
 
@@ -16,27 +17,29 @@
   # Wpa Supplicant
   # networking.wireless.enable = true;
 
-  # services.gnome.gnome-keyring.enable = true;
-  # preHook = '' until /run/wrappers/bin/ping google.com -c1 -q >/dev/null; do :; done '';
-
   # Set your time zone.
   time.timeZone = "America/Tijuana";
 
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  ### Bluetooth
+  hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.blueman.enable = true;
 
-  environment.shellAliases = {};
+  environment = {
+    shellAliases = {};
+    variables = {
+      ZDOTDIR = "$HOME/.config/zsh";
+    };
+    # NixOs has non-nessisary pacakage installed by default
+    # defaults are shown. Commented out one are 'deleted'
+    defaultPackages = [
+      # pkgs.perl
+      pkgs.rsync
+      pkgs.strace
+    ];
 
-  # add .local/bin to bath
-  # environment.localBinInPath = true;
-  environment.variables = {
-    ZDOTDIR = "$HOME/.config/zsh";
+    systemPackages = with pkgs; [vim git coreutils]; # busybox
   };
-
-  # NixOs non-nessisary pacakage
-  # defualt is pkgs.perl pkgs.rsync pkgs.strace
-  environment.defaultPackages = [pkgs.rsync pkgs.strace];
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -50,22 +53,10 @@
     # jack.enable = true;
   };
 
-  programs.gnupg.agent = {
-    enable = true;
-    pinentryFlavor = "qt";
-    # enableSSHSupport = true;
-  };
-
   nixpkgs.config = {
     permittedInsecurePackages = ["electron-25.9.0"];
     allowUnfree = true;
   };
-
-  # programs.nix-ld.enable = true;
-  # programs.nix-ld.libraries = with pkgs; [
-  #   libsecret
-  #   openssl
-  # ];
 
   programs.neovim = {
     enable = true;
@@ -77,6 +68,7 @@
   fonts = {
     packages = with pkgs; [
       (nerdfonts.override {fonts = ["Hack" "Mononoki"];})
+      noto-fonts-emoji
       dejavu_fonts
       ipafont
       kochi-substitute
@@ -88,14 +80,10 @@
   };
 
   # fonts.fontconfig.defaultFonts = {
-  #   monospace = ["Hack Nerd Mono" "IPAGothic"];
+  #   monospace = ["Hack Nerd Mono" "DejaVu Sans Mono" "IPAGothic"];
   #   sansSerif = ["DejaVu Sans" "IPAPGothic"];
   #   serif = ["DejaVu Serif" "IPAPMincho"];
   # };
-
-  # nix does bad things with my fish config
-  programs.fish.enable = false;
-  programs.zsh.enable = false;
 
   users.defaultUserShell = pkgs.bash;
   # ----------------------------------- #
@@ -104,10 +92,7 @@
     description = "Evan Stokdyk";
     shell = pkgs.bash;
     extraGroups = ["wheel" "networkmanager" "audio" "video" "libvirtd"];
-    # packages = with pkgs; [];
   };
-
-  environment.systemPackages = with pkgs; [vim git coreutils]; # busybox
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
@@ -129,11 +114,6 @@
 
   # security.polkit.enable = true;
   # security.sudo.enable = true;
-
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # services.openssh.enable = true;
 }

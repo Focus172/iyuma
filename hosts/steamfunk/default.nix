@@ -40,7 +40,7 @@
   environment.variables = {
     XMODIFIERS = "@im=fcitx";
     XMODIFIER = "@im=fcitx";
-    # GTK_IM_MODULE = "fcitx";
+    GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
     GLFW_IM_MODULE = "fcitx";
   };
