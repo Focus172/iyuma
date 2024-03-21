@@ -1,23 +1,7 @@
-{
-  nixpkgs,
-  home-manager,
-  ...
-}: let
-  lib = nixpkgs.lib;
-  home-lib = home-manager.lib;
+{...}: {
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.extraSpecialArgs = {};
 
-  system = "x86_64-linux";
-  pkgs = import nixpkgs {
-    system = system; # inherit system;
-    config.allowUnfree = true;
-  };
-in {
-  focus = home-lib.homeManagerConfiguration {
-    pkgs = pkgs; # inherit pkgs;
-
-    modules = [
-      ./focus.nix
-      ../modules/home-manager
-    ];
-  };
+  home-manager.users.focus = import ./focus.nix;
 }
