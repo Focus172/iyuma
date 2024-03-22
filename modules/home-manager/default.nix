@@ -327,7 +327,11 @@
     # unzip
 
     appimage-run
-    pinentry-rofi
+    # pinentry-rofi
+
+    bemenu
+    pinentry-bemenu
+    # bemoji
 
     ### Games
     # dolphin-emu
@@ -426,5 +430,7 @@
     # "snapshot",
     # "stb",
     # "xdg-user-dirs-gtk",
+
+
   ];
 }

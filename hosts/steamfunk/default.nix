@@ -14,9 +14,18 @@
 
   programs.steam = {
     enable = true;
-    # remotePlay.openFirewall = true;
-    # dedicatedServer.openFirewall = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
   };
+
+  ## Tf2
+  # there is currently a bug in a vendored dependency of the game that causes 
+  # it to crash. We load the fixed version and then puth it in the LD_PRELOAD to
+  # make the game use it.
+  #
+  # Launch options:
+  # LD_PRELOAD=$LD_PRELOAD:/run/current-system/sw/lib/libtcmalloc_minimal.so %command%
+  environment.systemPackages = [ pkgs.pkgsi686Linux.gperftools ];
 
   services.tlp = {
     enable = true;
