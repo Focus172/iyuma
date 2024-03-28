@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  unstable,
   ...
 }: {
   imports = [../modules/home-manager];

@@ -84,13 +84,6 @@
   # };
 
   users.defaultUserShell = pkgs.bash;
-  programs.bash = {
-    # [ -e "$HOME/.env" ] && . "$HOME/.env"
-    interactiveShellInit = ''
-      PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
-      HISTFILE="$USER/.local/share/bash/history"
-    '';
-  };
 
   # ----------------------------------- #
   users.users.focus = {

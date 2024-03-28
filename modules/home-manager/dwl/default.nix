@@ -1,10 +1,12 @@
 {
   config,
   pkgs,
+  unstable,
   ...
 }: {
-  home.packages = with pkgs; [
+  home.packages = with unstable; [
     (dwl.override {conf = ./config.h;})
     foot
+    eww-wayland
   ];
 }

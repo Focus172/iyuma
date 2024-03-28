@@ -3,25 +3,24 @@
   pkgs,
   ...
 }: let
-  hyprlaunch = pkgs.writeShellScriptBin "hyprlaunch" ''
-    export XDG_SESSION_TYPE=wayland
-    export XDG_SESSION_DESKTOP=Hyprland
-    export XDG_CURRENT_DESKTOP=Hyprland
-
-    # Bug fixing
-    export WLR_RENDERER_ALLOW_SOFTWARE=1
-    export LIBSEAT_BACKEND=logind
-
-    . $HOME/.env
-
-    ## asahi fixes
-    # export MESA_GL_VERSION_OVERRIDE=3.3
-    # export MESA_GLSL_VERSION_OVERRIDE=330
-    # export MESA_GLES_VERSION_OVERRIDE=3.1
-
-    exec ${pkgs.dbus}/bin/dbus-run-session ${pkgs.hyprland}/bin/Hyprland "$@"
-  '';
-  tuigreet_command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --time --asterisks --greeting 'Welcome home' --cmd ${hyprlaunch}/bin/hyprlaunch";
+  # hyprlaunch = pkgs.writeShellScriptBin "sessionlaunch" ''
+  #   export XDG_SESSION_TYPE=wayland
+  #   export XDG_SESSION_DESKTOP=Hyprland
+  #   export XDG_CURRENT_DESKTOP=Hyprland
+  #
+  #   ## Hyprland Bug fixing
+  #   # export WLR_RENDERER_ALLOW_SOFTWARE=1
+  #   # export LIBSEAT_BACKEND=logind
+  #   ## asahi fixes
+  #   # export MESA_GL_VERSION_OVERRIDE=3.3
+  #   # export MESA_GLSL_VERSION_OVERRIDE=330
+  #   # export MESA_GLES_VERSION_OVERRIDE=3.1
+  #
+  #   . $HOME/.env
+  #
+  #   # exec ${pkgs.dbus}/bin/dbus-run-session ${pkgs.hyprland}/bin/Hyprland "$@"
+  # '';
+  # tuigreet_command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --time --asterisks --greeting 'Welcome home' --cmd ${hyprlaunch}/bin/hyprlaunch";
 in {
   boot.loader.timeout = 3;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -47,7 +46,7 @@ in {
   services.greetd = {
     enable = true;
     vt = 2;
-    settings.default_session.command = tuigreet_command;
+    settings.default_session.command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --time --asterisks --greeting 'Welcome home'";
   };
 
   systemd.services.greetd = {
@@ -58,5 +57,4 @@ in {
   # boot.plymouth.enable = true;
   # boot.plymouth.theme = "catppuccin-mocha";
   # boot.plymouth.themePackages = [pkgs.catppuccin-plymouth];
-  #
 }
