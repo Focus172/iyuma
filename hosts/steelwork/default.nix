@@ -18,8 +18,8 @@
   services.thermald.enable = true;
 
   # services.cpupower-gui.enable = true;
-  services.power-profiles-daemon.enable = false;
-  services.tlp.enable = true;
+  # services.power-profiles-daemon.enable = true;
+  # services.tlp.enable = true;
 
   # Enables kernel to save battery on lid close
   boot.kernelParams = ["mem_sleep_default=deep"];

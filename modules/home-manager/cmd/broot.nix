@@ -57,7 +57,7 @@
       # Special paths
       special_paths = {
         "/home/focus/ext" = "no-enter";
-        "/home/focus/.local" = "hide";
+        "/home/focus/.local/share" = "hide";
         "/home/focus/.cache" = "hide";
         "/home/focus/dox" = "enter";
       };
@@ -93,4 +93,4 @@
       };
     };
   };
-};
+}

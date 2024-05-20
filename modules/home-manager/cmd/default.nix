@@ -4,12 +4,8 @@
   unstable,
   ...
 }: {
+  imports = [./broot.nix];
 
-  imports = [
-    ./broot.nix
-  ];
-
-  home.packages = with pkgs; [ cava ];
-
-  xdg.configFile."cava/config".file = ./cava.toml;
-};
+  home.packages = with pkgs; [cava];
+  home.file.".config/cava/config".source = ./cava.toml;
+}

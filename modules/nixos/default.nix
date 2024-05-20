@@ -4,11 +4,53 @@
   ...
 }: {
   imports = [
-    ./hyprland.nix
     ./boot.nix
     ./gpg.nix
-    # ./sync.nix
   ];
+
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+  };
+
+  # needed for firefox shit \\ see ../home-manager/firefox
+  services.gnome.gnome-browser-connector.enable = true;
+
+  # boot.plymouth.enable = true;
+  # boot.plymouth.theme = "catppuccin-mocha";
+  # boot.plymouth.themePackages = [pkgs.catppuccin-plymouth];
+
+  # programs.dconf.enable = true;
+  # programs.hyprland.enable = true;
+
+  environment.sessionVariables = {
+    # tell electron apps to use wayland
+    NIXOS_OZONE_WL = "1";
+  };
+
+  # managed by gnome
+  # xdg.portal.enable = true;
+  # xdg.portal.extraPortals = [
+  #   # for screen sharing
+  #   pkgs.xdg-desktop-portal-wlr
+  #   # for file picking
+  #   pkgs.xdg-desktop-portal-gtk
+  # ];
+
+  hardware.opengl.enable = true;
+
+  security = {
+    # polkit.enable = true;
+    pam.services = {
+      # swaylock = {};
+      # waylock = {};
+    };
+  };
+
+  # services.syncthing.enable = true;
+  # services.syncthing.user = "focus";
+  # services.syncthing.dataDir = "/home/focus/dox";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 

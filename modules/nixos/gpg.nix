@@ -5,15 +5,15 @@
 }: {
   programs.gnupg.agent = {
     enable = true;
-    #pinentryPackage = pkgs.pinentry-bemenu;
-    pinentryFlavor = "qt";
-    # pinentryFlavor = "curses";
-    # enableSSHSupport = true;
+    # pinentryPackage = pkgs.pinentry-gnome;
+    pinentryFlavor = "gnome3"; # "qt", "curses";
+    enableSSHSupport = true;
   };
 
   environment.systemPackages = with pkgs; [
     # pinentry-rofi
-    pinentry-bemenu
+    # pinentry-bemenu
+    pinentry-gnome
     pinentry-qt
   ];
 }

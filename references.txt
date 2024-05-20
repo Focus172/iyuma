@@ -15,3 +15,4 @@ https://github.com/MatthiasBenaets/nixos-config
 https://github.com/rxyhn/yuki
 https://nx2.site/grub-ascii-theme
 https://nx2.site/my-ascii-art
+https://github.com/sephid86/archas
