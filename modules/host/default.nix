@@ -17,10 +17,6 @@
   # needed for firefox shit \\ see ../home-manager/firefox
   services.gnome.gnome-browser-connector.enable = true;
 
-  # boot.plymouth.enable = true;
-  # boot.plymouth.theme = "catppuccin-mocha";
-  # boot.plymouth.themePackages = [pkgs.catppuccin-plymouth];
-
   # programs.dconf.enable = true;
   # programs.hyprland.enable = true;
 
@@ -40,13 +36,8 @@
 
   hardware.opengl.enable = true;
 
-  security = {
-    # polkit.enable = true;
-    pam.services = {
-      # swaylock = {};
-      # waylock = {};
-    };
-  };
+  # security.polkit.enable = true;
+  # security.sudo.enable = true;
 
   # services.syncthing.enable = true;
   # services.syncthing.user = "focus";
@@ -153,8 +144,6 @@
   #   useXkbConfig = false;
   # };
 
-  # security.polkit.enable = true;
-  # security.sudo.enable = true;
 
   # services.openssh.enable = true;
 }

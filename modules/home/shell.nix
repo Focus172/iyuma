@@ -35,7 +35,6 @@
 
     HISTORY_IGNORE = "(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..|clear)";
     LESSHISTFILE = "-";
-
   };
 
   # PATH="$PATH:$HOME/.local/bin:$CARGO_HOME/bin:$HOME/dev/scripts"

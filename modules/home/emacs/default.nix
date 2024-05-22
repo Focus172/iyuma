@@ -8,29 +8,36 @@
 #   dashboardLogo = ./. + "/nix-dark.png";
 # in
 {
-  programs.doom-emacs = {
-    enable = true;
-    # emacsPackage = pkgs.emacs;
+  home.packages = with pkgs; [
+    emacs
+    # - obsidian.el
+    # - doom-emacs.el
+    ispell
+  ];
 
-    doomPrivateDir = ./.;
-    doomPackageDir = pkgs.linkFarm "my-doom-packages" [
-      # straight needs a (possibly empty) `config.el` file to build
-      {
-        name = "config.el";
-        path = pkgs.emptyFile;
-      }
-      {
-        name = "init.el";
-        path = ./init.el;
-      }
-      {
-        name = "packages.el";
-        path = pkgs.emptyFile;
-        # path = pkgs.writeText "packages.el" "(package! inheritenv)";
-      }
-      # { name = "modules"; path = ./my-doom-module; }
-    ];
-  };
+  # programs.doom-emacs = {
+  #   enable = true;
+  #   # emacsPackage = pkgs.emacs;
+  #
+  #   doomPrivateDir = ./.;
+  #   doomPackageDir = pkgs.linkFarm "my-doom-packages" [
+  #     # straight needs a (possibly empty) `config.el` file to build
+  #     {
+  #       name = "config.el";
+  #       path = pkgs.emptyFile;
+  #     }
+  #     {
+  #       name = "init.el";
+  #       path = ./init.el;
+  #     }
+  #     {
+  #       name = "packages.el";
+  #       path = pkgs.emptyFile;
+  #       # path = pkgs.writeText "packages.el" "(package! inheritenv)";
+  #     }
+  #     # { name = "modules"; path = ./my-doom-module; }
+  #   ];
+  # };
 
   # home.file.".emacs.d/themes/doom-stylix-theme.el".source = config.lib.stylix.colors {
   #     template = builtins.readFile ./themes/doom-stylix-theme.el.mustache;

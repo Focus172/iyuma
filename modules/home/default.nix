@@ -2,7 +2,7 @@
   config,
   pkgs,
   unstable,
-  # getchoo-pkgs,
+  getchoo,
   ...
 }: {
   imports = [
@@ -10,6 +10,7 @@
     ./shell.nix
     ./theme.nix
     ./firefox
+    ./emacs
   ];
 
   # requires: `security.pam.services.swaylock = {};`
@@ -18,9 +19,6 @@
   home.packages =
     (with pkgs; [
       # TODO: better emacs
-      emacs
-      # - obsidian.el
-      # - doom-emacs.el
       foot
       vscodium
 
@@ -35,9 +33,12 @@
       # (pkgs.callPackage ./pkgs/jerry.nix {})
 
       ## Langs
-      rustup zig
-      go nim
-      erlang gleam elixir
+      rustup
+      go
+      nim
+      erlang
+      gleam
+      elixir
       # bun nodejs
       # sassc
       # ghc
@@ -54,7 +55,8 @@
 
       ### Tools
       clang # gcc
-      gnumake just
+      gnumake
+      just
       # bazel meson cmake
       # qtcreator qt6.full
 
@@ -75,7 +77,8 @@
       # swiftformat
 
       ### Music
-      mpd mpc-cli
+      mpd
+      mpc-cli
       mpdevil # clerk ncmpcpp
       spotify
 
@@ -273,15 +276,20 @@
 
       ### Games
       heroic
-      minecraft # modrinth-app
+      # minecraft # modrinth-app
       # dolphin-emu retroarch
 
       ### Japanese
       memento
       komikku
       ani-cli
+
+      gnome-extension-manager
+
+      obsidian
+      zig
     ])
-    ++ (with unstable; [ obsidian ])
-    # ++  [ getchoo-pkgs.modrinth-app ]
-  ;
+    ++ (with getchoo; [
+      # modrinth-app
+    ]);
 }

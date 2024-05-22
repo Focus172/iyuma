@@ -21,4 +21,8 @@
     # fontSize = uint
     # theme = string
   };
+
+  # boot.plymouth.enable = true;
+  # boot.plymouth.theme = "catppuccin-mocha";
+  # boot.plymouth.themePackages = [pkgs.catppuccin-plymouth];
 }
