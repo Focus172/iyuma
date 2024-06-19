@@ -1,11 +1,6 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{ config, pkgs, lib, ... }: {
   # Include the results of the hardware scan.
-  imports = [./hardware-configuration.nix];
+  imports = [ ./hardware-configuration.nix ];
 
   networking.hostName = "steamfunk";
 
@@ -25,7 +20,7 @@
   #
   # Launch options:
   # LD_PRELOAD=$LD_PRELOAD:/run/current-system/sw/lib/libtcmalloc_minimal.so %command%
-  environment.systemPackages = [pkgs.pkgsi686Linux.gperftools];
+  environment.systemPackages = [ pkgs.pkgsi686Linux.gperftools ];
 
   # services.tlp = {
   #   enable = true;
@@ -43,10 +38,10 @@
   # ------------- Input --------------- #
   i18n.inputMethod = {
     # enabled = "ibus";
-    # ibus.engines = with pkgs.ibus-engines; [ mozc ]; # hangul 
+    # ibus.engines = with pkgs.ibus-engines; [ mozc ]; # hangul
 
     enabled = "fcitx5";
-    fcitx5.addons = [pkgs.fcitx5-mozc];
+    fcitx5.addons = [ pkgs.fcitx5-mozc ];
   };
   # ----------------------------------- #
 

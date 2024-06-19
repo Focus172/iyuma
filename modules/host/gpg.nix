@@ -1,18 +1,8 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
   programs.gnupg.agent = {
     enable = true;
-    pinentryPackage = pkgs.pinentry-gnome3;
+    # pinentryPackage = pkgs.pinentry-gnome3;
+    pinentryPackage = pkgs.pinentry-bemenu;
     enableSSHSupport = true;
   };
-
-  # environment.systemPackages = with pkgs; [
-  #   # pinentry-rofi
-  #   # pinentry-bemenu
-  #   pinentry-gnome
-  #   pinentry-qt
-  # ];
 }

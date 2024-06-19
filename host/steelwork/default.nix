@@ -1,9 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
-  imports = [./hardware-configuration.nix];
+{ config, pkgs, ... }: {
+  imports = [ ./hardware-configuration.nix ];
 
   programs.steam.enable = true;
 
@@ -22,7 +18,7 @@
   # services.tlp.enable = true;
 
   # Enables kernel to save battery on lid close
-  boot.kernelParams = ["mem_sleep_default=deep"];
+  boot.kernelParams = [ "mem_sleep_default=deep" ];
 
   # Enables touch id
   services.fprintd.enable = true;
@@ -51,7 +47,7 @@
   # security.rtkit.enable = true;
   # virtualisation.libvirtd.enable = true;
 
-  environment.shells = with pkgs; [zsh];
+  environment.shells = with pkgs; [ zsh ];
 
   networking.hostName = "steelwork";
 

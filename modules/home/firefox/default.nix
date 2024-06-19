@@ -1,10 +1,5 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}: let
-  userjs = builtins.readFile ./user.js;
+{ config, pkgs, inputs, ... }:
+let userjs = builtins.readFile ./user.js;
 in {
   programs.firefox = {
     enable = true;
@@ -26,18 +21,14 @@ in {
       name = "school";
     };
     profiles."personal" = {
-      id = 69;
+      id = 2;
       extraConfig = userjs;
       name = "personal";
     };
-
-    nativeMessagingHosts = [
-      pkgs.firefoxpwa
-      pkgs.gnome-browser-connector
-    ];
+    # nativeMessagingHosts = [ pkgs.firefoxpwa pkgs.gnome-browser-connector ];
   };
 
-  home.packages = [pkgs.firefoxpwa];
+  # home.packages = [pkgs.firefoxpwa];
 
   # programs.firefox.profiles = let
   #   userjs = builtins.readFile ./user.js;
@@ -63,5 +54,4 @@ in {
   #     ["work" "personal" "school"]
   #   )
   #   .profiles;
-
 }

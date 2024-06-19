@@ -1,10 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
-  home.sessionVariables = let
-    data-home = "$HOME/.local/share";
+{ config, pkgs, ... }: {
+  home.sessionVariables = let data-home = "$HOME/.local/share";
   in {
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = data-home;
@@ -24,9 +19,8 @@
     VISUAL = "nvim";
     EDITOR = "emacs";
     READER = "zathura";
-    TERMINAL = "alacritty";
+    TERMINAL = "foot";
     BROWSER = "firefox";
-    # BROWSER = "brave";
     VIDEO = "mpv";
     IMAGE = "imv";
     OPENER = "handlr open";
@@ -58,9 +52,9 @@
     };
   };
 
-  programs.starship.enable = true;
-  programs.starship.enableFishIntegration = true;
-  programs.starship.enableBashIntegration = false;
+  # programs.starship.enable = true;
+  # programs.starship.enableFishIntegration = true;
+  # programs.starship.enableBashIntegration = false;
 
   programs.fish = {
     enable = true;
@@ -70,9 +64,7 @@
     '';
   };
 
-  xdg = {
-    configHome = "/home/focus/.config";
-  };
+  xdg = { configHome = "/home/focus/.config"; };
 
   # xdg.dataHome Absolute path to directory holding application data.	path
   # xdg.cacheHome	Absolute path to directory holding application caches.	path

@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, pkgs, ... }:
 # let
 #   dashboardLogo = ./. + "/nix-dark.png";
 # in
@@ -13,6 +8,8 @@
     # - obsidian.el
     # - doom-emacs.el
     ispell
+    texliveTeTeX
+    nixfmt-classic
   ];
 
   # programs.doom-emacs = {

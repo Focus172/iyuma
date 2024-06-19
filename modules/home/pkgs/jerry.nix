@@ -1,24 +1,10 @@
 # Adpated from:
 # https://raw.githubusercontent.com/justchokingaround/jerry/main/full.nix
-{
-  coreutils,
-  curl,
-  fetchFromGitHub,
-  ffmpeg,
-  fzf,
-  gnugrep,
-  gnupatch,
-  gnused,
-  html-xml-utils,
-  lib,
-  makeWrapper,
-  mpv,
-  openssl,
-  stdenv,
-  testers,
-  # ueberzugpp,
-  # rofi,
-  # jq,
+{ coreutils, curl, fetchFromGitHub, ffmpeg, fzf, gnugrep, gnupatch, gnused
+, html-xml-utils, lib, makeWrapper, mpv, openssl, stdenv, testers,
+# ueberzugpp,
+# rofi,
+# jq,
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "jerry";
@@ -52,32 +38,34 @@ stdenv.mkDerivation (finalAttrs: {
     mkdir -p $out/bin
     cp jerry.sh $out/bin/jerry
     wrapProgram $out/bin/jerry \
-      --prefix PATH : ${lib.makeBinPath [
-      coreutils
-      curl
-      ffmpeg
-      fzf
-      gnugrep
-      gnupatch
-      gnused
-      html-xml-utils
-      mpv
-      openssl
-      # ueberzugpp
-      # rofi
-      # jq
-    ]}
+      --prefix PATH : ${
+        lib.makeBinPath [
+          coreutils
+          curl
+          ffmpeg
+          fzf
+          gnugrep
+          gnupatch
+          gnused
+          html-xml-utils
+          mpv
+          openssl
+          # ueberzugpp
+          # rofi
+          # jq
+        ]
+      }
   '';
 
-  passthru.tests.version = testers.testVersion {
-    package = finalAttrs.finalPackage;
-  };
+  passthru.tests.version =
+    testers.testVersion { package = finalAttrs.finalPackage; };
 
   meta = with lib; {
-    description = "watch anime with automatic anilist syncing and other cool stuff";
+    description =
+      "watch anime with automatic anilist syncing and other cool stuff";
     homepage = "https://github.com/justchokingaround/jerry";
     license = licenses.gpl3;
-    maintainers = with maintainers; [justchokingaround];
+    maintainers = with maintainers; [ justchokingaround ];
     platforms = platforms.unix;
   };
 })

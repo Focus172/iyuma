@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  unstable,
-  ...
-}: {
+{ config, pkgs, unstable, ... }: {
   programs.broot = {
     enable = true;
     # vim mode
