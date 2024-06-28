@@ -1,5 +1,19 @@
-{ config, pkgs, ... }: {
-  imports = [ ./boot.nix ./gpg.nix ./gnome.nix ];
+{ config, pkgs, inputs, ... }: {
+  imports = [ ./boot.nix ./display.nix ];
+
+  # Pinning the registry on NixOS
+  # makes it so `nix shell nixpkgs#ITEM`
+  # does not need to download the thing
+  nix.registry = {
+    nixpkgs.flake = inputs.nixpkgs;
+  };
+
+  programs.gnupg.agent = {
+    enable = true;
+    # pinentryPackage = pkgs.pinentry-gnome3;
+    pinentryPackage = pkgs.pinentry-bemenu;
+    enableSSHSupport = true;
+  };
 
   environment.sessionVariables = {
     # tell electron apps to use wayland
@@ -9,8 +23,6 @@
   # programs.dconf.enable = true;
   # programs.hyprland.enable = true;
   hardware.opengl.enable = true;
-
-  programs.river.enable = true;
 
   # managed by gnome
   # xdg.portal.enable = true;
@@ -65,14 +77,7 @@
   environment = {
     shellAliases = { };
     variables = { };
-    # NixOs has non-nessisary pacakage installed by default
-    # defaults are shown. Commented out one are 'deleted'
-    defaultPackages = [
-      # pkgs.perl
-      pkgs.rsync
-      pkgs.strace
-    ];
-
+    defaultPackages = [ ];
     systemPackages = with pkgs; [ vim git coreutils ]; # busybox
   };
 

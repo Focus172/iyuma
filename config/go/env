@@ -1,0 +1,4 @@
+GOCACHE=~/.cache/go/build
+GOENV=~/.config/go/env
+GOMODCACHE=~/.cache/go/pkg/mod
+GOPATH=~/.local/share/go

@@ -11,5 +11,9 @@
     withRuby = false;
   };
 
-  # home.packages = [pkgs.firefoxpwa];
+
+  xdg.configFile = {
+    "nvim/init.lua".source = ./init.lua;
+    "nvim/lazy-lock.json".source = ./lazy-lock.json;
+  };
 }

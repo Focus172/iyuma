@@ -1,0 +1,63 @@
+# ~/.config/.gitignore
+
+# Secrets
+github-copilot
+git/credentials
+gcloud
+
+# Not config
+spotify
+BraveSoftware
+VSCodium
+obsidian
+mozc
+zoom*
+fcitx*
+
+# Hm
+broot
+
+# Unsorted ignores
+cava
+gtk-*
+ibus
+rclone-browser
+pulse
+environment.d
+dconf
+cef_user_data
+pavucontrol.ini
+discord
+heroic
+obs-studio
+nethack
+emacs/
+fontconfig
+direnv
+wiki-tui
+
+retroarch
+GIMP
+com.modrinth.theseus
+fish/config.fish
+
+# Copied in
+blender/
+bluetuith/
+builtin.zig
+connections.db
+cool-retro-term/
+doom/custom.el
+enchant/
+evolution/
+gnome-control-center/
+gnome-initial-setup-done
+libreoffice/
+memento/
+monitors.xml
+monitors.xml~
+nautilus/
+nvim-chad/
+qutebrowser/
+zls.json
+

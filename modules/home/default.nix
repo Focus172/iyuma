@@ -6,7 +6,8 @@
 
   home.packages = (with pkgs; [
     foot
-    # vscodium
+    bemenu
+    sandbar
 
     ### Shell
     eza
@@ -20,11 +21,11 @@
 
     ## Langs
     rustup
-    go
-    nim
-    gleam
-    erlang
-    elixir
+    # go
+    # nim
+    # gleam
+    # erlang
+    # elixir
     zig
     # bun nodejs
     # sassc
@@ -48,19 +49,18 @@
     # qtcreator qt6.full
 
     ### Lsp (try to limit use of)
-    elixir-ls
+    # elixir-ls
     shellcheck
     zls
-    gopls
+    # gopls
     clang-tools
-    lua-language-server
-    haskell-language-server
+    # lua-language-server
+    # haskell-language-server
     # swiftlint
 
     #### Formating
     shfmt
     stylua
-    # alejandra
     nixfmt-classic
     # swiftformat
 
@@ -70,8 +70,7 @@
     # mpdevil # clerk ncmpcpp
     spotify
 
-    # swww
-    # gnome.dconf-editor
+    swww
     pass
     wl-clipboard
     fdupes
@@ -84,7 +83,6 @@
     zathura
     mako
     libnotify
-    zoom-us
     brightnessctl
     unzip
     btar
@@ -113,7 +111,6 @@
     porsmo
     playerctl
     bluetuith
-    # chocolate-doom
     mprocs
     du-dust
     wiki-tui
@@ -139,6 +136,7 @@
     # cronie-openrc
     # dhcpcd-openrc
     # lsb-release
+    # vscodium
     # lvm2-openrc
     # mdadm-openrc
     # memtest86+
@@ -198,7 +196,6 @@
     # nginx
     # deluge
     file
-    appimage-run
     # bluez-openrc
     # cronie-openrc
     # cryptsetup-openrc
@@ -214,7 +211,6 @@
     # man-pages
     # markdownpart
     # mdadm-openrc
-    # memtest86+
     # mkinitcpio-openswap
     # nbd
     # nfs-utils-openrc
@@ -247,6 +243,8 @@
     neovide
     # wasmtime
 
+    zoom-us
+
     # qutebrowser
 
     # rclone
@@ -255,25 +253,23 @@
     # insync
 
     # grim slurp
-    # // OR
-    # // maim + slop
+    maim slop
 
     ### Games
     heroic
+    lutris
     # dolphin-emu retroarch
+    # minecraft
 
     ### Japanese
     memento
     komikku
     ani-cli
 
-    gnome-extension-manager
+    # gnome-extension-manager
 
     obsidian
-
-    # minecraft
-  ]) ++ (with getchoo;
-    [
-      # modrinth-app
-    ]);
+  ]) ++ (with getchoo; [
+    # modrinth-app
+  ]);
 }

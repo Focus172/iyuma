@@ -20,7 +20,7 @@
   #
   # Launch options:
   # LD_PRELOAD=$LD_PRELOAD:/run/current-system/sw/lib/libtcmalloc_minimal.so %command%
-  environment.systemPackages = [ pkgs.pkgsi686Linux.gperftools ];
+  # environment.systemPackages = [ pkgs.pkgsi686Linux.gperftools ];
 
   # services.tlp = {
   #   enable = true;

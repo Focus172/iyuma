@@ -1,0 +1,22 @@
+[credential]
+	helper = "store" # file is at '~/.config/git/credentials'
+
+[init]
+	defaultBranch = "main"
+
+[url "https://github.com/"]
+	insteadOf = "gh:"
+	insteadOf = "github:"
+
+[url "https://gitlab.com/"]
+	insteadOf = "gl:"
+	insteadOf = "gitlab:"
+
+[alias]
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  lol = log --graph --oneline --decorate
+
+[user]
+	email = "evan.stokdyk@gmail.com"
+	# name = "focus172"
+	name = "evan stokdyk"

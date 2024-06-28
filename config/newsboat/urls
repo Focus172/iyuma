@@ -1,0 +1,211 @@
+# https://lukesmith.xyz/rss.xml
+# https://lindypress.net/rss
+# https://notrelated.xyz/rss
+# https://landchad.net/rss.xml
+
+blogs
+# https://log.pyratebeard.net/rss.xml "~pyratebeard" "blogs"
+# http://feeds.xero.nu/rss/blog/newest "~xero" "blogs"
+# https://venam.nixers.net/blog/feed.xml "~venam" "blogs"
+# https://lonesysadmin.net/feed/ "~lonesysadmin" "blogs"
+# http://comicsbulletin.com/feed/ "~comics bulletin" "blogs" "comics"
+# http://www.previewsworld.com/Rss/1/1/71 "~previews world" "blogs" "comics"
+# https://www.comicsbeat.com/feed/ "~the beat" "blogs" "comics"
+# https://www.digitalrights.ie/feed/ "~digital rights ireland" "blogs"
+
+newsletters
+https://www.strongtowns.org/journal?format=rss "~strong towns" "blogs"
+# https://www.archlinux.org/feeds/news/ "~arch" "newsletters"
+# https://asahilinux.org/blog/index.xml "~asahi" "newsletters"
+# https://pluralistic.net/feed/ "~cory - pluralistic" "newsletters"
+# https://fedoramagazine.org/feed/ "~fedora magazine" "newsletters"
+# https://itsfoss.com/feed/ "~it's foss" "newsletters"
+# http://feeds.feedburner.com/comiclistfeed "~comic list - this week" "newsletters" "comics"
+# http://feeds.feedburner.com/comiclistnextweek "~comic list - next week" "newsletters" "comics"
+# http://www.metalstorm.net/rss/news.xml "~metalstorm" "newsletters" "music"
+
+news
+# https://soylentnews.org/index.rss "~soylent news" "news headlines"
+# https://www.phoronix.com/rss.php "~phoronix" "news tech"
+
+podcasts
+# http://www.2600.com/oth-broadband.xml "~off the hook" "podcasts"
+# http://feeds.feedburner.com/doctorow_podcast "~cory doctorow" "podcasts"
+# http://feeds.soundcloud.com/users/soundcloud:users:261098918/sounds.rss "~priv, sec, osint" "podcasts"
+# https://feeds.feedburner.com/xplainthexmen "~x-plain the x-men" "podcasts"
+# https://myhauntedhead.libsyn.com/rss "~my haunted head" "podcasts"
+# https://bigpunchstudios.squarespace.com/jlacast?format=rss "~the jlacast" "podcasts" "comics"
+# https://latenightlinux.com/feed/all "~late night linux" "podcasts"
+# https://destinationlinux.org/feed/mp3 "~destination linux" "podcasts"
+# https://www.smashingsecurity.com/rss "~smashing security" "podcasts"
+
+videos
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCsvn_Po0SmunchJYOWpOxMg "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCGca03sbLq7OUnXMdvRHyBQ "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCmeds0MLhjfkjD_5acPnFlQ "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCnv3-4xjza4xO9y6_rqKNQA "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCXa6sE6cKXcQ97vI0Emn1XA "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCjSEJkpGbcZhvo0lr-44X_w "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCcaTUtGzOiS4cqrgtcsHYWg "youtube"
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCylGUf9BvQooEFjgdNudoQg "youtube"
+
+music
+# https://media.defcon.org/DEF%20CON%20rss/defcon-18-music.rss "~defcon" "music"
+# http://www.hrhmag.com/category/event-news/hrh-vikings/feed "~hrh vikings" "music"
+
+security
+https://www.kernel.org/feeds/kdist.xml "~kernel releases" "code"
+# https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss.xml "~nvd all" "security"
+# https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss-analyzed.xml "~nvd analysed" "security"
+
+https://based.cooking/index.xml
+# bloggers
+#https://andregarzia.com/feeds/all.atom.xml
+#https://amycastor.com/feed/
+#https://fury.hk/feed.xml
+#https://pimoore.ca/feed.xml
+#https://bbbhltz.codeberg.page/rss.xml
+#https://eli.li/feed.rss
+#https://alirezahayati.com/feed
+#https://lucasdidthis.com/feed
+#https://jetgirl.art/feed
+#https://www.edwinwenink.xyz/index.xml
+#https://nolanlawson.com/feed
+#https://erzadel.net/feed.xml
+#https://thoughtshrapnel.com/feed/
+#https://dougbelshaw.com/blog/feed/
+#https://austinkleon.com/feed/
+#https://baez.link/feed/
+#https://belmoussaoui.com/feed
+#https://benjamincongdon.me/blog/feed.xml
+#https://blog.melyanna.net/feed/
+#https://boats.gitlab.io/blog/index.xml
+#https://bravenewgeek.com/feed/
+#https://desmondrivet.com/feeds/all.rss
+#https://drewdevault.com/feed.xml
+#https://feed.ctrl.blog/latest.atom
+#https://gilest.org/feed/
+#https://hund.tty1.se/feed.xml
+#https://jamesvandyne.com/feed/
+#https://jamiesnotes.com/feed/
+#https://jan.boddez.net/feed
+#https://jlelse.blog/index.xml
+#https://julian.digital/rss
+#https://jvns.ca/atom.xml
+#https://lemire.me/blog/feed/
+#https://m.signalvnoise.com/feed/
+#https://markosaric.com/feed/
+#https://michael.stapelberg.ch/feed.xml
+#https://miek.nl/index.xml
+#https://pluralistic.net/feed/
+#https://sivers.org/en.atom
+#https://strangevistas.com/feed/
+#https://trivial.observer/index.xml
+#https://werd.io/content/all?_t=rss
+#https://without.boats/index.xml
+#https://www.dandevri.es/weeknotes/feed.xml
+#https://www.jefftk.com/news.rss
+#https://www.stefanjudis.com/rss.xml
+#https://yarmo.eu/rss/all
+#https://zerokspot.com/index.xml
+#http://feeds.feedburner.com/nakedcapitalism?format=xml
+#https://rakhim.org/index.xml
+#https://xiu.io/index.xml
+#https://melindawyers.com/feed/rss
+#https://paulphilippov.com/articles.rss
+#https://oscarbenedito.com/blog/index.xml
+#https://colinwalker.blog/dailyfeed.rss
+#https://wilw.dev/feeds
+#https://rusingh.com/feed/
+#https://tilde.town/~kzimmermann/articles/atom.xml
+#https://gomakethings.com/feed/index.xml
+#https://elswr.co/feed/
+#https://ashfurrow.com/feed.xml
+
+### Linux - system - foss
+#https://lwn.net/headlines/newrss
+#https://adamdesk.com/feed/blog.xml
+#https://hunden.linuxkompis.se/feed.xml
+#https://www.researchut.com/index.xml
+#http://jimmac.musichall.cz/feed.xml
+#https://planet.debian.org/rss20.xml
+#http://ithare.com/feed/
+#https://unixism.net/feed/
+
+### Vim - tmux
+#https://ctoomey.com/atom.xml
+
+### Rust related
+#https://this-week-in-rust.org/rss.xml
+#https://feeds.feedburner.com/steveklabnik/words
+#https://fasterthanli.me/index.xml
+
+### Photography
+#https://fujixweekly.com/feed/
+#https://www.japancamerahunter.com/feed
+#https://blog.joaoalmeidaphotography.com/en/feed/
+#https://jonasraskphotography.com/feed/
+#https://waylonwalker.com/rss.xml
+#https://fujilove.com/feed/
+#https://www.fujixpassion.com/feed/
+#https://yannickschutz.com/index.xml
+#https://paulstamatiou.com/
+#https://gregorymignard.com/index.xml
+#https://readframes.com/feed/
+#http://www.peterdrastrup.com/personal?format=rss
+
+### Art
+#https://saulsteinbergfoundation.org/feed/
+
+## Infosec
+#https://www.schneier.com/feed/
+#https://www.welivesecurity.com/feed
+#https://feeds.feedburner.com/TheHackersNews?format=xml
+#https://portswigger.net/daily-swig/rss
+#https://threatpost.com/feed
+#https://www.nist.gov/news-events/nist-rss-feeds
+#https://www.cisa.gov/uscert/ncas/all.xml
+#https://www.lightbluetouchpaper.org/feed
+
+### Privacy
+#https://ar.al/index.xml
+#https://edwardsnowden.substack.com/feed/
+#https://www.icij.org/feed
+
+### Literary
+#https://www.karlcalagan.com/reads?format=rss
+#https://lithub.com/feed/
+
+### Web design
+#https://alistapart.com/main/feed/
+#https://css-tricks.com/feed/
+
+### Doodling - drawing - comics
+#https://feeds.feedburner.com/DoodlersAnonymous
+#https://dilbert.com/feed.rss
+#https://www.monkeyuser.com/feed.xml
+#https://emmaclit.com/feed/
+#https://weeklypencil.com/the-weekly-pencil?format=rss
+#https://newspaperblackout.com/rss
+#
+### Stoicism
+#https://ryanholiday.net/feed/atom/
+#
+### Technology - News
+#https://annoying.technology/index.xml
+#https://www.protocol.com/feeds/feed.rss
+#https://hackernoon.com/feed
+#https://netflixtechblog.com/feed
+#https://hackaday.com/feed/
+#https://www.theatlantic.com/feed/best-of/
+#https://factourism.com/feed
+#
+#
+### Desktop design
+#https://www.makerstations.io/rss/

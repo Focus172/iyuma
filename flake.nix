@@ -2,6 +2,7 @@
   description = "Nixos config";
 
   inputs = {
+    nixpkgs-old.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
@@ -27,6 +28,9 @@
         inherit system;
         config.allowUnfree = true;
       };
+      pold = import inputs.nixpkgs-old {
+        inherit system;
+      };
       # getchoo = inputs.nixpkgs-getchoo.packages."${system}";
     in {
       # @ inputs to add it as an arg i think
@@ -43,14 +47,13 @@
 
         # args that are passed to each of the modules
         specialArgs = {
-          # inherit user;
-
-          host.hostName = "steamfunk";
+          inherit pold;
+          inherit inputs;
         };
         modules = [ ./modules/host ./host/steamfunk ];
       };
 
-      homeConfigurations."focus" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."${user}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./modules/home ./home/focus.nix ];
         extraSpecialArgs = {

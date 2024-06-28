@@ -1,0 +1,39 @@
+#!/bin/sh
+
+datetime() {
+    datetime="$(date "+%a %d %b %I:%M %P")"
+}
+
+battery="BAT1"
+
+bat() {
+    read -r bat_status < /sys/class/power_supply/${battery}/status
+    read -r bat_capacity < /sys/class/power_supply/${battery}/capacity
+    bat="$bat_status $bat_capacity%"
+}
+
+vol() {
+    vol="$(amixer get Master | awk -F '[^0-9]+' '/Left:/{print $3}')%"
+}
+
+display() {
+    echo "all status [$bat] [$vol] [$datetime]" >"$FIFO"
+}
+
+printf "%s" "$$" > "$XDG_RUNTIME_DIR/status_pid"
+FIFO="$XDG_RUNTIME_DIR/sandbar"
+[ -e "$FIFO" ] || mkfifo "$FIFO"
+sec=0
+
+while true; do
+    sleep 1 &
+    wait && {
+        [ $((sec % 60)) -eq 0 ] && bat
+        [ $((sec % 5)) -eq 0 ] && vol
+        [ $((sec % 5)) -eq 0 ] && datetime
+
+        [ $((sec % 5)) -eq 0 ] && display
+
+        sec=$((sec + 1))
+    }
+done
