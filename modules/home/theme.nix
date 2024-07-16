@@ -13,6 +13,9 @@
     #   name = "Papirus-Dark";
     #   package = pkgs.papirus-icon-theme;
     # };
-    font.name = "Hack Nerd Font Medium";
+    font = {
+      name = "Hack Nerd Font Medium";
+      # package = pkgs.nerdfont.override { fonts = [ "Hack", "Mononoki" ] }
+    };
   };
 }

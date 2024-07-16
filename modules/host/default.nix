@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }: {
+{ config, pkgs, lib, inputs, ... }: {
   imports = [ ./boot.nix ./display.nix ];
 
   # Pinning the registry on NixOS
@@ -7,6 +7,7 @@
   nix.registry = {
     nixpkgs.flake = inputs.nixpkgs;
   };
+
 
   programs.gnupg.agent = {
     enable = true;

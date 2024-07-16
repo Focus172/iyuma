@@ -1,8 +1,4 @@
-{ config, lib, pkgs, ... }:
-# let
-#   dashboardLogo = ./. + "/nix-dark.png";
-# in
-{
+{ config, lib, pkgs, ... }: {
   home.packages = with pkgs; [
     emacs
     # - obsidian.el
@@ -67,54 +63,9 @@
   #   nodePackages.mermaid-cli
   # ];
 
-  # services.mbsync = {
-  #   enable = true;
-  #   package = pkgs.isync;
-  #   frequency = "*:0/5";
-  # };
-
-  # home.file.".emacs.d/org-yaap" = {
-  #   source = "${org-yaap}";
-  #   recursive = true;
-  # };
-
-  # home.file.".emacs.d/org-side-tree" = {
-  #   source = "${org-side-tree}";
-  #   recursive = true;
-  # };
-
-  # home.file.".emacs.d/org-timeblock" = {
-  #   source = "${org-timeblock}";
-  #   recursive = true;
-  # };
-
-  # home.file.".emacs.d/org-nursery" = {
-  #   source = "${org-nursery}";
-  # };
-
   # home.file.".emacs.d/dashboard-logo.png".source = dashboardLogo;
   # home.file.".emacs.d/scripts/copy-link-or-file/copy-link-or-file-to-clipboard.sh" = {
   #   source = ./scripts/copy-link-or-file/copy-link-or-file-to-clipboard.sh;
   #   executable = true;
   # };
-
-  # home.file.".emacs.d/phscroll" = {
-  #   source = "${phscroll}";
-  # };
-
-  #  home.file.".emacs.d/system-vars.el".text = ''
-  #  ;;; ~/.emacs.d/config.el -*- lexical-binding: t; -*-
-  #
-  #  ;; Import relevant variables from flake into emacs
-  #
-  #  (setq user-full-name "''+userSettings.name+''") ; name
-  #  (setq user-username "''+userSettings.username+''") ; username
-  #  (setq user-mail-address "''+userSettings.email+''") ; email
-  #  (setq user-home-directory "/home/''+userSettings.username+''") ; absolute path to home directory as string
-  #  (setq user-default-roam-dir "''+userSettings.defaultRoamDir+''") ; absolute path to home directory as string
-  #  (setq system-nix-profile "''+systemSettings.profile+''") ; what profile am I using?
-  #  (setq system-wm-type "''+userSettings.wmType+''") ; wayland or x11?
-  #  (setq doom-font (font-spec :family "''+userSettings.font+''" :size 20)) ; import font
-  #  (setq dotfiles-dir "''+userSettings.dotfilesDir+''") ; import location of dotfiles directory
-  # '';
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, unstable, getchoo, ... }: {
+{ config, pkgs, unstable, ... }: {
   imports = [ ./shell.nix ./theme.nix ./cmd ./firefox ./emacs ./neovim ];
 
   # requires: `security.pam.services.swaylock = {};`
@@ -107,7 +107,6 @@
     # drive
     pavucontrol
     networkmanagerapplet
-    pkg-config
     porsmo
     playerctl
     bluetuith
@@ -234,9 +233,7 @@
     # catch2
     # gitoxide
     # gptfdisk
-    # libmfx
     # loupe
-    # nano
     # scdoc
     # snapshot
     # stb
@@ -245,7 +242,6 @@
 
     zoom-us
 
-    # qutebrowser
 
     # rclone
     # rclone-browser
@@ -258,18 +254,13 @@
     ### Games
     heroic
     lutris
-    # dolphin-emu retroarch
-    # minecraft
 
     ### Japanese
     memento
     komikku
     ani-cli
 
-    # gnome-extension-manager
-
     obsidian
-  ]) ++ (with getchoo; [
-    # modrinth-app
+    # qutebrowser
   ]);
 }

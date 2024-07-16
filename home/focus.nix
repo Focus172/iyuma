@@ -19,12 +19,16 @@
   xdg.configFile = {
     "cava/config".source = ../config/cava.toml;
     "foot/foot.ini".source = ../config/foot/foot.ini;
-    "git/config".source = ../config/git/config;
+    "git/config".source = ../config/git.ini;
     "bottom/bottom.toml".source = ../config/bottom.toml;
     # TODO: can set executable to true
     "river".source = ../config/river;
     "tmux/tmux.conf".source = ../config/tmux.conf;
     "newsboat".source = ../config/newsboat;
+    "mako/config".source = ../config/mako/config;
+    "hypr/hyprlock.conf".source = ../config/hypr/hyprlock.conf;
+    "hypr/hyprlock.sh".source = ../config/hypr/hyprlock.sh;
+    "swaylock/config".source = ../config/swaylock.ini;
   };
 
   # Home Manager can also manage your environment variables through

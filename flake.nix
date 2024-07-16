@@ -8,10 +8,8 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nixpkgs-getchoo = {
-    #   url = github:getchoo/nix-exprs;
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    # https://github.com/NixOS/nixos-hardware/tree/master/framework/13-inch
+
     # firefox-addons = {
     #   url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -27,11 +25,15 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        overlays = [
+          # (final: prev: {
+          #   xdg-open = pkgs.writeShellScriptBin "handlr-open" ''
+          #     ${prev.handlr}/bin/handlr open $@
+          #   '';
+          # })
+        ];
       };
-      pold = import inputs.nixpkgs-old {
-        inherit system;
-      };
-      # getchoo = inputs.nixpkgs-getchoo.packages."${system}";
+      pold = import inputs.nixpkgs-old { inherit system; };
     in {
       # @ inputs to add it as an arg i think
       # The imports a map which is assined to this value each key is a thing that
@@ -57,7 +59,6 @@
         inherit pkgs;
         modules = [ ./modules/home ./home/focus.nix ];
         extraSpecialArgs = {
-          # inherit getchoo;
           # inherit inputs;
         };
       };
