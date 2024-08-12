@@ -34,7 +34,7 @@
 
     ### Python
     # jupyter
-    python3
+    # python3
     # pip3
 
     # python-black
@@ -50,10 +50,10 @@
 
     ### Lsp (try to limit use of)
     # elixir-ls
-    shellcheck
+    # shellcheck
     zls
     # gopls
-    clang-tools
+    # clang-tools
     # lua-language-server
     # haskell-language-server
     # swiftlint
@@ -63,6 +63,7 @@
     stylua
     nixfmt-classic
     # swiftformat
+    taplo
 
     ### Music
     # mpd
@@ -74,7 +75,6 @@
     pass
     wl-clipboard
     fdupes
-    taplo
     imv
     bottom
     pdftk
@@ -84,13 +84,11 @@
     mako
     libnotify
     brightnessctl
-    unzip
-    btar
+    unzip btar libarchive
     wget
     newsboat
     ripgrep
     yt-dlp
-    nmap
     mediainfo
     rsync
     jq
@@ -106,20 +104,23 @@
     pfetch
     # drive
     pavucontrol
-    networkmanagerapplet
+    # networkmanagerapplet
     porsmo
     playerctl
     bluetuith
-    mprocs
+    # mprocs
     du-dust
     wiki-tui
-    handlr-regex
+    xdg-open
+    # handlr-regex
     # neo-cowsay
     # browserpass
-    inotify-tools
+    # inotify-tools
     cool-retro-term
-    tlrc
     fd
+
+    # Security
+    nmap
     # xdg-utils
     # vorbis-tools
     # man-db
@@ -262,5 +263,7 @@
 
     obsidian
     # qutebrowser
+
+    sent
   ]);
 }

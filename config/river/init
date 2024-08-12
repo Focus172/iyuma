@@ -156,8 +156,36 @@ riverctl rule-add -app-id "bar" csd
 riverctl spawn "$HOME/.config/river/status"
 riverctl spawn "$HOME/.config/river/bar"
 
+
+# exec-once = wlsunset -t 4500 -S 9:00 -s 19:30
+# exec-once = wlsunset -l -23 -L -46
+# exec-once = ~/.config/eww/scripts/init
+# exec-once = hyprctl setcursor Qogir 24
+# exec-once = music init
+
+## Clipboard setup
+# exec-once = wl-paste --type text --watch cliphist store
+# exec-once = wl-clipboard-history -t
+
+## Screen Shareing
+riverctl spawn pipewire
+riverctl spawn wireplumber
+
+# ## Correctness setup
+# exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+# # exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+# # exec-once = systemctl --user restart pipewire
+# # exec-once = /usr/lib/polkit-kde-authentication-agent-1
+
+# notification
+riverctl spawn mako
+
+riverctl spawn fcitx5
+# riverctl spawn nm-applet
+
 # wallpaper
 riverctl spawn "swww-daemon"
+# exec-once = cycle-wallpaper
 
 riverctl input pointer-2362-628-PIXA3854:00_093A:0274_Touchpad disable-while-typing disabled
 riverctl input pointer-2362-628-PIXA3854:00_093A:0274_Touchpad tap enabled

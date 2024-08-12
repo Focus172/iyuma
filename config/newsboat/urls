@@ -1,7 +1,19 @@
-# https://lukesmith.xyz/rss.xml
-# https://lindypress.net/rss
-# https://notrelated.xyz/rss
-# https://landchad.net/rss.xml
+
+security
+https://www.kernel.org/feeds/kdist.xml "~kernel releases" "code"
+# https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss.xml "~nvd all" "security"
+# https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss-analyzed.xml "~nvd analysed" "security"
+
+tech
+https://suckless.org/atom.xml
+https://landchad.net/rss.xml
+#https://annoying.technology/index.xml
+#https://www.protocol.com/feeds/feed.rss
+#https://hackernoon.com/feed
+#https://netflixtechblog.com/feed
+#https://hackaday.com/feed/
+#https://www.theatlantic.com/feed/best-of/
+#https://factourism.com/feed
 
 blogs
 # https://log.pyratebeard.net/rss.xml "~pyratebeard" "blogs"
@@ -12,9 +24,12 @@ blogs
 # http://www.previewsworld.com/Rss/1/1/71 "~previews world" "blogs" "comics"
 # https://www.comicsbeat.com/feed/ "~the beat" "blogs" "comics"
 # https://www.digitalrights.ie/feed/ "~digital rights ireland" "blogs"
+# https://lukesmith.xyz/rss.xml
 
+
+# "~strong towns"
 newsletters
-https://www.strongtowns.org/journal?format=rss "~strong towns" "blogs"
+https://www.strongtowns.org/journal?format=rss "newsletters"
 # https://www.archlinux.org/feeds/news/ "~arch" "newsletters"
 # https://asahilinux.org/blog/index.xml "~asahi" "newsletters"
 # https://pluralistic.net/feed/ "~cory - pluralistic" "newsletters"
@@ -29,6 +44,7 @@ news
 # https://www.phoronix.com/rss.php "~phoronix" "news tech"
 
 podcasts
+https://notrelated.xyz/rss
 # http://www.2600.com/oth-broadband.xml "~off the hook" "podcasts"
 # http://feeds.feedburner.com/doctorow_podcast "~cory doctorow" "podcasts"
 # http://feeds.soundcloud.com/users/soundcloud:users:261098918/sounds.rss "~priv, sec, osint" "podcasts"
@@ -40,31 +56,26 @@ podcasts
 # https://www.smashingsecurity.com/rss "~smashing security" "podcasts"
 
 videos
+## Louis Rossman
+https://www.youtube.com/feeds/videos.xml?channel_id=UCl2mFZoRqjw_ELax4Yisf6w "videos"
+## Bardic Broadcasts
+https://www.youtube.com/feeds/videos.xml?channel_id=UCnv3-4xjza4xO9y6_rqKNQA "videos"
+## Mental Outlaw
+https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA "videos"
+## Luke Smith
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "vidoes"
+## JV Scholz
+# https://www.youtube.com/feeds/videos.xml?channel_id=UCcaTUtGzOiS4cqrgtcsHYWg "videos"
+## Dunkey
 # https://www.youtube.com/feeds/videos.xml?channel_id=UCsvn_Po0SmunchJYOWpOxMg "youtube"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCGca03sbLq7OUnXMdvRHyBQ "youtube"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCmeds0MLhjfkjD_5acPnFlQ "youtube"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCnv3-4xjza4xO9y6_rqKNQA "youtube"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw "youtube"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCXa6sE6cKXcQ97vI0Emn1XA "youtube"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCjSEJkpGbcZhvo0lr-44X_w "youtube"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA "youtube"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "youtube"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ "youtube"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "youtube"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "youtube"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCcaTUtGzOiS4cqrgtcsHYWg "youtube"
-# https://www.youtube.com/feeds/videos.xml?channel_id=UCylGUf9BvQooEFjgdNudoQg "youtube"
 
 music
 # https://media.defcon.org/DEF%20CON%20rss/defcon-18-music.rss "~defcon" "music"
 # http://www.hrhmag.com/category/event-news/hrh-vikings/feed "~hrh vikings" "music"
 
-security
-https://www.kernel.org/feeds/kdist.xml "~kernel releases" "code"
-# https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss.xml "~nvd all" "security"
-# https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss-analyzed.xml "~nvd analysed" "security"
+fun
+https://based.cooking/index.xml "fun"
 
-https://based.cooking/index.xml
 # bloggers
 #https://andregarzia.com/feeds/all.atom.xml
 #https://amycastor.com/feed/
@@ -162,6 +173,7 @@ https://based.cooking/index.xml
 
 ### Art
 #https://saulsteinbergfoundation.org/feed/
+# https://lindypress.net/rss
 
 ## Infosec
 #https://www.schneier.com/feed/
@@ -193,19 +205,9 @@ https://based.cooking/index.xml
 #https://emmaclit.com/feed/
 #https://weeklypencil.com/the-weekly-pencil?format=rss
 #https://newspaperblackout.com/rss
-#
+
 ### Stoicism
 #https://ryanholiday.net/feed/atom/
-#
-### Technology - News
-#https://annoying.technology/index.xml
-#https://www.protocol.com/feeds/feed.rss
-#https://hackernoon.com/feed
-#https://netflixtechblog.com/feed
-#https://hackaday.com/feed/
-#https://www.theatlantic.com/feed/best-of/
-#https://factourism.com/feed
-#
-#
+
 ### Desktop design
 #https://www.makerstations.io/rss/
