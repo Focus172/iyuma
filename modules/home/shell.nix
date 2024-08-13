@@ -71,4 +71,16 @@
   # xdg.stateHome	Absolute path to directory holding application states.	path
   # xdg.mimeApps.enable	Whether to manage {file}`$XDG_CONFIG_HOME/mimeapps.list`. The generated file is read-only.	boolean
   # xdg.userDirs.enable
+
+  home.packages = with pkgs; [
+    eza
+    bat
+    fzf
+    # starship
+    tmux
+    # gitui
+
+    bottom
+    # sent
+  ];
 }

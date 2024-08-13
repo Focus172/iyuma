@@ -1,5 +1,5 @@
 { config, pkgs, lib, inputs, ... }: {
-  imports = [ ./boot.nix ];
+  imports = [ ];
 
   # Pinning the registry on NixOS makes it so `nix shell nixpkgs#ITEM` does not
   # download a tarball for only a lookup. Also enables being able to use
@@ -30,23 +30,8 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # ------------- Input --------------- #
-  i18n.inputMethod = {
-    enabled = "fcitx5";
-    fcitx5.addons = [ pkgs.fcitx5-mozc ];
-  };
-  # ----------------------------------- #
-
-
   # Display, also enables portals
   programs.river.enable = true;
-
-  programs.gnupg.agent = {
-    enable = true;
-    # pinentryPackage = pkgs.pinentry-gnome3;
-    pinentryPackage = pkgs.pinentry-bemenu;
-    enableSSHSupport = true;
-  };
 
   environment.sessionVariables = {
     # tell electron apps to use wayland
@@ -57,21 +42,8 @@
   # programs.hyprland.enable = true;
   hardware.opengl.enable = true;
 
-  # managed by gnome
-  # xdg.portal.enable = true;
-  # xdg.portal.extraPortals = [
-  #   # for screen sharing
-  #   pkgs.xdg-desktop-portal-wlr
-  #   # for file picking
-  #   pkgs.xdg-desktop-portal-gtk
-  # ];
-
   # security.polkit.enable = true;
   # security.sudo.enable = true;
-
-  # services.syncthing.enable = true;
-  # services.syncthing.user = "focus";
-  # services.syncthing.dataDir = "/home/focus/dox";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -83,18 +55,6 @@
   # Set your time zone.
   time.timeZone = "America/Tijuana";
 
-  ### Bluetooth
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot =
-    true; # powers up the default Bluetooth controller on boot
-  services.blueman.enable = true;
-
-  # ### printing
-  # services.printing.enable = true;
-  # services.avahi.enable = true;
-  # services.avahi.nssmdns = true;
-  # # for a WiFi printer
-  # services.avahi.openFirewall = true;
 
   # # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
@@ -109,7 +69,7 @@
     shellAliases = { };
     variables = { };
     defaultPackages = [ ];
-    systemPackages = with pkgs; [ vim git coreutils ]; # busybox
+    systemPackages = with pkgs; [ vim git coreutils rsync ]; # busybox
   };
 
   # Enable sound with pipewire.

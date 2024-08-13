@@ -32,8 +32,8 @@ riverctl map normal Super+Shift J swap next
 riverctl map normal Super+Shift K swap previous
 
 # Super+Period and Super+Comma to focus the next/previous output
-# riverctl map normal Super Period focus-output next
-# riverctl map normal Super Comma focus-output previous
+riverctl map normal Super Period focus-output next
+riverctl map normal Super Comma focus-output previous
 
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
 # riverctl map normal Super+Shift Period send-to-output next
@@ -187,10 +187,14 @@ riverctl spawn fcitx5
 riverctl spawn "swww-daemon"
 # exec-once = cycle-wallpaper
 
-riverctl input pointer-2362-628-PIXA3854:00_093A:0274_Touchpad disable-while-typing disabled
-riverctl input pointer-2362-628-PIXA3854:00_093A:0274_Touchpad tap enabled
-riverctl input pointer-2362-628-PIXA3854:00_093A:0274_Touchpad tap-button-map left-right-middle
-
 # switch-0-5-Lid_Switch
 # keyboard-0-1-Power_Button
 
+if [ $(hostname) = "hazed" ]; then
+    riverctl input pointer-2362-628-PIXA3854:00_093A:0274_Touchpad disable-while-typing disabled
+    riverctl input pointer-2362-628-PIXA3854:00_093A:0274_Touchpad tap enabled
+    riverctl input pointer-2362-628-PIXA3854:00_093A:0274_Touchpad tap-button-map left-right-middle
+else
+    # on the brickbook i dont want to have the screen on as it is always closed
+    wlr-randr --output eDP-1 --off
+fi

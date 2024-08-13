@@ -34,14 +34,43 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./modules/host
+          ./modules/host/grub.nix
+          ./modules/host/desktop.nix
           ./host/steamfunk
           inputs.hardware.nixosModules.framework-13th-gen-intel
         ];
       };
 
+      nixosConfigurations.hazed = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        # args that are passed to each of the modules
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./modules/host
+          ./host/hazed
+          # inputs.hardware.nixosModules.framework-13th-gen-intel
+        ];
+      };
+
+      homeConfigurations."ginger" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+         ./modules/home
+         ./home/focus.nix
+        ];
+        extraSpecialArgs = {
+          # inherit inputs;
+        };
+      };
+
       homeConfigurations."${user}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./modules/home ./home/focus.nix ];
+        modules = [
+         ./modules/home
+         ./modules/home/desktop.nix
+         ./home/focus.nix
+        ];
         extraSpecialArgs = {
           # inherit inputs;
         };
