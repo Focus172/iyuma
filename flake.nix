@@ -17,7 +17,6 @@
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
-      user = "focus";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -49,31 +48,20 @@
         modules = [
           ./modules/host
           ./host/hazed
-          # inputs.hardware.nixosModules.framework-13th-gen-intel
+          inputs.hardware.nixosModules.apple-macbook-pro-12-1
         ];
       };
 
-      homeConfigurations."ginger" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.ginger = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [
-         ./modules/home
-         ./home/focus.nix
-        ];
-        extraSpecialArgs = {
-          # inherit inputs;
-        };
+        modules = [ ./home/ginger.nix ];
+        extraSpecialArgs = { inherit inputs; };
       };
 
-      homeConfigurations."${user}" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.focus = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [
-         ./modules/home
-         ./modules/home/desktop.nix
-         ./home/focus.nix
-        ];
-        extraSpecialArgs = {
-          # inherit inputs;
-        };
+        modules = [ ./home/focus.nix ];
+        extraSpecialArgs = { inherit inputs; };
       };
     };
 }

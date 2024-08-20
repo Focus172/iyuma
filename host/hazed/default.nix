@@ -36,5 +36,14 @@
   #   xkbVariant = "";
   # };
 
+  # ----------------------------------- #
+  users.users.ginger = {
+    isNormalUser = true;
+    # description = "";
+    shell = pkgs.bash;
+    extraGroups = [ "wheel" "audio" "video" "libvirtd" ];
+  };
+  # ----------------------------------- #
+
   system.stateVersion = "23.11";
 }
