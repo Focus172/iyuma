@@ -20,6 +20,10 @@ display() {
     echo "all status [$bat] [$vol] [$datetime]" >"$FIFO"
 }
 
+# mpris() {
+# playerclt metadata
+# }
+
 printf "%s" "$$" > "$XDG_RUNTIME_DIR/status_pid"
 FIFO="$XDG_RUNTIME_DIR/sandbar"
 [ -e "$FIFO" ] || mkfifo "$FIFO"

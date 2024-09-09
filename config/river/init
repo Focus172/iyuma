@@ -157,6 +157,10 @@ else
     riverctl input pointer-2362-628-PIXA3854:00_093A:0274_Touchpad tap-button-map left-right-middle
 fi
 
+# riverctl map-switch normal lid close spwan "systemctl suspend"
+# riverctl map-switch normal lid close spwan "/home/focus/dev/scripts/lock"
+# riverctl map-switch normal lid close spawn "wlr-randr --output eDP-1 --off"
+
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
@@ -165,10 +169,9 @@ rivertile -view-padding 6 -outer-padding 6 &
 # Make all views with app-id "bar" and any title use client-side decorations
 riverctl rule-add -app-id "bar" csd
 
-# statusbar
+## statusbar
 riverctl spawn "$HOME/.config/river/status"
 riverctl spawn "$HOME/.config/river/bar"
-
 
 # exec-once = wlsunset -t 4500 -S 9:00 -s 19:30
 # exec-once = wlsunset -l -23 -L -46
@@ -181,23 +184,24 @@ riverctl spawn "$HOME/.config/river/bar"
 # exec-once = wl-clipboard-history -t
 
 ## Screen Shareing
-riverctl spawn pipewire
-riverctl spawn wireplumber
+# riverctl spawn pipewire
+# riverctl spawn wireplumber
 
-# ## Correctness setup
-# exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+## Correctness setup
+exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 # # exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 # # exec-once = systemctl --user restart pipewire
 # # exec-once = /usr/lib/polkit-kde-authentication-agent-1
 
-# notification
+## notification
 riverctl spawn mako
 
+## Input
 riverctl spawn fcitx5
 # riverctl spawn nm-applet
 
-# wallpaper
-riverctl spawn "swww-daemon"
+## wallpaper
+riverctl spawn swww-daemon
 # exec-once = cycle-wallpaper
 
 # switch-0-5-Lid_Switch

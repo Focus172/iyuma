@@ -11,9 +11,8 @@
     withRuby = false;
   };
 
-
   xdg.configFile = {
     "nvim/init.lua".source = ./init.lua;
-    "nvim/lazy-lock.json".source = ./lazy-lock.json;
+    # "nvim/lazy-lock.json".source = ./lazy-lock.json;
   };
 }

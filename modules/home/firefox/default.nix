@@ -2,6 +2,7 @@
 let userjs = builtins.readFile ./user.js;
 in {
   programs.firefox = {
+    # package = unstable.firefox;
     enable = true;
     profiles."work" = {
       id = 0;

@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ../../modules/host/common.nix ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -30,11 +30,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # services.xserver = {
-  #   layout = "us";
-  #   xkbVariant = "";
-  # };
 
   # ----------------------------------- #
   users.users.ginger = {

@@ -1,25 +1,27 @@
 { config, pkgs, unstable, ... }: {
-  imports = [ 
-    ./theme.nix 
-    ./cmd 
-    ./firefox 
-    ./emacs 
-   ];
+  imports = [ ./theme.nix ./cmd ./firefox ./emacs ];
 
   # requires: `security.pam.services.swaylock = {};`
   # programs.swaylock.enable = true;
 
   home.packages = (with pkgs; [
+    alsa-utils
     # (pkgs.callPackage ./pkgs/jerry.nix {})
 
+    # cargo rustc rust-analyzer # alternaticly: rustup
+    zig zls
+    gdb clang
+
+    ghidra
+
+    tmux
+
     ## Langs
-    rustup
     # go
     # nim
     # gleam
     # erlang
     # elixir
-    zig
     # bun nodejs
     # sassc
     # ghc
@@ -31,8 +33,8 @@
     # pip3
 
     ### Tools
-    clang # gcc
-    gnumake
+    # clang gcc
+    # gnumake
     # just
 
     # bazel meson cmake
@@ -41,7 +43,6 @@
     ### Lsp (try to limit use of)
     # elixir-ls
     # shellcheck
-    zls
     # gopls
     # clang-tools
     # lua-language-server
@@ -49,54 +50,57 @@
     # swiftlint
 
     #### Formating
-    shfmt
-    stylua
-    nixfmt-classic
+    # shfmt
+    # stylua
+    # nixfmt-classic
     # swiftformat
-    taplo
+    # taplo
 
     ### Music
     # mpd
     # mpc-cli
     # mpdevil # clerk ncmpcpp
-    spotify
 
-    swww
-    wl-clipboard
-    imv
-    mpv
+    spotify
+    discord
+
     newsboat
+    mpv
 
     pass
-    fdupes
-    pdftk
-    imagemagick
+    # fdupes
+    # pdftk
+    # imagemagick
+
     zathura
     mako
     libnotify
     brightnessctl
-    unzip btar libarchive
-    wget
+
+    unzip
+    btar
+    libarchive
+
+    # wget
     ripgrep
     yt-dlp
-    mediainfo
-    rsync
-    jq
-    discord
+    # mediainfo
+    # rsync # provided by system
+    # jq
     # hyperfine
-    libreoffice-fresh
-    obs-studio
+    # libreoffice-fresh
+    # obs-studio
     killall
     tty-clock
     file
     ffmpeg
-    blender
+    # blender
     pfetch
     # drive
     pavucontrol
     # networkmanagerapplet
     porsmo
-    playerctl
+    # playerctl
     bluetuith
     # mprocs
     du-dust
@@ -110,8 +114,8 @@
     fd
 
     # Security
-    nmap
-    # xdg-utils
+    # nmap
+
     # vorbis-tools
     # man-db
     # mediainfo
@@ -185,15 +189,9 @@
     # acpi
     # nginx
     # deluge
-    file
-    # bluez-openrc
-    # cronie-openrc
-    # cryptsetup-openrc
-    # cups-openrc
-    # dhcpcd-openrc
-    # dmraid
-    # haveged-openrc
     # inxi
+
+    # dmraid
     # libva-vdpau-driver
     # libvdpau-va-gl
     # lsb-release
@@ -201,24 +199,18 @@
     # man-pages
     # markdownpart
     # mdadm-openrc
-    # mkinitcpio-openswap
     # nbd
     # nfs-utils-openrc
-    # ntp-openrc
     # openrc-settingsd
-    # openssh-openrc
     # powertop
-    # raw-thumbnailer
     # scrot
     # svgpart
     # sweeper
     # sysfsutils
     # syslog-ng-openrc
     # texinfo
-    # tumbler
     # vkd3d
     # wpa_supplicant-openrc
-    # hugo
     # re2
     # btrfs-progs
     # catch2
@@ -231,27 +223,30 @@
     neovide
     # wasmtime
 
-    zoom-us
+    # TODO: install this before school starts
+    # zoom-us
 
     # rclone
     # rclone-browser
     ## OR
     # insync
 
-    # grim slurp
-    maim slop
+    grim
+    slurp
+    # maim slop
 
     ### Games
-    heroic
-    lutris
+    # heroic
+    # lutris
 
     ### Japanese
-    memento
-    komikku
-    ani-cli
+    # memento
+    # komikku
+    # ani-cli
 
     obsidian
     # qutebrowser
 
+    # godot_4
   ]);
 }

@@ -80,6 +80,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- [[ load plugins ]] --
 require("lazy").setup({
     { "folke/lazy.nvim", tag = "stable" },
+    { "actionshrimp/direnv.nvim", opts = {} },
 
     -- tokyonight
     {
@@ -845,7 +846,7 @@ require("lazy").setup({
         },
         opts = {
             servers = {
-                rust_analyzer = {},
+                -- rust_analyzer = {},
                 taplo = {},
                 zls = {},
                 gleam = {},

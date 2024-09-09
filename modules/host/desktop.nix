@@ -3,7 +3,8 @@
 
   # ------------- Input --------------- #
   i18n.inputMethod = {
-    enabled = "fcitx5";
+    type = "fcitx5";
+    enable = true;
     fcitx5.addons = [ pkgs.fcitx5-mozc ];
   };
   # ----------------------------------- #
@@ -14,14 +15,6 @@
     pinentryPackage = pkgs.pinentry-bemenu;
     enableSSHSupport = true;
   };
-
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [
-    # for screen sharing
-    pkgs.xdg-desktop-portal-wlr
-    # for file picking
-    pkgs.xdg-desktop-portal-gtk
-  ];
 
   # services.syncthing.enable = true;
   # services.syncthing.user = "focus";

@@ -4,12 +4,18 @@
   # Pinning the registry on NixOS makes it so `nix shell nixpkgs#ITEM` does not
   # download a tarball for only a lookup. Also enables being able to use
   # chached evaluations.
-  nix.registry = {
-    nixpkgs.flake = inputs.nixpkgs;
+  #
+  # This similarly makes it so unlocked flakes that use "nixpkgs" as an input
+  # can similarly draw from the registry.
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+
+  nixpkgs.config = {
+    permittedInsecurePackages = [ "electron-25.9.0" ];
+    allowUnfree = true;
   };
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  # services.openssh.enable = true;
 
   programs.steam = {
     enable = true;
@@ -17,7 +23,7 @@
     dedicatedServer.openFirewall = true;
   };
 
-  # services.tlp = {
+  # services.tlp =graphics {
   #   enable = true;
   #   settings = {
   #     CPU_BOOST_ON_BAT = 0;
@@ -31,16 +37,16 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   # Display, also enables portals
-  programs.river.enable = true;
+  # programs.river.enable = true;
 
   environment.sessionVariables = {
     # tell electron apps to use wayland
     NIXOS_OZONE_WL = "1";
   };
 
-  # programs.dconf.enable = true;
+  programs.dconf.enable = true;
   # programs.hyprland.enable = true;
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # security.polkit.enable = true;
   # security.sudo.enable = true;
@@ -54,7 +60,6 @@
 
   # Set your time zone.
   time.timeZone = "America/Tijuana";
-
 
   # # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
@@ -72,21 +77,15 @@
     systemPackages = with pkgs; [ vim git coreutils rsync ]; # busybox
   };
 
-  # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
     # alsa.support32Bit = true;
     # jack.enable = true;
-  };
-
-  nixpkgs.config = {
-    permittedInsecurePackages = [ "electron-25.9.0" ];
-    allowUnfree = true;
   };
 
   # ------------- Fonts --------------- #
