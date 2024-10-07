@@ -1,31 +1,4 @@
 { config, pkgs, ... }: {
-  wayland.windowManager.river.enable = true;
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      # for screen sharing
-      pkgs.xdg-desktop-portal-wlr
-      # for file picking
-      pkgs.xdg-desktop-portal-gtk
-    ];
-
-    xdgOpenUsePortal = true;
-    config.common.default = "*";
-  };
-
-  home.packages = with pkgs; [
-    foot
-    bemenu
-    sandbar
-
-    swww
-    wl-clipboard
-    imv
-
-    wlr-randr
-  ];
-
   services.glance.enable = true;
   services.glance.settings = {
     server.port = 5678;

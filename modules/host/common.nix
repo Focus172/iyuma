@@ -14,14 +14,14 @@
     allowUnfree = true;
   };
 
-  # Enable the OpenSSH daemon.
+  ## Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-  };
+  # programs.steam = {
+  #   enable = true;
+  #   remotePlay.openFirewall = true;
+  #   dedicatedServer.openFirewall = true;
+  # };
 
   # services.tlp =graphics {
   #   enable = true;
@@ -36,16 +36,12 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Display, also enables portals
-  # programs.river.enable = true;
-
   environment.sessionVariables = {
     # tell electron apps to use wayland
     NIXOS_OZONE_WL = "1";
   };
 
   programs.dconf.enable = true;
-  # programs.hyprland.enable = true;
   hardware.graphics.enable = true;
 
   # security.polkit.enable = true;
@@ -111,12 +107,14 @@
 
   users.defaultUserShell = pkgs.bash;
 
+  # programs.wireshark.enable = true;
+
   # ----------------------------------- #
   users.users.focus = {
     isNormalUser = true;
     description = "Evan Stokdyk";
     shell = pkgs.bash;
-    extraGroups = [ "wheel" "networkmanager" "audio" "video" "libvirtd" ];
+    extraGroups = [ "wheel" "networkmanager" "audio" "video" "libvirtd" ]; # "wireshark"
   };
   # ----------------------------------- #
 

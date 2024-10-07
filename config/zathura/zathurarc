@@ -59,4 +59,5 @@ set render-loading-fg           "#ebdbb2" # fg
 #set recolor                     "true"
 # set recolor-keephue             true      # keep original color
 
+set database sqlite
 

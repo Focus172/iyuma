@@ -9,48 +9,20 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    cava
-    foot
-    # git
-    # river
-    bottom
-    newsboat
-    tmux
   ];
 
   xdg.configFile = {
-    "cava/config".source = ../config/cava.toml;
-    "foot/foot.ini".source = ../config/foot/foot.ini;
-    "git/config".source = ../config/git.ini;
-    "bottom/bottom.toml".source = ../config/bottom.toml;
-    # TODO: can set executable to true
-    "river".source = ../config/river;
-    "tmux/tmux.conf".source = ../config/tmux.conf;
-    "newsboat".source = ../config/newsboat;
-    "mako/config".source = ../config/mako/config;
-    "hypr/hyprlock.conf".source = ../config/hypr/hyprlock.conf;
-    "hypr/hyprlock.sh".source = ../config/hypr/hyprlock.sh;
-    "swaylock/config".source = ../config/swaylock.ini;
-  };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/focus/etc/profile.d/hm-session-vars.sh
-  #
-  home.sessionVariables = {
-    # EDITOR = "emacs";
+    # "cava/config".source = ../config/cava.toml;
+    # "foot/foot.ini".source = ../config/foot/foot.ini;
+    # "git/config".source = ../config/git.ini;
+    # "bottom/bottom.toml".source = ../config/bottom.toml;
+    # "river".source = ../config/river;
+    # "tmux/tmux.conf".source = ../config/tmux.conf;
+    # "newsboat".source = ../config/newsboat;
+    # "mako/config".source = ../config/mako/config;
+    # "hypr/hyprlock.conf".source = ../config/hypr/hyprlock.conf;
+    # "hypr/hyprlock.sh".source = ../config/hypr/hyprlock.sh;
+    # "swaylock/config".source = ../config/swaylock.ini;
   };
 
   # Let Home Manager install and manage itself.

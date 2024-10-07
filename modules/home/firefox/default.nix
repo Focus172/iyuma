@@ -1,8 +1,12 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, unstable, ... }:
 let userjs = builtins.readFile ./user.js;
 in {
   programs.firefox = {
+<<<<<<< Updated upstream
     # package = unstable.firefox;
+=======
+    package = unstable.firefox;
+>>>>>>> Stashed changes
     enable = true;
     profiles."work" = {
       id = 0;

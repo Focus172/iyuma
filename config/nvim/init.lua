@@ -301,12 +301,6 @@ require("lazy").setup({
         lazy = false
     },
 
-    -- {
-    --     "NoahTheDuke/vim-just",
-    --     lazy = false,
-    --     -- event = "BufRead",
-    -- },
-
     -- 'theprimeagen/vim-be-good',
     {
         "theprimeagen/harpoon",
@@ -637,33 +631,22 @@ require("lazy").setup({
             highlight = { enable = true },
             indent = { enable = true },
             ensure_installed = {
-                "html",
-                "markdown",
-                -- "markdown_inline",
-                "lua",
-                "rust",
-                "toml",
-                -- "ron",
-                "zig",
-                "haskell",
-                "c",
-                "cpp",
-                "go",
-                "python",
-                "typescript",
-                "vim",
-                -- 'ocaml'
-                -- "elixir"
+                "html", "markdown", "markdown_inline", "lua", "rust", "toml",
+                "zig", "haskell", "c", "cpp", "go", "python",
+                "typescript", "vim"
             },
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = "<C-space>",
-                    node_incremental = "<C-space>",
-                    scope_incremental = false,
-                    node_decremental = "<bs>",
-                },
-            },
+            -- "ron",
+            -- 'ocaml'
+            -- "elixir"
+            -- incremental_selection = {
+            --     enable = true,
+            --     keymaps = {
+            --         init_selection = "<C-space>",
+            --         node_incremental = "<C-space>",
+            --         scope_incremental = false,
+            --         node_decremental = "<bs>",
+            --     },
+            -- },
             textobjects = {
                 select = {
                     enable = true,
@@ -843,6 +826,7 @@ require("lazy").setup({
             -- show implied types
             { "simrat39/rust-tools.nvim", ft = "rust", opts = {} },
             -- { "tamago324/nlsp-settings.nvim", cmd = "LspSettings", opts = {} },
+            { "pmizio/typescript-tools.nvim", ft = {"js", "ts"}, opts = {} }
         },
         opts = {
             servers = {
@@ -1081,9 +1065,14 @@ require("lazy").setup({
 
             picker = { name = "telescope.nvim" },
         },
+    },
+    {
+        'michaelb/sniprun', 
+        build = "sh install.sh",
+        cmd = { "SnipRun", "SnipInfo" },
+        opts = {},
     }
-
-},{ defaults = { lazy = true } })
+}, { defaults = { lazy = true } })
 
 -- see `:help mark`
 
@@ -1212,8 +1201,8 @@ vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window right", remap
 vim.keymap.set("n", "-", "<cmd> Oil <CR>", { desc = "Edit Parent Dir" })
 
 -- # Telelscope
-vim.keymap.set("n", "<leader><space>", "<cmd> Telescope buffers <CR>", { desc = "Find [ ] buffers" })
-vim.keymap.set("n", "<leader>ff", "<cmd> Telescope find_files <CR>", { desc = "[F]ind [F]iles" })
+vim.keymap.set("n", "<leader>ff", "<cmd> Telescope buffers <CR>", { desc = "Find [ ] buffers" })
+vim.keymap.set("n", "<leader><space>", "<cmd> Telescope find_files <CR>", { desc = "[F]ind [F]iles" })
 
 -- rg
 vim.keymap.set("n", "<leader>fw", "<cmd> Telescope live_grep <CR>", { desc = "[F]ind [W]ord" })
@@ -1222,35 +1211,30 @@ vim.keymap.set("n", "<leader>fg", "<cmd> Telescope grep_string <CR>", { desc = "
 
 vim.keymap.set("n", "<leader>p", "<cmd> Telescope registers <CR>", { desc = "[P]aste Register" })
 
--- return {
---     n = {
---         -- ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "[F]ind [A]ll" },
+-- -- ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "[F]ind [A]ll" },
 --
---         ["<leader>fH"] = { "<cmd> Telescope help_tags <CR>", "[F]ind [H]elp" },
+-- ["<leader>fH"] = { "<cmd> Telescope help_tags <CR>", "[F]ind [H]elp" },
 --
---         -- finds files you have recently opend in any project
---         ["<leader>fh"] = { "<cmd> Telescope oldfiles <CR>", "[F]ind [H]istory" },
+-- -- finds files you have recently opend in any project
+-- ["<leader>fh"] = { "<cmd> Telescope oldfiles <CR>", "[F]ind [H]istory" },
 --
---         ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "[F]u[Z]zy Find" },
+-- ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "[F]u[Z]zy Find" },
 --
---         -- finds text within git diffs
---         -- ["<leader>fg"] = { "<cmd> Telescope git_status <CR>", "[F]ind Active [G]it" },
+-- -- finds text within git diffs
+-- -- ["<leader>fg"] = { "<cmd> Telescope git_status <CR>", "[F]ind Active [G]it" },
 --
---         -- ["<leader>fG"] = { "<cmd> Telescope git_files <CR>", "[F]ind All [G]it" },
---         ["<leader>fc"] = { "<cmd> Telescope git_commits <CR>", "[F]ind Git [C]ommits" },
---         -- 	{ "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
---         ["<leader>fd"] = { "<cmd> Telescope diagnostics <CR>", "[F]ind [D]iagnostics" },
---         ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "[F]ind [M]arks" },
---         ["<leader>f:"] = { "<cmd> Telescope command_history <cr>", "[F]ind [:] Command" },
+-- -- ["<leader>fG"] = { "<cmd> Telescope git_files <CR>", "[F]ind All [G]it" },
+-- ["<leader>fc"] = { "<cmd> Telescope git_commits <CR>", "[F]ind Git [C]ommits" },
+-- -- 	{ "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
+-- ["<leader>fd"] = { "<cmd> Telescope diagnostics <CR>", "[F]ind [D]iagnostics" },
+-- ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "[F]ind [M]arks" },
+-- ["<leader>f:"] = { "<cmd> Telescope command_history <cr>", "[F]ind [:] Command" },
 --
---         -- need nvim-notify
---         ["<leader>fn"] = { "<cmd> Telescope notify <CR>", "[F]ind [N]otifications" },
+-- -- need nvim-notify
+-- ["<leader>fn"] = { "<cmd> Telescope notify <CR>", "[F]ind [N]otifications" },
 --
---         -- ["<leader>uC"] = { "<cmd> Telescope colorscheme enable_preview=true", "Colorscheme" }
---     },
--- }
-
--- return {
+-- -- ["<leader>uC"] = { "<cmd> Telescope colorscheme enable_preview=true", "Colorscheme" }
+--
 -- 	{ "<leader>fR", Util.telescope("oldfiles", { cwd = vim.loop.cwd() }), desc = "Recent (cwd)" },
 -- 	-- search
 --
@@ -1283,7 +1267,6 @@ vim.keymap.set("n", "<leader>p", "<cmd> Telescope registers <CR>", { desc = "[P]
 --         previewer = false,
 --     })
 -- end, { desc = '[/] Search in current buffer' })
-
 
 -- See `:help modeline`
 -- vim: ts=4 sts=4 sw=4 et

@@ -7,3 +7,9 @@ Made with [freight](https://github.com/Focus172/freight).
 git clone https://github.com/Focus172/iyuma.git
 cargo run
 ```
+
+## Nix
+Change nix registry dir
+```bash
+nix registry add nixpkgs ~/my-nixpkgs
+```

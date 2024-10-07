@@ -2,9 +2,20 @@
   description = "nixos config";
 
   inputs = {
+<<<<<<< Updated upstream
     nixpkgs.url = "github:nixos/nixpkgs";
+=======
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs";
+>>>>>>> Stashed changes
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-doom-emacs = {
+      # TODO: use flake utils, have rest of installed packages then follow this
+      url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -25,15 +36,28 @@
         config.allowUnfree = true;
         overlays = [ ];
       };
+      unstable = import inputs.nixpkgs-unstable { inherit system; };
     in {
+      apps."${system}".stow = let
+        name = "stow-config";
+        drv = pkgs.writeShellScriptBin name ''
+          # --dir ${./.}
+          ${pkgs.stow}/bin/stow --target $HOME/.config --ignore fish config
+        '';
+      in {
+        type = "app";
+        program = "${drv}/bin/${name}";
+      };
+
       nixosConfigurations.steamfunk = nixpkgs.lib.nixosSystem {
         inherit system;
 
         # args that are passed to each of the modules
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs system; };
         modules = [
           ./host/steamfunk
           inputs.hardware.nixosModules.framework-13th-gen-intel
+          # ./modules/host/emacs.nix
         ];
       };
 
@@ -54,8 +78,20 @@
 
       homeConfigurations.focus = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+<<<<<<< Updated upstream
         modules = [ ./home/focus.nix ];
         extraSpecialArgs = { inherit inputs; };
+=======
+        modules = [
+         ./modules/home
+         ./modules/home/desktop.nix
+         ./home/focus.nix
+        ];
+        extraSpecialArgs = {
+          # inherit inputs;
+          inherit unstable;
+        };
+>>>>>>> Stashed changes
       };
     };
 }
