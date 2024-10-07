@@ -2,16 +2,7 @@
   description = "nixos config";
 
   inputs = {
-<<<<<<< Updated upstream
     nixpkgs.url = "github:nixos/nixpkgs";
-=======
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs";
->>>>>>> Stashed changes
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     nix-doom-emacs = {
       # TODO: use flake utils, have rest of installed packages then follow this
@@ -42,7 +33,7 @@
         name = "stow-config";
         drv = pkgs.writeShellScriptBin name ''
           # --dir ${./.}
-          ${pkgs.stow}/bin/stow --target $HOME/.config --ignore fish config
+          ${pkgs.stow}/bin/stow --target $HOME/ --dotfiles --ignore fish stow
         '';
       in {
         type = "app";
@@ -55,9 +46,12 @@
         # args that are passed to each of the modules
         specialArgs = { inherit inputs system; };
         modules = [
-          ./host/steamfunk
+          ./hosts/steamfunk
           inputs.hardware.nixosModules.framework-13th-gen-intel
-          # ./modules/host/emacs.nix
+          # ./modules/emacs.nix
+          ./modules/common.nix
+          ./modules/desktop.nix
+          ./modules/grub.nix
         ];
       };
 
@@ -70,28 +64,5 @@
           [ ./host/hazed inputs.hardware.nixosModules.apple-macbook-pro-12-1 ];
       };
 
-      homeConfigurations.ginger = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home/ginger.nix ];
-        extraSpecialArgs = { inherit inputs; };
-      };
-
-      homeConfigurations.focus = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-<<<<<<< Updated upstream
-        modules = [ ./home/focus.nix ];
-        extraSpecialArgs = { inherit inputs; };
-=======
-        modules = [
-         ./modules/home
-         ./modules/home/desktop.nix
-         ./home/focus.nix
-        ];
-        extraSpecialArgs = {
-          # inherit inputs;
-          inherit unstable;
-        };
->>>>>>> Stashed changes
-      };
     };
 }

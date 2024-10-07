@@ -53,13 +53,21 @@
   };
 
   environment.systemPackages = with pkgs; [
+    firefox
+    fish
+
+    eza
+    bat
+    fzf
+    # starship
+    # sent
+
     cava
     foot
     # git
     # river
     bottom
     newsboat
-    tmux
     broot
 
     alsa-utils

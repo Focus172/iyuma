@@ -215,22 +215,19 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1724422166,
-        "narHash": "sha256-l9zifWrZe6sRTwl/Padz+a6zwGeE9eaU+0PFWtUQl2w=",
+        "lastModified": 1728337164,
+        "narHash": "sha256-VdRTjJFyq4Q9U7Z/UoC2Q5jK8vSo6E86lHc2OanXtvc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5dc25356567119127f046b347c3060a8dd607365",
+        "rev": "038630363e7de57c36c417fd2f5d7c14773403e4",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
+        "id": "home-manager",
+        "type": "indirect"
       }
     },
     "nix-doom-emacs": {
@@ -295,6 +292,22 @@
     },
     "nixpkgs": {
       "locked": {
+        "lastModified": 1728018373,
+        "narHash": "sha256-NOiTvBbRLIOe5F6RbHaAh6++BNjsb149fGZd1T4+KBg=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "bc947f541ae55e999ffdb4013441347d83b00feb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
         "lastModified": 1724441997,
         "narHash": "sha256-D7EaHaGejdZmjl6vteVFasBaEgb6coQWO2+uXF3zlD0=",
         "owner": "nixos",
@@ -308,7 +321,6 @@
         "type": "github"
       }
     },
-<<<<<<< Updated upstream
     "nose": {
       "flake": false,
       "locked": {
@@ -418,20 +430,6 @@
       "original": {
         "owner": "hakimel",
         "repo": "reveal.js",
-=======
-    "nixpkgs-unstable": {
-      "locked": {
-        "lastModified": 1724058148,
-        "narHash": "sha256-Tb62vwxuhP5jL+QTJNois/MNRmBXxcnH+5Q4wOrHhnc=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "367b266dae7292d0d4d23d521fdcf5458d31c40e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
->>>>>>> Stashed changes
         "type": "github"
       }
     },
@@ -439,13 +437,8 @@
       "inputs": {
         "hardware": "hardware",
         "home-manager": "home-manager",
-<<<<<<< Updated upstream
         "nix-doom-emacs": "nix-doom-emacs",
-        "nixpkgs": "nixpkgs"
-=======
-        "nixpkgs": "nixpkgs",
-        "nixpkgs-unstable": "nixpkgs-unstable"
->>>>>>> Stashed changes
+        "nixpkgs": "nixpkgs_2"
       }
     },
     "rotate-text": {
