@@ -52,9 +52,27 @@
     config.common.default = "*";
   };
 
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
+
+  # PATH="$PATH:$HOME/.local/bin:$CARGO_HOME/bin:$HOME/dev/scripts"
+  # PATH="$PATH:$HOME/.local/share/go/bin/"
+  # export PATH="$PATH:$HOME/.local/bin:$CARGO_HOME/bin:$HOME/.config/scripts"
+
+  programs.bash.interactiveShellInit = ''
+    PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+    export HISTFILE="$USER/.local/share/bash/history"
+  '';
+
+  # programs.starship.enable = true;
+  # programs.starship.enableFishIntegration = true;
+  # programs.starship.enableBashIntegration = false;
+
   environment.systemPackages = with pkgs; [
     firefox
     fish
+
+    direnv
 
     eza
     bat
@@ -313,4 +331,6 @@
 
     # godot_4
   ];
+
+
 }

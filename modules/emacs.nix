@@ -1,36 +1,12 @@
 { config, lib, pkgs, inputs, system, ... }: {
-
-  imports = [
-    ./tex.nix
-  ];
+  imports = [ ./tex.nix ];
 
   environment.systemPackages = [
-    (inputs.nix-doom-emacs.packages.${system}.default.override {
-      # emacsPackage = pkgs.emacs;
-      doomPrivateDir = ./doom;
-      # doomPackageDir = pkgs.linkFarm "my-doom-packages" [
-      #   {
-      #     name = "config.el";
-      #     path = pkgs.emptyFile;
-      #   }
-      #   {
-      #     name = "init.el";
-      #     path = ./doom/init.el;
-      #   }
-      #   {
-      #     name = "packages.el";
-      #     # path = pkgs.emptyFile;
-      #     path = pkgs.writeText "packages.el" ''
-      #       ; (package! inheritenv)";
-      #       ; - obsidian.el
-      #       ; - doom-emacs.el
-      #     '';
-      #   }
-      # ];
-    })
+    # (inputs.nix-doom-emacs.packages.${system}.default.override {
+    #   doomPrivateDir = ./doom;
+    # })
   ] ++ (with pkgs; [
     ispell
-    # texliveTeTeX
     nixfmt-classic
 
     # nil

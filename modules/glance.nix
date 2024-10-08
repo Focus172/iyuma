@@ -1,7 +1,5 @@
 { config, pkgs, unstable, ... }: {
-  imports = [ 
-    # ./firefox 
-  ];
+  imports = [ ];
 
   services.glance.enable = true;
   services.glance.settings = {

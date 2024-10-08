@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs";
 
     nix-doom-emacs = {
-      # TODO: use flake utils, have rest of installed packages then follow this
+      # TODO: uses flake utils, have rest of installed packages then follow this
       url = "github:nix-community/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -33,7 +33,7 @@
         name = "stow-config";
         drv = pkgs.writeShellScriptBin name ''
           # --dir ${./.}
-          ${pkgs.stow}/bin/stow --target $HOME/ --dotfiles --ignore fish stow
+          ${pkgs.stow}/bin/stow --target $HOME/ --dotfiles stow
         '';
       in {
         type = "app";
@@ -47,11 +47,13 @@
         specialArgs = { inherit inputs system; };
         modules = [
           ./hosts/steamfunk
-          inputs.hardware.nixosModules.framework-13th-gen-intel
-          # ./modules/emacs.nix
+
           ./modules/common.nix
           ./modules/desktop.nix
+          ./modules/emacs.nix
+
           ./modules/grub.nix
+          inputs.hardware.nixosModules.framework-13th-gen-intel
         ];
       };
 
@@ -60,9 +62,10 @@
 
         # args that are passed to each of the modules
         specialArgs = { inherit inputs; };
-        modules =
-          [ ./host/hazed inputs.hardware.nixosModules.apple-macbook-pro-12-1 ];
+        modules = [
+          ./host/hazed
+          inputs.hardware.nixosModules.apple-macbook-pro-12-1 
+        ];
       };
-
     };
 }
