@@ -7,11 +7,10 @@
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Evan Stokdyk"
       user-mail-address "evan.stokdyk@gmail.com"
-      ;;+doom-dashboard-banner-file "family-photo.jpg"
-      )
+      +doom-dashboard-banner-file "dashboard.jpg")
 
 ;; Turn on pixel scrolling
-(pixel-scroll-precision-mode t)
+;; (pixel-scroll-precision-mode t)
 
 ;; Turn on abbrev mode
 (add-to-list 'default-frame-alist '(width . 144))
@@ -30,8 +29,7 @@
 ;; accept. For example:
 ;;
 (setq doom-font (font-spec :family "Hack Nerd Font" :size 21 :weight 'semi-light)
-      ;;doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13)
-      )
+      doom-variable-pitch-font (font-spec :family "Mononoki Nerd Font" :size 13))
 
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -48,8 +46,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/dox/")
-
+(setq org-directory "~/dox")
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -83,24 +80,25 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; (use-package! obsidian
-;;   :ensure t
-;;   :demand t
-;;   :config
-;;   (obsidian-specify-path "~/dox/dnd")
-;;   ;;(global-obsidian-mode t)
-;;   :custom
-;;   ;; This directory will be used for `obsidian-capture' if set.
-;;   (obsidian-inbox-directory "inbox")
-;;   ;; The directory for daily notes (file name is YYYY-MM-DD.md)
-;;                                         ;(obsidian-daily-notes-directory "daily")
-;;   :bind (:map obsidian-mode-map
-;;               ;; Replace C-c C-o with Obsidian.el's implementation. It's ok to use another key binding.
-;;               ("C-c C-o" . obsidian-follow-link-at-point)
-;;               ;; Jump to backlinks
-;;               ("C-c C-b" . obsidian-backlink-jump)
-;;               ;; If you prefer you can use `obsidian-insert-link'
-;;               ("C-c C-l" . obsidian-insert-wikilink)))
+(use-package! obsidian
+  :ensure t
+  :demand t
+  :config
+  (obsidian-specify-path "~/dox/dnd")
+  ;;(global-obsidian-mode t)
+  :custom
+  ;; This directory will be used for `obsidian-capture' if set.
+  (obsidian-inbox-directory "inbox")
+  ;; The directory for daily notes (file name is YYYY-MM-DD.md)
+                                        ;(obsidian-daily-notes-directory "daily")
+  ;; :bind (:map obsidian-mode-map
+  ;;             ;; Replace C-c C-o with Obsidian.el's implementation. It's ok to use another key binding.
+  ;;             ("C-c C-o" . obsidian-follow-link-at-point)
+  ;;             ;; Jump to backlinks
+  ;;             ("C-c C-b" . obsidian-backlink-jump)
+  ;;             ;; If you prefer you can use `obsidian-insert-link'
+  ;;             ("C-c C-l" . obsidian-insert-wikilink))
+  )
 
 (use-package! org-roam
   :config

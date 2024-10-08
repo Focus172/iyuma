@@ -1,3 +1,6 @@
 /stow/dot-config/git/credentials
 /stow/dot-config/alacritty
 
+# made by someone else, reference only
+/modules/doom/doom.org
+

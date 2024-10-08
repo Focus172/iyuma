@@ -1,16 +1,16 @@
 {
   description = "nixos config";
 
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs";
+  inputs = rec {
+    nixpkgs.url = github:nixos/nixpkgs/a1ff09664a29517a20ce2891402c4d84c1004084;
+    hardware.url = "github:NixOS/nixos-hardware/master";
 
+    nixpkgs-emacs-pin.url = github:NixOs/nixpkgs/f3dab3509afca932f3f4fd0908957709bb1c1f57;
     nix-doom-emacs = {
       # TODO: uses flake utils, have rest of installed packages then follow this
-      url = "github:nix-community/nix-doom-emacs";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = github:nix-community/nix-doom-emacs;
+      inputs.nixpkgs.follows = "nixpkgs-emacs-pin";
     };
-
-    hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   # This request each of the arguments from the flake registry. It is how you
@@ -19,53 +19,48 @@
   # @ inputs to add it as an arg i think
   # The imports a map which is assined to this value each key is a thing that
   # can be build as config when no name is passed then `default` is built.
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ ];
+        # overlays = [ (final: prev: { }) ];
       };
-      unstable = import inputs.nixpkgs-unstable { inherit system; };
+
+      # Shared functions
+      iyuma = {
+        mkSystem = modules: nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs system; };
+          inherit system modules;
+        };
+        mkTool = name: code: {
+          type = "app";
+          program = "${pkgs.writeShellScriptBin name code}/bin/${name}";
+        };
+      };
     in {
-      apps."${system}".stow = let
-        name = "stow-config";
-        drv = pkgs.writeShellScriptBin name ''
-          # --dir ${./.}
-          ${pkgs.stow}/bin/stow --target $HOME/ --dotfiles stow
-        '';
-      in {
-        type = "app";
-        program = "${drv}/bin/${name}";
-      };
+      # run with `nix run .#stow`
+      apps."${system}".stow = iyuma.mkTool "stow-config" ''
+        ${pkgs.stow}/bin/stow --target $HOME/ --dotfiles stow
+      '';
 
-      nixosConfigurations.steamfunk = nixpkgs.lib.nixosSystem {
-        inherit system;
-
-        # args that are passed to each of the modules
-        specialArgs = { inherit inputs system; };
-        modules = [
+      # run with `sudo nixos-rebuild switch --flake .#steamfunk`
+      nixosConfigurations.steamfunk = iyuma.mkSystem [
           ./hosts/steamfunk
 
           ./modules/common.nix
           ./modules/desktop.nix
-          ./modules/emacs.nix
+          # ./modules/emacs.nix
 
           ./modules/grub.nix
           inputs.hardware.nixosModules.framework-13th-gen-intel
-        ];
-      };
+      ];
 
-      nixosConfigurations.hazed = nixpkgs.lib.nixosSystem {
-        inherit system;
-
-        # args that are passed to each of the modules
-        specialArgs = { inherit inputs; };
-        modules = [
+      nixosConfigurations.hazed = iyuma.mkSystem [
           ./host/hazed
+
           inputs.hardware.nixosModules.apple-macbook-pro-12-1 
-        ];
-      };
+      ];
     };
 }

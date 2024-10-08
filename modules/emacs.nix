@@ -1,24 +1,49 @@
-{ config, lib, pkgs, inputs, system, ... }: {
+{ config, lib, pkgs, inputs, system, ... }:
+let
+  doom-emacs = inputs.nix-doom-emacs.packages.${system}.default.override {
+    doomPrivateDir = ./doom;
+    doomPackageDir = let
+      filteredPath = builtins.path {
+        path = ./doom;
+        name = "doom-private-dir-filtered";
+        filter = path: type:
+          builtins.elem (baseNameOf path) [ "init.el" "packages.el" ];
+      };
+      in pkgs.linkFarm "doom-packages-dir" [
+        {
+          name = "init.el";
+          path = "${filteredPath}/init.el";
+        }
+        {
+          name = "packages.el";
+          path = "${filteredPath}/packages.el";
+        }
+        {
+          name = "config.el";
+          path = pkgs.emptyFile;
+        }
+      ];
+
+  };
+in {
   imports = [ ./tex.nix ];
 
   environment.systemPackages = [
-    # (inputs.nix-doom-emacs.packages.${system}.default.override {
-    #   doomPrivateDir = ./doom;
-    # })
+    doom-emacs
   ] ++ (with pkgs; [
     ispell
     nixfmt-classic
 
     # nil
-    # git
-    # file
+    git
+    file
     # wmctrl
     # jshon
     # aria
     # hledger
     # hunspell hunspellDicts.en_US-large
-    # pandoc
-    # (pkgs.mu.override { emacs = emacs29-pgtk; })
+    pandoc
+    # (pkgs.mu.override { emacs = doom-emacs; })
     # emacsPackages.mu4e
     # isync
     # msmtp

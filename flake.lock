@@ -213,23 +213,6 @@
         "type": "github"
       }
     },
-    "home-manager": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1728337164,
-        "narHash": "sha256-VdRTjJFyq4Q9U7Z/UoC2Q5jK8vSo6E86lHc2OanXtvc=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "038630363e7de57c36c417fd2f5d7c14773403e4",
-        "type": "github"
-      },
-      "original": {
-        "id": "home-manager",
-        "type": "indirect"
-      }
-    },
     "nix-doom-emacs": {
       "inputs": {
         "doom-emacs": "doom-emacs",
@@ -246,7 +229,7 @@
         "format-all": "format-all",
         "nix-straight": "nix-straight",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-emacs-pin"
         ],
         "nose": "nose",
         "ob-racket": "ob-racket",
@@ -292,22 +275,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1728018373,
-        "narHash": "sha256-NOiTvBbRLIOe5F6RbHaAh6++BNjsb149fGZd1T4+KBg=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "bc947f541ae55e999ffdb4013441347d83b00feb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1724441997,
         "narHash": "sha256-D7EaHaGejdZmjl6vteVFasBaEgb6coQWO2+uXF3zlD0=",
         "owner": "nixos",
@@ -318,6 +285,23 @@
       "original": {
         "owner": "nixos",
         "repo": "nixpkgs",
+        "rev": "a1ff09664a29517a20ce2891402c4d84c1004084",
+        "type": "github"
+      }
+    },
+    "nixpkgs-emacs-pin": {
+      "locked": {
+        "lastModified": 1695806987,
+        "narHash": "sha256-fX5kGs66NZIxCMcpAGIpxuftajHL8Hil1vjHmjjl118=",
+        "owner": "NixOs",
+        "repo": "nixpkgs",
+        "rev": "f3dab3509afca932f3f4fd0908957709bb1c1f57",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOs",
+        "repo": "nixpkgs",
+        "rev": "f3dab3509afca932f3f4fd0908957709bb1c1f57",
         "type": "github"
       }
     },
@@ -436,9 +420,9 @@
     "root": {
       "inputs": {
         "hardware": "hardware",
-        "home-manager": "home-manager",
         "nix-doom-emacs": "nix-doom-emacs",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-emacs-pin": "nixpkgs-emacs-pin"
       }
     },
     "rotate-text": {
