@@ -199,17 +199,38 @@
     },
     "hardware": {
       "locked": {
-        "lastModified": 1723310128,
-        "narHash": "sha256-IiH8jG6PpR4h9TxSGMYh+2/gQiJW9MwehFvheSb5rPc=",
+        "lastModified": 1731403644,
+        "narHash": "sha256-T9V7CTucjRZ4Qc6pUEV/kpgNGzQbHWfGcfK6JJLfUeI=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "c54cf53e022b0b3c1d3b8207aa0f9b194c24f0cf",
+        "rev": "f6581f1c3b137086e42a08a906bdada63045f991",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
         "ref": "master",
         "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
+    "neomacs": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1728950024,
+        "narHash": "sha256-+bOdTzLUrQqb7z3k6R0aqlDncAatket1J3eXr2VoNx0=",
+        "owner": "gingerfocus",
+        "repo": "neomacs",
+        "rev": "1cb111757d7eb3921ee2b4b8f15bf7dd45bdfff8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gingerfocus",
+        "repo": "neomacs",
+        "rev": "1cb111757d7eb3921ee2b4b8f15bf7dd45bdfff8",
         "type": "github"
       }
     },
@@ -275,17 +296,17 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1724441997,
-        "narHash": "sha256-D7EaHaGejdZmjl6vteVFasBaEgb6coQWO2+uXF3zlD0=",
+        "lastModified": 1728538411,
+        "narHash": "sha256-f0SBJz1eZ2yOuKUr5CA9BHULGXVSn6miBuUWdTyhUhU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "a1ff09664a29517a20ce2891402c4d84c1004084",
+        "rev": "b69de56fac8c2b6f8fd27f2eca01dcda8e0a4221",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "a1ff09664a29517a20ce2891402c4d84c1004084",
+        "rev": "b69de56fac8c2b6f8fd27f2eca01dcda8e0a4221",
         "type": "github"
       }
     },
@@ -420,6 +441,7 @@
     "root": {
       "inputs": {
         "hardware": "hardware",
+        "neomacs": "neomacs",
         "nix-doom-emacs": "nix-doom-emacs",
         "nixpkgs": "nixpkgs",
         "nixpkgs-emacs-pin": "nixpkgs-emacs-pin"

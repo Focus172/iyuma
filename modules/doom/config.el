@@ -9,6 +9,12 @@
       user-mail-address "evan.stokdyk@gmail.com"
       +doom-dashboard-banner-file "dashboard.jpg")
 
+;; (setq org-latex-compiler "lualatex") ;; xelatex
+;; (setq org-preview-latex-default-process 'dvisvgm)
+
+(setq org-latex-compiler "pandoc")
+(setq org-latex-pdf-process '("pandoc %f -t pdf"))
+
 ;; Turn on pixel scrolling
 ;; (pixel-scroll-precision-mode t)
 
@@ -120,3 +126,4 @@
         org-roam-ui-follow nil
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start t))
+

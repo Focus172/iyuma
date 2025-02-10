@@ -36,8 +36,8 @@ riverctl map normal Super Period focus-output next
 riverctl map normal Super Comma focus-output previous
 
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
-# riverctl map normal Super+Shift Period send-to-output next
-# riverctl map normal Super+Shift Comma send-to-output previous
+riverctl map normal Super+Shift Period send-to-output next
+riverctl map normal Super+Shift Comma send-to-output previous
 
 # Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
 riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"

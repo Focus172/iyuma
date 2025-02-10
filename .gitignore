@@ -1,6 +1,6 @@
-/stow/dot-config/git/credentials
-/stow/dot-config/alacritty
 
 # made by someone else, reference only
 /modules/doom/doom.org
 
+# should not be in repo on any machine but ignored just in case
+/stow/dot-config/git/credentials

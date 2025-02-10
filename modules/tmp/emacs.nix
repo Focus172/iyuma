@@ -23,13 +23,14 @@ let
           path = pkgs.emptyFile;
         }
       ];
-
   };
+  neomacs = inputs.neomacs.packages."${system}".default;
 in {
   imports = [ ./tex.nix ];
 
   environment.systemPackages = [
     doom-emacs
+    # neomacs
   ] ++ (with pkgs; [
     ispell
     nixfmt-classic

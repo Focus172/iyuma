@@ -14,16 +14,13 @@
     allowUnfree = true;
   };
 
+  # services.pgadmin.enable = true;
+  # services.pgadmin.initialEmail = "evan.stokdyk@gmail.com";
+
   ## Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  # programs.steam = {
-  #   enable = true;
-  #   remotePlay.openFirewall = true;
-  #   dedicatedServer.openFirewall = true;
-  # };
-
-  # services.tlp =graphics {
+  # services.tlp = {
   #   enable = true;
   #   settings = {
   #     CPU_BOOST_ON_BAT = 0;
@@ -106,8 +103,6 @@
   # };
 
   users.defaultUserShell = pkgs.bash;
-
-  # programs.wireshark.enable = true;
 
   # ----------------------------------- #
   users.users.focus = {

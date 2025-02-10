@@ -5,7 +5,13 @@
         scheme-tetex
         tcolorbox
         pdfcol
-        listingsutf8;
+        listingsutf8
+
+        # Emacs
+        scheme-basic
+        dvisvgm dvipng
+        wrapfig amsmath ulem hyperref capt-of
+      ;
     })
   ];
 }

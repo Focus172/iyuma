@@ -1,8 +1,23 @@
-{ config, pkgs, ... }: {
-  imports = [ 
-    ./grub.nix
-    ./env.nix
-  ];
+{ config, pkgs, inputs, system, ... }: {
+  imports = [ ];
+
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  # programs.wireshark.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      # for screen sharing
+      pkgs.xdg-desktop-portal-wlr
+      # for file picking
+      pkgs.xdg-desktop-portal-gtk
+    ];
+
+    xdgOpenUsePortal = true;
+    config.common.default = "*";
+  };
 
   # ------------- Input --------------- #
   i18n.inputMethod = {
@@ -37,19 +52,6 @@
       sandbar swww wl-clipboard
       imv wlr-randr
     ];
-  };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      # for screen sharing
-      pkgs.xdg-desktop-portal-wlr
-      # for file picking
-      pkgs.xdg-desktop-portal-gtk
-    ];
-
-    xdgOpenUsePortal = true;
-    config.common.default = "*";
   };
 
   programs.direnv.enable = true;
@@ -307,9 +309,6 @@
     neovide
     # wasmtime
 
-    # TODO: install this before school starts
-    # zoom-us
-
     # rclone
     # rclone-browser
     ## OR
@@ -319,7 +318,7 @@
 
     ### Games
     heroic
-    # lutris
+    (lutris.override { steamSupport = true; })
 
     ### Japanese
     # memento
@@ -330,7 +329,17 @@
     qutebrowser
 
     # godot_4
+
+    imagemagick
+    nautilus
+
+    lynx
   ];
 
+  programs.steam = {
+    enable = true;
+    # remotePlay.openFirewall = true;
+    # dedicatedServer.openFirewall = true;
+  };
 
 }
